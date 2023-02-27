@@ -31,11 +31,10 @@
       <div class="flex items-center mt-6 pl-7">
         <!-- Open Video -->
         <button @click="modelToggle = true" class="border border-gray-500 p-2 rounded-full relative">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
-            class="w-24 h-24 rounded-full" alt="" />
+          <img class="w-24 h-24 rounded-full" src="../../../assets/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg" alt="">
           <div class="absolute top-1/2 left-1/2 opacity-60">
             <svg xmlns="http://www.w3.org/2000/svg"
-              class="absolute text-white top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer"
+              class="z-10 absolute text-white top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer"
               fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -50,12 +49,8 @@
             Bamboo Bikes
           </p>
         </div>
-        <div v-bind:class="{hidden: !modelToggle}" class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
-          
+        <div @click="modelToggle = false" v-bind:class="{hidden: !modelToggle}" class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
           <div class="my-auto relative">
-            <button @click="modelToggle = false" class="absolute right-0 p-3 bg-white">
-              <i class="fa fa-close" style="font-size:24px; color: black;"></i>
-            </button>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
