@@ -86,7 +86,7 @@
                                     +
                                 </button>
                             </div>
-                            <button class="fixed lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add to
+                            <button class="fixed z-10 lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add to
                                 cart</button>
                             <button class="border-2 ml-2 lg:ml-0 p-2 border-gray-500 hover:bg-gray-500 rounded-sm"><i class="fa fa-heart-o"
                                     aria-hidden="true"></i></button>
@@ -189,7 +189,7 @@
                     <h3 class="text-2xl font-bold text-green-500 mb-4">YOU CAN BE LOVE IT</h3>
                     <h1 class="text-4xl font-bold">RELATED PRODUCTS</h1>
                 </div>
-                <swiper class="relative overflow-hidden w-full cursor-grab px-6" :navigation="true" :pagination="{
+                <swiper class="relative grid overflow-hidden w-full cursor-grab px-6" :navigation="true" :pagination="{
                     clickable: true,
                 }" :autoplay="{
                     delay: 1500,
@@ -208,7 +208,7 @@
                         spaceBetween: 50,
                     },
                 }">
-                    <swiper-slide class="pb-5 h-full" v-for="product in relatedProduct" :key="product.productId">
+                    <swiper-slide class="pb-5" v-for="product in relatedProduct" :key="product.productId">
                         <div class="mb-6 border-2 h-full rounded-xl">
                             <div class="overflow-hidden cursor-pointer rounded-t-xl relative group">
                                 <div
