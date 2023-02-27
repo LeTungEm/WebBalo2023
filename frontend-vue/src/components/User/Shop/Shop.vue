@@ -199,7 +199,7 @@
                                     </div>
                                     <img alt=""
                                         class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                                        src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU" />
+                                        :src="require('@/assets/images/balo/'+product.image_1)" />
                                 </div>
                                 <div class="text-center my-6">
                                     <div to="shopdetail" class="text-xl uppercase">{{product.productName}}</div>

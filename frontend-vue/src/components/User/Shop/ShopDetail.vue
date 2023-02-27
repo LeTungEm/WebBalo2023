@@ -20,30 +20,17 @@
                 <div class="lg:flex justify-between">
                     <div class="mx-8 lg:w-1/2">
                         <swiper :spaceBetween="10" :navigation="true" :thumbs="{ swiper: thumbsSwiper }" class="mb-12">
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-3.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-4.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-5.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-6.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-7.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-8.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-9.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                            </swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_1)" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_2)" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_3)" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_4)" /></swiper-slide>
                         </swiper>
                         <swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="4" :freeMode="true"
                             :watchSlidesVisibility="true" :watchSlidesProgress="true" class="mySwiper">
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-1.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-3.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-4.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-5.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-6.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-7.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-8.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-9.jpg" /></swiper-slide>
-                            <swiper-slide><img src="https://swiperjs.com/demos/images/nature-10.jpg" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_1)" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_2)" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_3)" /></swiper-slide>
+                            <swiper-slide><img :src="require('@/assets/images/balo/'+product.image_4)" /></swiper-slide>
                         </swiper>
                     </div>
                     <div class="mt-12 lg:mt-0 mx-8 leading-loose">
@@ -184,7 +171,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-12">
+            <div id="a" class="mt-12">
                 <div class="mb-24 text-center">
                     <h3 class="text-2xl font-bold text-green-500 mb-4">YOU CAN BE LOVE IT</h3>
                     <h1 class="text-4xl font-bold">RELATED PRODUCTS</h1>
@@ -282,12 +269,10 @@ export default {
         },
         changeCounter: function (num) {
             this.counter += +num
-            console.log(this.counter)
             !isNaN(this.counter) && this.counter > 0 ? this.counter : this.counter = 0;
 
         },
         getRalatedProduct(id){
-            console.log(id);
             ProductsService.getByCategoryID(id).then(res => this.relatedProduct = res.data);
         },
         getProduct(id){
@@ -297,6 +282,7 @@ export default {
                 }
                 );
         },
+        
     },
     setup() {
         return {
