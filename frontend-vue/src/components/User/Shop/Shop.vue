@@ -39,7 +39,7 @@
                         <swiper :loop="true" :pagination="{
                             dynamicBullets: true,
                         }" :modules="modules" class="hidden lg:block">
-                            <swiper-slide v-for="index in 10" :key="index">
+                            <swiper-slide v-for="product in products" :key="product.productID">
                                 <div class="mb-6 border-2 rounded-xl">
                                     <div class="overflow-hidden cursor-pointer rounded-t-xl relative group">
                                         <div
@@ -57,10 +57,9 @@
                                             </div>
                                         </div><img alt=""
                                             class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                                            src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&amp;usqp=CAU">
+                                            :src="require('@/assets/images/balo/'+product.image_1)">
                                     </div>
-                                    <div class="text-center my-6"><a href="" class="text-xl uppercase">HOSIERY LINGERIE
-                                            SET</a>
+                                    <div class="text-center my-6"><a href="" class="text-xl uppercase">{{product.productName}}</a>
                                         <p class="text-red-500 hover:text-red-600 mt-3">$529.00</p>
                                     </div>
                                 </div>

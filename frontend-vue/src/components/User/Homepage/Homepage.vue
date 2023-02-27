@@ -30,7 +30,7 @@
       </div>
       <div class="flex items-center mt-6 pl-7">
         <!-- Open Video -->
-        <button class="border border-gray-500 p-2 rounded-full relative">
+        <button @click="modelToggle = true" class="border border-gray-500 p-2 rounded-full relative">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
             class="w-24 h-24 rounded-full" alt="" />
           <div class="absolute top-1/2 left-1/2 opacity-60">
@@ -50,6 +50,16 @@
             Bamboo Bikes
           </p>
         </div>
+        <div v-bind:class="{hidden: !modelToggle}" class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
+          
+          <div class="my-auto relative">
+            <button @click="modelToggle = false" class="absolute right-0 p-3 bg-white">
+              <i class="fa fa-close" style="font-size:24px; color: black;"></i>
+            </button>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+
       </div>
     </div>
     <div class="mb-20 multColor" data-aos="fade-down" data-aos-duration="1500" data-aos-delay='500'>
@@ -107,7 +117,7 @@
                 </div>
               </div>
               <img alt="" class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU" />
+              :src="require('@/assets/images/balo/'+product.image_1)" />
             </div>
             <div class="text-center my-6">
               <div class="text-xl uppercase">{{product.productName}}</div>
@@ -197,6 +207,7 @@ export default {
       pages: [],
       countPages: 0,
       products: [],
+      modelToggle: false,
     };
   },
   components: {
