@@ -29,6 +29,24 @@
                     But nothing the copy said could convince her and so it didn’t take
                     long until a few insidious Copy Writers ambushed her.
                 </p>
+            </div>
+        </div>
+        <div class="md:flex px-4 lg:px-8 xl:px-36 my-24 wrap max-w-max mx-auto">
+            <div class="">
+                <img src="https://themewagon.github.io/minishop/images/about.jpg" alt="" />
+            </div>
+            <div class="px-8 text-md leading-8 my-6">
+                <h1 class="text-2xl pb-6 font-bold">Stablished Sinced 1975</h1>
+                <p class="mb-2">
+                    But nothing the copy said could convince her and so it didn’t take
+                    long until a few insidious Copy Writers ambushed her, made her drunk
+                    with Longe and Parole and dragged her into their agency, where they
+                    abused her for their.
+                </p>
+                <p>
+                    But nothing the copy said could convince her and so it didn’t take
+                    long until a few insidious Copy Writers ambushed her.
+                </p>
                 <router-link class="link" to="/Shop">
                     <p
                         class="mt-12 w-fit text-center text-xl border px-8 mx-auto cursor-pointer duration-300 bg-red-500 text-white py-3 hover:bg-red-600 uppercase rounded-full">

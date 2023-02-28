@@ -176,7 +176,7 @@
                     <h3 class="text-2xl font-bold text-green-500 mb-4">YOU CAN BE LOVE IT</h3>
                     <h1 class="text-4xl font-bold">RELATED PRODUCTS</h1>
                 </div>
-                <swiper class="relative grid overflow-hidden w-full cursor-grab px-6" :navigation="true" :pagination="{
+                <swiper class="relative grid overflow-hidden w-full cursor-grab px-2" :navigation="true" :pagination="{
                     clickable: true,
                 }" :autoplay="{
                     delay: 1500,
@@ -192,7 +192,7 @@
                     },
                     '1024': {
                         slidesPerView: 4,
-                        spaceBetween: 50,
+                        spaceBetween: 30,
                     },
                 }">
                     <swiper-slide class="pb-5" v-for="product in relatedProduct" :key="product.productId">
@@ -214,7 +214,7 @@
                                 </div>
                                 <img alt=""
                                     class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                                    src="	https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU" />
+                                    :src="require('@/assets/images/balo/'+product.image_1)" />
                             </div>
                             <div class="text-center my-6">
                                 <a href="" class="text-xl uppercase">{{product.productName}}</a>

@@ -50,8 +50,8 @@
           </p>
         </div>
         <div @click="modelToggle = false" v-bind:class="{hidden: !modelToggle}" class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
-          <div class="my-auto relative">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <div class="my-auto relative w-full md:w-1/2 ">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
         </div>
 
@@ -84,7 +84,7 @@
                 class="w-full" alt="" />
               <div class="p-6">
                 <a href="" class="mb-5 font-bold text-2xl">{{page.blogName}}</a>
-                <p class="my-5">{{page.content}}</p>
+                <p class="my-5 overflow-hidden h-36">{{page.content}}</p>
                 <p>June 30, 2021 — Cities, Events</p>
               </div>
             </div>
