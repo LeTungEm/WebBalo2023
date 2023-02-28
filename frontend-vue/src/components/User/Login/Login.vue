@@ -9,7 +9,7 @@
                 <p class="text-3xl text-white">
                     <i class="fa fa-home" aria-hidden="true"></i>
                     <span class="mx-3">/</span>
-                    <a href="" class="underline">Login</a>
+                    <router-link to="/login" class="underline">Login</router-link>
                 </p>
             </div>
             <img src="https://images.unsplash.com/photo-1490129375591-2658b3e2ee50?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2244&amp;q=80"
@@ -17,14 +17,10 @@
         </div>
         <div class="flex items-center justify-center my-12">
             <div class="lg:w-1/2">
-                <h1 class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">Login
+                <h1 class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
+                    Login
                 </h1>
                 <div class="realtive border p-4 bg-gray-50 py-5">
-                    <div class="flex justify-center mb-5">
-                        <div class="absolute bg-white px-4 -top-5">
-                            <h1 class="text-2xl border-b-2 border-cyan-500 text-center">Sign in</h1>
-                        </div>
-                    </div>
                     <div class="">
                         <input type="text" class="border px-4 py-2 my-2 w-full bg-white" placeholder="Email*">
                         <div class="flex items-center w-full">

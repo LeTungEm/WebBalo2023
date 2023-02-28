@@ -10,33 +10,33 @@
               <ul class="uppercase lg:flex">
                 <li
                   class="mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
-                  <a href="/">Home</a>
+                  <router-link to="/">Home</router-link>
                 </li>
                 <li
                   class="mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
-                  <a href="/shop">shop</a>
+                  <router-link to="/shop">Shop</router-link>
                 </li>
                 <li
                   class="mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
-                  <a href="/about">About</a>
+                  <router-link to="/about">About</router-link>
                 </li>
                 <li
                   class="mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
-                  <a href="/blog">Blog</a>
+                  <router-link to="/blog">Blog</router-link>
                 </li>
                 <li
                   class="mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
-                  <a href="/contact">Contact</a>
+                  <router-link to="/contact">Contact</router-link>
                 </li>
               </ul>
             </nav>
             <div class="lg:flex items-center">
               <div class="flex mr-12 lg:text-sm uppercase lg:">
-                <a href="/login"
-                  class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Login</a>
+                <router-link to="/login"
+                  class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Login</router-link>
                 <span>/</span>
-                <a href="/register"
-                  class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Register</a>
+                <router-link to="/register"
+                  class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Register</router-link>
               </div>
               <div class="flex">
                 <div class="relative">
@@ -139,40 +139,24 @@
             <nav>
               <ul class="uppercase lg:flex leading-9">
                 <li class="">
-                  <a href="/">Home</a>
+                  <router-link to="/">Home</router-link>
                 </li>
                 <li class="">
-                  <button class="w-full flex justify-between uppercase items-center"
-                    v-on:click="this.shopDropdown = !this.shopDropdown">
-                    <span> shop </span>
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                      class="h-4 w-4 transform transition-transform duration-200 ease-in-out">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div class="mx-4">
-                    <ul v-show="shopDropdown">
-                      <li><a href="">Menu 1</a></li>
-                      <li><a href="">Menu 2</a></li>
-                      <li><a href="">Menu 3</a></li>
-                      <li><a href="">Menu 4</a></li>
-                      <li><a href="">Menu 5</a></li>
-                    </ul>
-                  </div>
+                  <router-link to="/shop">Shop</router-link>
                 </li>
                 <li class="">
-                  <a to="/about">About</a>
+                  <router-link to="/about">About</router-link>
                 </li>
                 <li class="">
-                  <a href="/blog">Blog</a>
+                  <router-link to="/blog">Blog</router-link>
                 </li>
                 <li class="">
-                  <a href="/contact">Contact</a>
+                  <router-link to="/contact">Contact</router-link>
                 </li>
                 <li class="text-center mt-3">
-                  <a href="/login">Login</a>
+                  <router-link to="/login">Login</router-link>
                   <span class="mx-3">/</span>
-                  <a href="/register">Register</a>
+                  <router-link to="/register">Register</router-link>
                 </li>
               </ul>
             </nav>

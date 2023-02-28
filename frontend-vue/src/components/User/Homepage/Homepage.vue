@@ -84,7 +84,7 @@
                 class="w-full" alt="" />
               <div class="p-6">
                 <a href="" class="mb-5 font-bold text-2xl">{{page.blogName}}</a>
-                <p class="my-5 overflow-hidden h-36">{{page.content}}</p>
+                <p class="my-5 overflow-hidden h-36">{{page.content}}...</p>
                 <p>June 30, 2021 — Cities, Events</p>
               </div>
             </div>
@@ -136,8 +136,8 @@
         </p>
       </div>
       <div  class="grid grid-cols-1 lg:grid-cols-3 w-11/12 md:w-7/12 mx-auto gap-10">
-        <div v-for="page in pages" v-on="countPages += 1" :key="page.blogId" class="shadow-lg border rounded-t-2xl">
-          <div v-if="page.blogId < 18">
+        <div v-for="page in pages" v-on:load="countPages += 1" :key="page.blogId" class="shadow-lg border rounded-t-2xl">
+          <div v-if="page.blogId <= (pages[2].blogId)">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
               class="w-full" alt="" />
             <div class="p-4">
@@ -146,7 +146,7 @@
                 <p>Post by : Den </p>
                 <p>{{page.createDate}}</p>
               </div>
-              <p>{{page.content}}</p>
+              <p class="overflow-hidden h-36">{{page.content}}...</p>
             </div>
           </div>
         </div>
