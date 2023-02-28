@@ -136,7 +136,7 @@
                 <img src="https://themewagon.github.io/shionhouse/assets/img/logo/logo.png" alt="" />
               </a>
             </div>
-            <nav>
+            <nav @click="isOpen = false">
               <ul class="uppercase lg:flex leading-9">
                 <li class="">
                   <router-link to="/">Home</router-link>

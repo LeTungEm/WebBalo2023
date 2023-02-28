@@ -82,9 +82,9 @@
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
                 class="w-full" alt="" />
-              <div class="p-6">
+              <div class="p-6 overflow-hidden h-60">
                 <a href="" class="mb-5 font-bold text-2xl">{{page.blogName}}</a>
-                <p class="my-5 overflow-hidden h-36">{{page.content}}...</p>
+                <p class="my-5">{{page.content.substr(0, 150)}}...</p>
                 <p>June 30, 2021 — Cities, Events</p>
               </div>
             </div>
@@ -142,11 +142,13 @@
               class="w-full" alt="" />
             <div class="p-4">
               <h1 class="font-bold text-2xl my-2">{{page.blogName}}</h1>
-              <div class="flex justify-between my-4">
-                <p>Post by : Den </p>
-                <p>{{page.createDate}}</p>
+              <div class=" overflow-hidden h-60">
+                <div class="flex justify-between my-4">
+                  <p>Post by : Den </p>
+                  <p>{{page.createDate}}</p><br>
+                </div>
+                <p>{{page.content.substr(0, 150)}}...</p>
               </div>
-              <p class="overflow-hidden h-36">{{page.content}}...</p>
             </div>
           </div>
         </div>
