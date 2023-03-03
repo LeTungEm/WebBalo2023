@@ -1,18 +1,10 @@
 <template>
-    <div class="mb-24">
-        <div class="-mt-24 relative w-full py-8 px-12 bg-yellow-900 z-0 mb-12 lg:mb-24">
-            <div class="relative z-10 text-center py-24 md:py-48">
-                <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
-                    Your Shopping Cart</h1>
-                <p class="text-3xl text-white">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                    <span class="mx-3">/</span>
-                    <a href="" class="underline">Your Shopping Cart</a>
-                </p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1490129375591-2658b3e2ee50?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2244&amp;q=80"
-                class="w-full h-full absolute inset-0 object-cover opacity-70">
-        </div>
+    <div class="">
+        <Header/>
+        <Banner 
+            :bannerName="'categories'" 
+            :shopName="'SHION HOUSE'" 
+            :menu="'Your Shopping Cart'"/>
         <div class="w-8/12 mx-auto">
             <div class="text-left border-b-2 pb-8">
                 <table class="w-full border">
@@ -104,10 +96,15 @@
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
 </template>
 
 <script>
+import Header from '../Layout/Header.vue';
+import Footer from '../Layout/Footer.vue';
+import Banner from '../Layout/Banner.vue';
+
 export default {
     name: "ShoppingCart",
     data() {
@@ -115,6 +112,13 @@ export default {
             counter: 1
         }
     },
+
+    components: {
+        Header,
+        Footer,
+        Banner,
+    },
+
     methods: {
         changeCounter: function (num) {
             this.counter += +num

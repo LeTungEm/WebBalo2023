@@ -5,6 +5,8 @@ import router from './router'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-const app = createApp(App).use(router).use(AOS)
+export const eventBus = createApp(App);
 
-app.mount('#app')
+const app = createApp(App).use(router).use(AOS);
+
+app.mount('#app');

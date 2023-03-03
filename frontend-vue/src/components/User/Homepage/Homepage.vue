@@ -1,5 +1,6 @@
 <template>
-  <div class="">
+  <div class="overflow-hidden">
+    <Header/>
     <!-- End Header -->
     <div class="pt-12 bg-gray-200 pb-12">
       <div class="flex justify-between items-center">
@@ -186,6 +187,7 @@
         </swiper-slide>
       </swiper>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -194,6 +196,8 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Scrollbar } from "swiper";
 import PagesService from "../../../service/PagesService.js";
 import ProductsController from "../../../service/ProductsService.js";
+import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 
 
 export default {
@@ -210,6 +214,8 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    Header,
+    Footer,
   },
   setup() {
     return {

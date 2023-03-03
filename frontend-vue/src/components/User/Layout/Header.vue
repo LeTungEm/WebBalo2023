@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-10 bg-white">
+  <header class="sticky w-full top-0 z-10 bg-white">
     <div class="flex justify-between p-6 border-b shadow-lg">
       <div class="w-full flex">
         <div class="flex justify-between items-center w-full">
@@ -168,9 +168,9 @@
     <div v-if="search" class="fixed inset-0 w-full h-screen z-20 bg-black opacity-25" @click="searchButton"></div>
     <div class="absolute w-full top-12 z-50 left-0" :class="{ hidden: !search }">
       <div class="flex w-full px-4">
-        <form action="" class="w-full">
+        <form @submit.prevent="" class="w-full">
           <div class="relative w-full">
-            <input type="text" class="w-full border p-3" placeholder="search..." />
+            <input v-model="searchData" type="text" class="w-full border p-3" placeholder="search..." />
           </div>
         </form>
         <button @click="searchButton" class="p-3 border-white border rounded-full text-white px-4 mx-4">
@@ -182,16 +182,24 @@
 </template>
 
 <script>
+
 export default {
   name: "HeaderPage",
   data() {
     return {
+      searchData: '',
       isOpen: false,
       shopDropdown: false,
       isOpenCart: false,
       search: false,
       account: false,
     };
+  },
+
+  watch:{
+    searchData: function(){
+      this.$router.push("/shop");
+    }
   },
 
   computed: {

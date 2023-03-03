@@ -24,6 +24,11 @@ const routes = [
     component: () => import("../components/User/Shop/Shop.vue"),
   },
   {
+    path: "/cart",
+    name: "cart",
+    component: () => import("../components/User/Cart/Cart.vue"),
+  },
+  {
     path: "/shopdetail/:id",
     name: "shopdetail",
     component: () => import("../components/User/Shop/ShopDetail.vue"),
@@ -59,6 +64,12 @@ const routes = [
     path: "/adminBlog",
     name: "adminBlog",
     component: () => import("../components/Admin/Blog/Index.vue"),
+  },
+
+  {
+    path: "/adminProduct",
+    name: "adminProduct",
+    component: () => import("../components/Admin/Product/Index.vue"),
   },
 
   // 404 Page

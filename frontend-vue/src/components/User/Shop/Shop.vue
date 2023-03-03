@@ -1,20 +1,10 @@
 <template>
     <div>
-        <div class="-mt-24 relative w-full py-8 px-12 bg-yellow-900 z-0">
-            <div class="relative z-10 text-center py-24 md:py-48">
-                <h1 class="text-white text-center text-4xl mb-4">
-                    categories</h1>
-                <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
-                    Products</h1>
-                <p class="text-3xl text-white">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                    <span class="mx-3">/</span>
-                    <a href="" class="underline">Products</a>
-                </p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1490129375591-2658b3e2ee50?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2244&amp;q=80"
-                class="w-full h-full absolute inset-0 object-cover opacity-70">
-        </div>
+        <Header/>
+        <Banner 
+            :bannerName="'categories'" 
+            :shopName="'SHION HOUSE'" 
+            :menu="'Shop'"/>
         <div class="lg:w-11/12 mx-auto">
             <div class="mb-12 mt-20 px-8 lg:px-0">
                 <h1 class="text-6xl font-bold mb-4">Shop with us</h1>
@@ -59,7 +49,7 @@
                                             class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
                                             :src="require('@/assets/images/balo/'+product.image_1)">
                                     </div>
-                                    <div class="text-center my-6"><a href="" class="text-xl uppercase">{{product.productName}}</a>
+                                    <div class="text-center my-6"><router-link to="" class="text-xl uppercase">{{product.productName}}</router-link>
                                         <p class="text-red-500 hover:text-red-600 mt-3">$529.00</p>
                                     </div>
                                 </div>
@@ -324,6 +314,7 @@
                 </div>
             </transition>
         </div>
+        <Footer/>
     </div>
 </template>
 
@@ -332,17 +323,21 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper';
 import CategoriesController from "../../../service/CategoriesService.js";
 import ProductsController from "../../../service/ProductsService.js";
+import Header from '../Layout/Header.vue';
+import Footer from '../Layout/Footer.vue';
+import Banner from '../Layout/Banner.vue';
 
 export default {
   name: "ShoppingPage",
   data() {
     return {
-      categories: [],
-      products: [],
-      isopenCategories: true,
-      isBrand: true,
-      isProduct: true,
-      sideBar: false,
+        categories: [],
+        products: [],
+        isopenCategories: true,
+        isBrand: true,
+        isProduct: true,
+        sideBar: false,
+        search: '',
     };
   },
   methods: {
@@ -365,11 +360,15 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    Header,
+    Footer,
+    Banner,
   },
   computed: {
     isModalVisible() {
       return this.sideBar;
     },
+
   },
   setup() {
     return {

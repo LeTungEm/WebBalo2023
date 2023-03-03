@@ -2,11 +2,7 @@
   <div>
 
     <!-- User -->
-    <Header />
-    <div class="overflow-hidden">
-      <router-view />
-    </div>
-    <Footer />
+    <router-view />
 
     <!-- Admin -->
     <!-- <div class="flex">
@@ -60,18 +56,12 @@
   </div>
 </template>
 <script>
-import Header from '@/components/User/Layout/Header.vue'
-import Footer from '@/components/User/Layout/Footer.vue'
 import AOS from 'aos';
 
 // import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 export default {
   name: 'HomeView',
-  components: {
-    Header,
-    Footer,
-    // Sidebar
-  },
+
   // data() {
   //   return {
   //     account: false,

@@ -1,20 +1,10 @@
 <template>
-    <div class="mb-24">
-        <div class="-mt-24 relative w-full py-8 px-12 bg-yellow-900 z-0 mb-12 lg:mb-24">
-            <div class="relative z-10 text-center py-24 md:py-48">
-                <h1 class="text-white text-center text-4xl mb-4">
-                    categories</h1>
-                <h1 class="text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
-                    Products</h1>
-                <p class="text-3xl text-white">
-                    <i class="fa fa-home" aria-hidden="true"></i>
-                    <span class="mx-3">/</span>
-                    <a href="" class="underline">Products</a>
-                </p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1490129375591-2658b3e2ee50?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=2244&amp;q=80"
-                class="w-full h-full absolute inset-0 object-cover opacity-70">
-        </div>
+    <div class="">
+        <Header/>
+        <Banner 
+            :bannerName="'categories'" 
+            :shopName="'SHION HOUSE'" 
+            :menu="'Product'"/>
         <div class="lg:w-8/12 mx-auto">
             <div class="pb-24 border-b  mb-16">
                 <div class="lg:flex justify-between">
@@ -35,7 +25,7 @@
                     </div>
                     <div class="mt-12 lg:mt-0 mx-8 leading-loose">
                         <h1 class="text-3xl font-bold">{{product.productName}}</h1>
-                        <p class="text-red-500 my-3">{{product.price}}</p>
+                        <p class="text-red-500 my-3">{{formatNumber(product.price)}}</p>
                         <p class="mb-3">Availability: <span class="text-red-500">{{product.amount}}</span></p>
                         <p class="text-gray-600 mb-6">{{product.description}}</p>
                         <div class="my-5">
@@ -217,14 +207,15 @@
                                     :src="require('@/assets/images/balo/'+product.image_1)" />
                             </div>
                             <div class="text-center my-6">
-                                <a href="" class="text-xl uppercase">{{product.productName}}</a>
-                                <p class="text-red-500 hover:text-red-600 mt-3">{{product.price}}</p>
+                                <div class="text-xl uppercase">{{product.productName}}</div>
+                                <p class="text-red-500 hover:text-red-600 mt-3">{{formatNumber(product.price)}}</p>
                             </div>
                         </div>
                     </swiper-slide>
                 </swiper>
             </div>
         </div>
+        <Footer/>
     </div>
 </template>
 
@@ -233,6 +224,9 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper';
 import SwiperCore, { Navigation, Thumbs } from 'swiper/core';
 import ProductsService from "../../../service/ProductsService";
+import Header from '../Layout/Header.vue';
+import Footer from '../Layout/Footer.vue';
+import Banner from '../Layout/Banner.vue';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Thumbs]);
@@ -241,6 +235,9 @@ export default {
     components: {
         Swiper,
         SwiperSlide,
+        Header,
+        Footer,
+        Banner,
     },
     computed: {
         productId() {
@@ -282,6 +279,11 @@ export default {
                 }
                 );
         },
+        formatNumber(value){
+
+            return (new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value));
+
+        }
         
     },
     setup() {
