@@ -30,29 +30,7 @@
                             dynamicBullets: true,
                         }" :modules="modules" class="hidden lg:block">
                             <swiper-slide v-for="product in products" :key="product.productID">
-                                <div class="mb-6 border-2 rounded-xl">
-                                    <div class="overflow-hidden cursor-pointer rounded-t-xl relative group">
-                                        <div
-                                            class="z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white flex items-end">
-                                            <div
-                                                class="transform-gpu w-full p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out">
-                                                <div class="text-center flex justify-center items-center"><button
-                                                        class="border p-2 mx-2 hover:bg-gray-500 rounded-sm"><i
-                                                            class="fa fa-shopping-cart"
-                                                            aria-hidden="true"></i></button><button
-                                                        class="border p-2 mx-2 hover:bg-gray-500 rounded-sm"><i
-                                                            class="fa fa-search" aria-hidden="true"></i></button><button
-                                                        class="border p-2 mx-2 hover:bg-gray-500 rounded-sm"><i
-                                                            class="fa fa-heart-o" aria-hidden="true"></i></button></div>
-                                            </div>
-                                        </div><img alt=""
-                                            class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                                            :src="require('@/assets/images/balo/'+product.image_1)">
-                                    </div>
-                                    <div class="text-center my-6"><router-link to="" class="text-xl uppercase">{{product.productName}}</router-link>
-                                        <p class="text-red-500 hover:text-red-600 mt-3">$529.00</p>
-                                    </div>
-                                </div>
+                                <ProductItem :productData="product"/>
                             </swiper-slide>
 
                         </swiper>
@@ -168,34 +146,7 @@
                     </div>
                     <h1 class="uppercase text-5xl mb-12">Classical bikes</h1>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        <div class="mb-6 border-2 rounded-xl" v-for="product in products" :key="product.productID">
-                            <div @click="showProductDetail(product.productID)">
-                                <div class="z-0 overflow-hidden cursor-pointer rounded-t-xl relative group">
-                                    <div
-                                        class="z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white flex items-end">
-                                        <div
-                                            class="transform-gpu w-full p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out">
-                                            <div class="text-center flex justify-center items-center">
-                                                <router-link to="shopdetail"
-                                                    class="border p-2 mx-2 hover:bg-gray-200 hover:text-black rounded-sm"><i
-                                                        class="fa fa-shopping-cart" aria-hidden="true"></i></router-link>
-                                                <router-link to="/"
-                                                    class="border p-2 mx-2 hover:bg-gray-200 hover:text-black rounded-sm"><i
-                                                        class="fa fa-search" aria-hidden="true"></i></router-link>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img alt=""
-                                        class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                                        :src="require('@/assets/images/balo/'+product.image_1)" />
-                                </div>
-                                <div class="text-center my-6">
-                                    <div to="shopdetail" class="text-xl uppercase">{{product.productName}}</div>
-                                    <p class="text-red-500 hover:text-red-600 mt-3">{{product.price}}</p>
-                                </div>
-                            </div>
-                        </div>
+                        <ProductItem v-for="product in products" :productData="product" :key="product.productID" />
                     </div>
                     <button class="flex mx-auto rounded-full border bg-black text-white hover:bg-gray-800 duration-200 px-8 py-3 my-8">Load more</button>
                 </div>
@@ -326,6 +277,7 @@ import ProductsController from "../../../service/ProductsService.js";
 import Header from '../Layout/Header.vue';
 import Footer from '../Layout/Footer.vue';
 import Banner from '../Layout/Banner.vue';
+import ProductItem from './productItem.vue';
 
 export default {
   name: "ShoppingPage",
@@ -353,9 +305,6 @@ export default {
         this.products = res.data
         ));
     },
-    showProductDetail(productId){
-        this.$router.push(`/ShopDetail/${productId}`);
-    }
   },
   components: {
     Swiper,
@@ -363,6 +312,7 @@ export default {
     Header,
     Footer,
     Banner,
+    ProductItem,
   },
   computed: {
     isModalVisible() {

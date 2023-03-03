@@ -185,32 +185,8 @@
                         spaceBetween: 30,
                     },
                 }">
-                    <swiper-slide class="pb-5" v-for="product in relatedProduct" :key="product.productId">
-                        <div class="mb-6 border-2 h-full rounded-xl">
-                            <div class="overflow-hidden cursor-pointer rounded-t-xl relative group">
-                                <div
-                                    class="z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white flex items-end">
-                                    <div
-                                        class="transform-gpu w-full p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out">
-                                        <div class="text-center flex justify-center items-center">
-                                            <button class="border p-2 mx-2 hover:bg-gray-500 rounded-sm"><i
-                                                    class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-                                            <button class="border p-2 mx-2 hover:bg-gray-500 rounded-sm"><i
-                                                    class="fa fa-search" aria-hidden="true"></i></button>
-                                            <button class="border p-2 mx-2 hover:bg-gray-500 rounded-sm"><i
-                                                    class="fa fa-heart-o" aria-hidden="true"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <img alt=""
-                                    class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                                    :src="require('@/assets/images/balo/'+product.image_1)" />
-                            </div>
-                            <div class="text-center my-6">
-                                <div class="text-xl uppercase">{{product.productName}}</div>
-                                <p class="text-red-500 hover:text-red-600 mt-3">{{formatNumber(product.price)}}</p>
-                            </div>
-                        </div>
+                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full" v-for="productItem in relatedProduct" :key="productItem.productId">
+                        <ProductItem :productData="productItem"/>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -227,6 +203,7 @@ import ProductsService from "../../../service/ProductsService";
 import Header from '../Layout/Header.vue';
 import Footer from '../Layout/Footer.vue';
 import Banner from '../Layout/Banner.vue';
+import ProductItem from './productItem.vue';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Thumbs]);
@@ -238,10 +215,11 @@ export default {
         Header,
         Footer,
         Banner,
+        ProductItem,
     },
     computed: {
         productId() {
-            return this.$route.params.id;
+            return this.$route.params.id;            
         },
     },
     data() {
@@ -249,7 +227,7 @@ export default {
             openTab: 1,
             thumbsSwiper: null,
             counter: 1,
-            product: [],
+            product: {},
             relatedProduct: [],
         };
     },
@@ -270,19 +248,22 @@ export default {
 
         },
         getRalatedProduct(id){
-            ProductsService.getByCategoryID(id).then(res => this.relatedProduct = res.data);
+            ProductsService.getByCategoryID(id).then(res => {this.relatedProduct = res.data;});
         },
         getProduct(id){
             ProductsService.getByID(id).then(res => {
                     this.product = res.data;
-                    this.getRalatedProduct(this.product.productID);
+                    if(this.relatedProduct.length == 0){
+                        this.getRalatedProduct(this.product.catId);
+                    }
                 }
                 );
         },
         formatNumber(value){
-
             return (new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value));
-
+        },
+        changeProductID(){
+            return this.$route.params.id;            
         }
         
     },
@@ -293,7 +274,8 @@ export default {
     },
     created(){
         this.getProduct(this.productId);
-    }
+    },
+    
 }
 </script>
 

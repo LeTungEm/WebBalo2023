@@ -1,10 +1,12 @@
 <template>
   <header class="sticky w-full top-0 z-10 bg-white">
     <div class="flex justify-between p-6 border-b shadow-lg">
-      <div class="w-full flex">
+      <div class="">
         <div class="flex justify-between items-center w-full">
-          <a href="/"><img src="https://themewagon.github.io/shionhouse/assets/img/logo/logo.png"
-              alt="" /></a>
+          <router-link to="/" class="mx-auto">
+            <img class="object-fill h-16" src="../../../assets/images/logo/logo.jpg"
+              alt="" />
+          </router-link>
           <div class="hidden lg:flex justify-between items-center w-4/5">
             <nav>
               <ul class="uppercase lg:flex">
@@ -38,7 +40,7 @@
                 <router-link to="/register"
                   class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Register</router-link>
               </div>
-              <div class="flex">
+              <div class="flex items-center">
                 <div class="relative">
                   <button class="mx-3" @click="toggleAccount">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -55,7 +57,7 @@
                 <button class="mx-3" @click="searchButton">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
-                <button class="mx-3" @click="onOpenCart">
+                <button class="mx-3 flex" @click="onOpenCart">
                   <i class="fa fa-shopping-cart mr-1" aria-hidden="true"></i><sup>0</sup>
                 </button>
               </div>
