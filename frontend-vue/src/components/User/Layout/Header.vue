@@ -1,9 +1,8 @@
 <template>
   <header class="sticky w-full top-0 z-10 bg-white">
-    <div class="flex justify-between p-6 border-b shadow-lg">
-      <div class="">
+    <div class="flex justify-between p-3 border-b shadow-lg">
         <div class="flex justify-between items-center w-full">
-          <router-link to="/" class="mx-auto">
+          <router-link to="/">
             <img class="object-fill h-16" src="../../../assets/images/logo/logo.jpg"
               alt="" />
           </router-link>
@@ -64,7 +63,6 @@
             </div>
           </div>
         </div>
-      </div>
       <div class="lg:hidden flex items-center">
         <button class="mx-3" @click="searchButton">
           <i class="fa fa-search" aria-hidden="true"></i>
