@@ -26,7 +26,7 @@
             </ul>
           </div>
           <div class="flex-auto">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
+            <img src="../../../assets/images/banner/banner.jpg"
               class="w-full h-1/2 lg:h-screen" alt="" />
           </div>
         </div>
@@ -80,16 +80,7 @@
               },
             }" class="swiper-container slider1 swiper-initialized swiper-horizontal swiper-pointer-events">
             <swiper-slide v-for="page in pages" :key="page.blogId" class="pb-12">
-              <div class="shadow-lg border">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
-                  class="w-full" alt="" />
-                <div class="p-6 overflow-hidden h-60">
-                  <a href="" class="mb-5 font-bold text-2xl">{{page.blogName}}</a>
-                  <p class="my-5">{{page.content.substr(0, 150)}}...</p>
-                  <p>June 30, 2021 — Cities, Events</p>
-                </div>
-              </div>
+              <BlogItem :blogData="page"/>
             </swiper-slide>
           </swiper>
         </div>
@@ -116,18 +107,7 @@
         <div  class="grid grid-cols-1 lg:grid-cols-3 w-11/12 md:w-7/12 mx-auto gap-10">
           <div v-for="page in pages" v-on:load="countPages += 1" :key="page.blogId" class="shadow-lg border rounded-t-2xl">
             <div v-if="page.blogId <= (pages[2].blogId)">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
-                class="w-full" alt="" />
-              <div class="p-4">
-                <h1 class="font-bold text-2xl my-2">{{page.blogName}}</h1>
-                <div class=" overflow-hidden h-60">
-                  <div class="flex justify-between my-4">
-                    <p>Post by : Den </p>
-                    <p>{{page.createDate}}</p><br>
-                  </div>
-                  <p>{{page.content.substr(0, 150)}}...</p>
-                </div>
-              </div>
+              <BlogItem :blogData="page"/>
             </div>
           </div>
         </div>
@@ -138,30 +118,29 @@
           delay: 1500,
           disableOnInteraction: false,
         }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
-    '640': {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    '768': {
-      slidesPerView: 3,
-      spaceBetween: 40,
-    },
-    '1024': {
-      slidesPerView: 5,
-      spaceBetween: 50,
-    },
-  }">
-          <swiper-slide v-for="index in 10" :key="index">
-            <div class="opacity-50 hover:opacity-100">
-              <h5 class="text-3xl">
-                “The carbon frame and sporty handlebars make the bike feel agile,
-                too“
-              </h5>
-              <a rel="noopener noreferrer"><img
-                  src="https://images.prismic.io/gogoro-eeyo/4bd12e66-c86e-49a8-a6df-30786ff8fb17_engadget-logo.svg?auto=compress,format"
-                  class="w-2/5 pt-8" /></a>
-            </div>
-          </swiper-slide>
+          '640': {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          '768': {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          '1024': {
+            slidesPerView: 5,
+            spaceBetween: 50,
+          },
+        }">                                             
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-3.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-4.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-5.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-6.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-7.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-8.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
         </swiper>
       </div>
     </div>
@@ -177,6 +156,7 @@ import ProductsController from "../../../service/ProductsService.js";
 import Header from "../Layout/Header.vue";
 import Footer from "../Layout/Footer.vue";
 import ProductItem from "../Shop/productItem.vue";
+import BlogItem from "../Blog/BlogItem.vue";
 
 
 export default {
@@ -196,6 +176,7 @@ export default {
     Header,
     Footer,
     ProductItem,
+    BlogItem,
   },
   setup() {
     return {
@@ -226,6 +207,15 @@ export default {
 </script>
 
 <style>
+
+.grayscale{
+  filter: grayscale(100);
+}
+
+.grayscale:hover{
+  filter: none;
+}
+
 .multColor {
   background-image: linear-gradient(180deg, rgb(229 231 235) 30%, white 20%);
 }
