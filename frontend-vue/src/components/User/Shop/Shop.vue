@@ -140,8 +140,6 @@
                             </div>
                             <input type="search" v-model="search" id="default-search" class="block w-full p-4 pl-10 w-full text-sm border"
                                 placeholder="Search Mockups, Logos..." required>
-                            <button type="submit"
-                                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
                     </div>
                     <h1 class="uppercase text-5xl mb-12">Classical bikes</h1>
