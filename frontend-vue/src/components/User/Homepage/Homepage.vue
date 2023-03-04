@@ -120,30 +120,24 @@
       </div>
       <!-- tailwind Carousel -->
       <div class="" data-aos="flip-up" data-aos-duration="1500" data-aos-delay='500'>
-        <swiper class="relative overflow-hidden w-full cursor-grab py-10 bg-gray-300 px-6" :loop="true" 
-        :autoplay="{
+        <swiper class="relative overflow-hidden w-full cursor-grab py-4 bg-gray-300 px-2" :autoplay="{
           delay: 1500,
           disableOnInteraction: false,
-          pauseOnMouseEnter: false
-        }" 
-        
-        :scrollbar="false" :modules="modules" :slidesPerView="3" :spaceBetween="30" :breakpoints="{
-  '640': {
-    slidesPerView: 4,
-    spaceBetween: 20,
-  },
-  '768': {
-    slidesPerView: 5,
-    spaceBetween: 40,
-  },
-  '1024': {
-    slidesPerView: 8,
-    spaceBetween: 50,
-  },
-}">
-          <swiper-slide v-for="img in images" :key="img">
-            <img :src="img" class="grayscale" style="width:150px; height:100px"/>
-          </swiper-slide>
+        }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
+          '640': {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          '768': {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          '1024': {
+            slidesPerView: 5,
+            spaceBetween: 40,
+          },
+        }">                                             
+          <swiper-slide v-for="imageDT in images" :key="imageDT" class="flex justify-center my-auto"><img :src="imageDT" class="grayscale" style="width:150px; height:100px"/></swiper-slide>
         </swiper>
       </div>
     </div>
