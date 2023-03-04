@@ -146,7 +146,7 @@
                     </div>
                     <h1 class="uppercase text-5xl mb-12">Classical bikes</h1>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        <ProductItem v-for="product in products" :productData="product" :key="product.productID" />
+                        <ProductItem v-for="product in orderByProduct()" :productData="product" :key="product.productID" />
                     </div>
                     <button class="flex mx-auto rounded-full border bg-black text-white hover:bg-gray-800 duration-200 px-8 py-3 my-8">Load more</button>
                 </div>
@@ -305,12 +305,26 @@ export default {
         this.products = res.data
         ));
     },
+    orderByProduct(){
+        if(this.search){
+            return this.products.filter((product) => {
+                    if(product.productName.toLowerCase().indexOf(this.search.toLowerCase()) > -1){
+                    return this.products;
+                }
+            });
+        }else{
+            return this.products;
+        }
+    }
+
+
   },
 
   watch:{
     search:function(){
-        this.products = this.filteredResources();
-        console.log(this.products);
+        // console.log(this.products[0].productName.toLowerCase().indexOf("s"));
+        // this.products.map(res => {if(res.productName.indexOf('Yellow') > -1)this.products.pop();})
+        
     }
   },
 
@@ -327,16 +341,7 @@ export default {
       return this.sideBar;
     },
 
-    filteredResources (){
-      if(this.search){
-        return this.products.filter((item)=>{
-            return item.title.startsWith(this.search);
-        })
-        }else{
-            return this.products;
-        }
-        }
-
+    
   },
   setup() {
     return {

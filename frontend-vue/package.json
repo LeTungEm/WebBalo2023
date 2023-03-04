@@ -16,7 +16,8 @@
     "swiper": "^9.0.5",
     "vue": "^3.2.13",
     "vue-quill-editor": "^3.0.6",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vue2-filters": "^0.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
