@@ -69,7 +69,7 @@ const routes = [
   {
     path: "/adminProduct",
     name: "adminProduct",
-    component: () => import("../components/Admin/Product/Index.vue"),
+    component: () => import("../components/Admin/Product/Product.vue"),
   },
 
   // 404 Page

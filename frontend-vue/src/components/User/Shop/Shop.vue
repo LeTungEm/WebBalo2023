@@ -21,7 +21,17 @@
                         </button>
                         <div class="mb-6 w-full px-4" v-show="isopenCategories">
                             <ul>
-                                <li v-for="category in categories" :key="category.catId" class="mb-4">{{category.catName}}</li>
+                                <li 
+                                        v-bind:class="{'border-b-2': catInput == ''}"
+                                        @click="catInput = ''" 
+                                        :key="'allProduct'" 
+                                        class="mb-4 cursor-pointer">All</li>
+                                <li 
+                                    v-bind:class="{'border-b-2': catInput == category.catId}"
+                                    v-for="category in categories" 
+                                    @click="catInput = category.catId" 
+                                    :key="category.catId" 
+                                    class="mb-4 cursor-pointer">{{category.catName}}</li>
                             </ul>
                         </div>
 
@@ -171,7 +181,17 @@
                             </button>
                             <div class="mb-6 w-full px-4" v-show="isopenCategories">
                                 <ul>
-                                    <li v-for="category in categories" :key="category.catId" class="mb-4">{{category.catName}}</li>
+                                    <li 
+                                        v-bind:class="{'border-b-2': catInput == ''}"
+                                        @click="catInput = ''" 
+                                        :key="'allProduct'" 
+                                        class="mb-4 cursor-pointer">All</li>
+                                    <li 
+                                        v-bind:class="{'border-b-2': catInput == category.catId}"
+                                        v-for="category in categories" 
+                                        @click="catInput = category.catId" 
+                                        :key="category.catId" 
+                                        class="mb-4 cursor-pointer">{{category.catName}}</li>
                                 </ul>
                             </div>
                             <!-- Brand -->
@@ -288,6 +308,7 @@ export default {
         isProduct: true,
         sideBar: false,
         search: '',
+        catInput: '',
     };
   },
   methods: {
@@ -304,27 +325,27 @@ export default {
         ));
     },
     orderByProduct(){
+        var data =  this.products;
         if(this.search){
-            return this.products.filter((product) => {
+            data = this.products.filter((product) => {
                     if(product.productName.toLowerCase().indexOf(this.search.toLowerCase()) > -1){
                     return this.products;
                 }
             });
-        }else{
-            return this.products;
         }
+        if(this.catInput){
+            data = data.filter((product) => {
+                    if(product.catId == this.catInput){
+                    return this.products;
+                }
+            });
+        }
+        return data;
     }
 
 
   },
 
-  watch:{
-    search:function(){
-        // console.log(this.products[0].productName.toLowerCase().indexOf("s"));
-        // this.products.map(res => {if(res.productName.indexOf('Yellow') > -1)this.products.pop();})
-        
-    }
-  },
 
   components: {
     Swiper,

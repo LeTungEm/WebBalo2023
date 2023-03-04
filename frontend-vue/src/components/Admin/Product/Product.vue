@@ -98,6 +98,11 @@ export default {
             init: "Dung"
         }
     },
+    methods:{
+        loggerT(){
+            console.log(this.init);
+        }
+    },
     components: {
         'editor': Editor
     }
