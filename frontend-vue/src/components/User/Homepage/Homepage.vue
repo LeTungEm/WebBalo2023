@@ -109,7 +109,7 @@
             using
           </p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 w-11/12 md:w-7/12 mx-auto gap-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 w-11/12 md:w-10/12 mx-auto gap-10">
           <div v-for="page in pages" v-on:load="countPages += 1" :key="page.blogId"
             class="shadow-lg border rounded-t-2xl">
             <div v-if="page.blogId <= (pages[2].blogId)">
