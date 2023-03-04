@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Header />
     <!-- End Header -->
     <div class="overflow-hidden">
       <div class="pt-12 bg-gray-200 pb-12">
@@ -26,14 +26,15 @@
             </ul>
           </div>
           <div class="flex-auto">
-            <img src="../../../assets/images/banner/banner.jpg"
-              class="w-full h-1/2 lg:h-screen" alt="" />
+            <img src="../../../assets/images/banner/banner.jpg" class="w-full h-1/2 lg:h-screen" alt="" />
           </div>
         </div>
         <div class="flex items-center mt-6 pl-7">
           <!-- Open Video -->
           <button @click="modelToggle = true" class="border border-gray-500 p-2 rounded-full relative">
-            <img class="w-24 h-24 rounded-full" src="../../../assets/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg" alt="">
+            <img class="w-16 h-16 lg:w-24 lg:h-24 rounded-full"
+              src="../../../assets/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg"
+              alt="">
             <div class="absolute top-1/2 left-1/2 opacity-60">
               <svg xmlns="http://www.w3.org/2000/svg"
                 class="z-10 absolute text-white top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer"
@@ -45,18 +46,22 @@
           </button>
           <!-- End Video -->
           <div class="mx-3">
-            <h3 class="text-3xl mb-2">Watch</h3>
-            <p>
+            <h3 class="text-xl lg:text-3xl font-bold mb-2">Watch</h3>
+            <p class="text-sm">
               The Eco-making of Bogo <br />
               Bamboo Bikes
             </p>
           </div>
-          <div @click="modelToggle = false" v-bind:class="{hidden: !modelToggle}" class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
+          <div @click="modelToggle = false" v-bind:class="{ hidden: !modelToggle }"
+            class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
             <div class="my-auto relative w-full md:w-1/2 ">
-              <iframe width="100%" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
             </div>
           </div>
-  
+
         </div>
       </div>
       <div class="mb-20" data-aos="fade-down" data-aos-duration="1500" data-aos-delay='500'>
@@ -80,7 +85,7 @@
               },
             }" class="swiper-container slider1 swiper-initialized swiper-horizontal swiper-pointer-events">
             <swiper-slide v-for="page in pages" :key="page.blogId" class="pb-12">
-              <BlogItem :blogData="page"/>
+              <BlogItem :blogData="page" />
             </swiper-slide>
           </swiper>
         </div>
@@ -88,7 +93,7 @@
       <div class="relative w-11/12 md:w-8/12 mx-auto" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay='500'>
         <h1 class="text-center text-5xl font-bold mb-6">BEST SELLERS</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          <ProductItem :productData="product" v-for="product in products" :key="product.productID"/>
+          <ProductItem :productData="product" v-for="product in products" :key="product.productID" />
         </div>
         <button
           class="flex my-12 border rounded-full px-8 py-3 mx-auto bg-gradient-to-r from-blue-900 to-blue-500 text-white hover:from-blue-500 hover:to-blue-900 duration-1000">
@@ -104,17 +109,18 @@
             using
           </p>
         </div>
-        <div  class="grid grid-cols-1 lg:grid-cols-3 w-11/12 md:w-7/12 mx-auto gap-10">
-          <div v-for="page in pages" v-on:load="countPages += 1" :key="page.blogId" class="shadow-lg border rounded-t-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-3 w-11/12 md:w-7/12 mx-auto gap-10">
+          <div v-for="page in pages" v-on:load="countPages += 1" :key="page.blogId"
+            class="shadow-lg border rounded-t-2xl">
             <div v-if="page.blogId <= (pages[2].blogId)">
-              <BlogItem :blogData="page"/>
+              <BlogItem :blogData="page" />
             </div>
           </div>
         </div>
       </div>
       <!-- tailwind Carousel -->
       <div class="" data-aos="flip-up" data-aos-duration="1500" data-aos-delay='500'>
-        <swiper class="relative overflow-hidden w-full cursor-grab py-4 bg-gray-300 px-6" :autoplay="{
+        <swiper class="relative overflow-hidden w-full cursor-grab py-4 bg-gray-300 px-2" :autoplay="{
           delay: 1500,
           disableOnInteraction: false,
         }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
@@ -124,27 +130,18 @@
           },
           '768': {
             slidesPerView: 3,
-            spaceBetween: 40,
+            spaceBetween: 30,
           },
           '1024': {
             slidesPerView: 5,
-            spaceBetween: 50,
+            spaceBetween: 40,
           },
         }">                                             
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-3.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-4.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-5.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-6.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-7.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-8.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide v-for="imageDT in images" :key="imageDT" class="flex justify-center my-auto"><img :src="imageDT" class="grayscale" style="width:150px; height:100px"/></swiper-slide>
         </swiper>
       </div>
     </div>
-    <Footer/>
+    <Footer />
   </div>
 </template>
 
@@ -188,19 +185,22 @@ export default {
     toggleMenu() {
       this.toggle = !this.toggle;
     },
-    getAllPages(){
-      PagesService.getAll().then(res => {this.pages = res.data})
+    getAllPages() {
+      PagesService.getAll().then(res => { this.pages = res.data })
     },
     getAllProduct() {
       ProductsController.getAll().then((res) => (
         this.products = res.data
-        ));
+      ));
     },
   },
   computed: {
-
+    images() {
+      const path = require.context('../../../assets/images/clients/', false, /\.png$/)
+      return path.keys().map(path)
+    }
   },
-  created(){
+  created() {
     this.getAllPages();
     this.getAllProduct();
   }
@@ -208,12 +208,11 @@ export default {
 </script>
 
 <style>
-
-.grayscale{
+.grayscale {
   filter: grayscale(100);
 }
 
-.grayscale:hover{
+.grayscale:hover {
   filter: none;
 }
 
