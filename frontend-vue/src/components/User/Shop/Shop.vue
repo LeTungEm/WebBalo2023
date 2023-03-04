@@ -138,7 +138,7 @@
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </div>
-                            <input type="search" id="default-search" class="block w-full p-4 pl-10 w-full text-sm border"
+                            <input type="search" v-model="search" id="default-search" class="block w-full p-4 pl-10 w-full text-sm border"
                                 placeholder="Search Mockups, Logos..." required>
                             <button type="submit"
                                 class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
@@ -306,6 +306,14 @@ export default {
         ));
     },
   },
+
+  watch:{
+    search:function(){
+        this.products = this.filteredResources();
+        console.log(this.products);
+    }
+  },
+
   components: {
     Swiper,
     SwiperSlide,
@@ -318,6 +326,16 @@ export default {
     isModalVisible() {
       return this.sideBar;
     },
+
+    filteredResources (){
+      if(this.search){
+        return this.products.filter((item)=>{
+            return item.title.startsWith(this.search);
+        })
+        }else{
+            return this.products;
+        }
+        }
 
   },
   setup() {

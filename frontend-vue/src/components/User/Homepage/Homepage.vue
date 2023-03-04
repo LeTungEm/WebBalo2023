@@ -8,20 +8,20 @@
           <div class="flex-none p-3 text-center">
             <ul class="">
               <li>
-                <a href=""><i class="fa fa-facebook-square hover:text-gray-600 my-2" style="font-size:18px"
-                    aria-hidden="true"></i></a>
+                <router-link to=""><i class="fa fa-facebook-square hover:text-gray-600 my-2" style="font-size:18px"
+                    aria-hidden="true"></i></router-link>
               </li>
               <li>
-                <a href=""><i class="fa fa-linkedin-square hover:text-gray-600 my-2" style="font-size:18px"
-                    aria-hidden="true"></i></a>
+                <router-link to=""><i class="fa fa-linkedin-square hover:text-gray-600 my-2" style="font-size:18px"
+                    aria-hidden="true"></i></router-link>
               </li>
               <li>
-                <a href=""><i class="fa fa-twitter-square hover:text-gray-600 my-2" style="font-size:18px"
-                    aria-hidden="true"></i></a>
+                <router-link to=""><i class="fa fa-twitter-square hover:text-gray-600 my-2" style="font-size:18px"
+                    aria-hidden="true"></i></router-link>
               </li>
               <li>
-                <a href=""><i class="fa fa-instagram hover:text-gray-600 my-2" style="font-size:18px"
-                    aria-hidden="true"></i></a>
+                <router-link to=""><i class="fa fa-instagram hover:text-gray-600 my-2" style="font-size:18px"
+                    aria-hidden="true"></i></router-link>
               </li>
             </ul>
           </div>
@@ -59,9 +59,9 @@
   
         </div>
       </div>
-      <div class="mb-20 multColor" data-aos="fade-down" data-aos-duration="1500" data-aos-delay='500'>
+      <div class="mb-20" data-aos="fade-down" data-aos-duration="1500" data-aos-delay='500'>
         <div class="relative overflow-hidden h-auto w-full px-[10vw] lg:px-[16vw] cursor-grab">
-          <div class="bg-gray-200">
+          <div class="">
             <h1 class="text-5xl mb-8">Latest New</h1>
           </div>
           <swiper :slidesPerView="1" :grabCursor="true" :scrollbar="true" :modules="modules" :spaceBetween="30"
@@ -114,7 +114,7 @@
       </div>
       <!-- tailwind Carousel -->
       <div class="" data-aos="flip-up" data-aos-duration="1500" data-aos-delay='500'>
-        <swiper class="relative overflow-hidden w-full cursor-grab py-10 bg-gray-300 px-6" :autoplay="{
+        <swiper class="relative overflow-hidden w-full cursor-grab py-4 bg-gray-300 px-6" :autoplay="{
           delay: 1500,
           disableOnInteraction: false,
         }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
@@ -131,16 +131,16 @@
             spaceBetween: 50,
           },
         }">                                             
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-3.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-4.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-5.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-6.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-7.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-8.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
-          <swiper-slide class="px-10"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-3.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-4.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-5.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-6.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-7.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-8.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-1.png" class="grayscale" alt=""></swiper-slide>
+          <swiper-slide class="px-10 my-auto"><img src="../../../assets/images/clients/client-2.png" class="grayscale" alt=""></swiper-slide>
         </swiper>
       </div>
     </div>
@@ -168,6 +168,7 @@ export default {
       countPages: 0,
       products: [],
       modelToggle: false,
+      sortKKey: 'productName',
     };
   },
   components: {
@@ -216,9 +217,6 @@ export default {
   filter: none;
 }
 
-.multColor {
-  background-image: linear-gradient(180deg, rgb(229 231 235) 30%, white 20%);
-}
 
 .swiper-scrollbar {
   margin: auto;
