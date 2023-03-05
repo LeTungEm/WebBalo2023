@@ -9,16 +9,20 @@
                 <h1 class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
                     Login
                 </h1>
-                <form action="" method="post">
+                <form @submit.prevent="validate()" method="post">
                     <div class="realtive border p-4 bg-gray-50 py-5">
                         <div class="">
-                            <input type="text" class="border px-4 py-2 my-2 w-full bg-white" placeholder="Email*">
+                            <input 
+                                type="text" 
+                                v-model="email"
+                                class="border px-4 py-2 my-2 w-full bg-white" 
+                                placeholder="Email*">
                             <div class="flex items-center w-full">
                                 <div class="w-full">
-                                    <input v-if="showPassword" type="text" class="border px-4 py-2 my-2 w-full bg-white"
+                                    <input 
+                                        v-bind:type="showPassword?'text':'password'" 
+                                        class="border px-4 py-2 my-2 w-full bg-white"
                                         v-model="password" placeholder="Password*" />
-                                    <input v-else type="password" class="border px-4 py-2 my-2 w-full bg-white" v-model="password"
-                                        placeholder="Password*" />
                                 </div>
                                 <div class="border py-2 px-3">
                                     <button class="" @click="toggleShow">
@@ -54,6 +58,7 @@
 
 <script>
 import Banner from '../Layout/Banner.vue';
+import AccountService from '@/service/AccountService';
 
 export default {
     name: "LoginForm",
@@ -63,7 +68,8 @@ export default {
     data() {
         return {
             showPassword: false,
-            password: null,
+            password: '',
+            email: '',
             Repeat_password: null,
             showRePassword: false,
 
@@ -81,6 +87,13 @@ export default {
         toggleShowRepwd() {
             this.showRePassword = !this.showRePassword;
         },
+        checkLogin(){
+            AccountService;
+        },
+        validate(){
+
+        }
+
     }
 }
 </script>

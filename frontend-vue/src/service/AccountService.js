@@ -19,6 +19,16 @@ const PRODUCT_API_URL =
             },
           });
     }
+
+    checkLogin(email, password){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+          action: "checkLogin",
+          email: email,
+          password: password,
+      },
+        });
+  }
   }
 
 export default new AccountService();

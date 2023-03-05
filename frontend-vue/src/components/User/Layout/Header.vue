@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky w-full top-0 z-10 bg-white">
+  <header class="sticky w-full top-0 z-20 bg-white">
     <div class="flex justify-between p-3 border-b shadow-lg">
         <div class="flex justify-between items-center w-full">
           <router-link to="/">
@@ -170,15 +170,8 @@ export default {
       isOpen: false,
       shopDropdown: false,
       isOpenCart: false,
-      search: false,
       account: false,
     };
-  },
-
-  watch:{
-    searchData: function(){
-      this.$router.push("/shop");
-    }
   },
 
   computed: {
@@ -196,9 +189,6 @@ export default {
     },
     onOpenCart() {
       this.isOpenCart = !this.isOpenCart;
-    },
-    searchButton() {
-      this.search = !this.search;
     },
     toggleAccount() {
       this.account = !this.account;

@@ -7,11 +7,9 @@
             :shopName="'SHION HOUSE'" 
             :menu="'About US'"/>
             <AboutItem 
-                v-for="about in listAbout"
-                :key="about.aboutId"
-                :title="about.title"
-                :imageLink="about.image"
-                :content="about.description"
+                v-for="item in listAbout"
+                :key="item.aboutTitle"
+                :about="item"
                 />
             <router-link class="link" to="/Shop">
                 <p
@@ -58,7 +56,7 @@ import Header from '../Layout/Header.vue'
 import Footer from '../Layout/Footer.vue'
 import Banner from '../Layout/Banner.vue';
 import AboutItem from './AboutItem.vue';
-import AboutService from '@/service/AboutService';
+import AboutService from '../../../service/AboutService';
 
 export default {
     name: "AboutUs",
@@ -74,12 +72,12 @@ export default {
         AboutItem,
     },
     methods:{
-        getAll(){
+        getAllAboutSS(){
             AboutService.getAll().then(res => {this.listAbout = res.data });
         }
     },
     created(){
-        this.getAll();
+        this.getAllAboutSS();
     }
     
 }

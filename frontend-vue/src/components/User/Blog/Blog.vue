@@ -44,7 +44,7 @@ export default {
     },
     methods:{
         getAllPages(){
-            PagesService.getAll().then(res => {this.pages = res.data, console.log(this.pages)});
+            PagesService.getAll().then(res => {this.pages = res.data});
         }
     },
     created(){
