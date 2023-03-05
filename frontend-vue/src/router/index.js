@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: () => import("../components/User/Homepage/Homepage.vue"),
   },
   {
     path: "/about",
@@ -65,13 +64,26 @@ const routes = [
     name: "adminBlog",
     component: () => import("../components/Admin/Blog/Index.vue"),
   },
-
+  {
+    path: "//adminContact",
+    name: "/adminContact",
+    component: () => import("../components/Admin/Contact/Index.vue"),
+  },
+  {
+    path: "/adminAbout",
+    name: "adminAbout",
+    component: () => import("../components/Admin/About/Index.vue"),
+  },
   {
     path: "/adminProduct",
     name: "adminProduct",
     component: () => import("../components/Admin/Product/Index.vue"),
   },
-
+  {
+    path: "/adminAuthentication",
+    name: "adminAuthentication",
+    component: () => import("../components/Admin/Authentication/Index.vue"),
+  },
   // 404 Page
   {
     path: "/:pathMatch(.*)*",
