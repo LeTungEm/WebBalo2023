@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: HomeView,
+    component: () => import("../components/User/Homepage/Homepage.vue"),
   },
   {
     path: "/about",
@@ -69,7 +68,7 @@ const routes = [
   {
     path: "/adminProduct",
     name: "adminProduct",
-    component: () => import("../components/Admin/Product/Index.vue"),
+    component: () => import("../components/Admin/Product/Product.vue"),
   },
 
   // 404 Page

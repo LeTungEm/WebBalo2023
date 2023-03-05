@@ -3,7 +3,7 @@ import axios from "axios";
 const PRODUCT_API_URL =
   "https://webbalo2023.000webhostapp.com/Controllers/AccountController.php";
 
-  class CategoriesController{
+  class AccountService{
 
     getAll(){
         return axios.get(`${PRODUCT_API_URL}`, {
@@ -19,6 +19,16 @@ const PRODUCT_API_URL =
             },
           });
     }
+
+    checkLogin(email, password){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+          action: "checkLogin",
+          email: email,
+          password: password,
+      },
+        });
+  }
   }
 
-export default new CategoriesController();
+export default new AccountService();

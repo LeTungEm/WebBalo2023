@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/CategoriesController.php";
+  "https://webbalo2023.000webhostapp.com/Controllers/AboutController.php";
 
-  class CategoriesService{
+  class AboutService{
 
     getAll(){
         return axios.get(`${PRODUCT_API_URL}`, {
@@ -11,14 +11,14 @@ const PRODUCT_API_URL =
           });
     }
 
-    getByID(catID){
+    getByID(aboutId){
         return axios.get(`${PRODUCT_API_URL}`, {
             params: {
                 action: "getByID",
-                catID: catID,
+                aboutId: aboutId,
             },
           });
     }
   }
 
-export default new CategoriesService();
+export default new AboutService();

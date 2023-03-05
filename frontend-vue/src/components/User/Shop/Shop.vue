@@ -21,7 +21,17 @@
                         </button>
                         <div class="mb-6 w-full px-4" v-show="isopenCategories">
                             <ul>
-                                <li v-for="category in categories" :key="category.catId" class="mb-4">{{category.catName}}</li>
+                                <li 
+                                        v-bind:class="{'border-b-2': catInput == ''}"
+                                        @click="catInput = ''" 
+                                        :key="'allProduct'" 
+                                        class="mb-4 cursor-pointer">All</li>
+                                <li 
+                                    v-bind:class="{'border-b-2': catInput == category.catId}"
+                                    v-for="category in categories" 
+                                    @click="catInput = category.catId" 
+                                    :key="category.catId" 
+                                    class="mb-4 cursor-pointer">{{category.catName}}</li>
                             </ul>
                         </div>
 
@@ -140,13 +150,11 @@
                             </div>
                             <input type="search" v-model="search" id="default-search" class="block w-full p-4 pl-10 w-full text-sm border"
                                 placeholder="Search Mockups, Logos..." required>
-                            <button type="submit"
-                                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                         </div>
                     </div>
                     <h1 class="uppercase text-5xl mb-12">Classical bikes</h1>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        <ProductItem v-for="product in products" :productData="product" :key="product.productID" />
+                        <ProductItem v-for="product in orderByProduct()" :productData="product" :key="product.productID" />
                     </div>
                     <button class="flex mx-auto rounded-full border bg-black text-white hover:bg-gray-800 duration-200 px-8 py-3 my-8">Load more</button>
                 </div>
@@ -173,7 +181,17 @@
                             </button>
                             <div class="mb-6 w-full px-4" v-show="isopenCategories">
                                 <ul>
-                                    <li v-for="category in categories" :key="category.catId" class="mb-4">{{category.catName}}</li>
+                                    <li 
+                                        v-bind:class="{'border-b-2': catInput == ''}"
+                                        @click="catInput = ''" 
+                                        :key="'allProduct'" 
+                                        class="mb-4 cursor-pointer">All</li>
+                                    <li 
+                                        v-bind:class="{'border-b-2': catInput == category.catId}"
+                                        v-for="category in categories" 
+                                        @click="catInput = category.catId" 
+                                        :key="category.catId" 
+                                        class="mb-4 cursor-pointer">{{category.catName}}</li>
                                 </ul>
                             </div>
                             <!-- Brand -->
@@ -272,8 +290,8 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper';
-import CategoriesController from "../../../service/CategoriesService.js";
-import ProductsController from "../../../service/ProductsService.js";
+import CategoriesService from "../../../service/CategoriesService.js";
+import ProductsService from "../../../service/ProductsService.js";
 import Header from '../Layout/Header.vue';
 import Footer from '../Layout/Footer.vue';
 import Banner from '../Layout/Banner.vue';
@@ -290,6 +308,7 @@ export default {
         isProduct: true,
         sideBar: false,
         search: '',
+        catInput: '',
     };
   },
   methods: {
@@ -297,22 +316,36 @@ export default {
       this.sideBar = !this.sideBar;
     },
     getAll() {
-      CategoriesController.getAll().then((res) => {
+      CategoriesService.getAll().then((res) => {
         this.categories = res.data;
       });
 
-      ProductsController.getAll().then((res) => (
+      ProductsService.getAll().then((res) => (
         this.products = res.data
         ));
     },
+    orderByProduct(){
+        var data =  this.products;
+        if(this.search){
+            data = this.products.filter((product) => {
+                    if(product.productName.toLowerCase().indexOf(this.search.toLowerCase()) > -1){
+                    return this.products;
+                }
+            });
+        }
+        if(this.catInput){
+            data = data.filter((product) => {
+                    if(product.catId == this.catInput){
+                    return this.products;
+                }
+            });
+        }
+        return data;
+    }
+
+
   },
 
-  watch:{
-    search:function(){
-        this.products = this.filteredResources();
-        console.log(this.products);
-    }
-  },
 
   components: {
     Swiper,
@@ -327,16 +360,7 @@ export default {
       return this.sideBar;
     },
 
-    filteredResources (){
-      if(this.search){
-        return this.products.filter((item)=>{
-            return item.title.startsWith(this.search);
-        })
-        }else{
-            return this.products;
-        }
-        }
-
+    
   },
   setup() {
     return {

@@ -1,9 +1,9 @@
 <template>
-  <header class="sticky w-full top-0 z-10 bg-white">
+  <header class="sticky w-full top-0 z-20 bg-white">
     <div class="flex justify-between p-3 border-b shadow-lg">
         <div class="flex justify-between items-center w-full">
           <router-link to="/">
-            <img class="object-fill h-16" src="../../../assets/images/logo/logo.jpg"
+            <img class="object-fill h-14" src="../../../assets/images/logo/logo.jpg"
               alt="" />
           </router-link>
           <div class="hidden lg:flex justify-between items-center w-4/5">
@@ -53,9 +53,6 @@
                     </div>
                   </div>
                 </div>
-                <button class="mx-3" @click="searchButton">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
                 <button class="mx-3 flex" @click="onOpenCart">
                   <i class="fa fa-shopping-cart mr-1" aria-hidden="true"></i><sup>0</sup>
                 </button>
@@ -64,9 +61,6 @@
           </div>
         </div>
       <div class="lg:hidden flex items-center">
-        <button class="mx-3" @click="searchButton">
-          <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
         <button class="mx-3 flex" @click="onOpenCart">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>0</sup>
         </button>
@@ -164,20 +158,6 @@
         </div>
       </div>
     </transition>
-    <!-- Search -->
-    <div v-if="search" class="fixed inset-0 w-full h-screen z-20 bg-black opacity-25" @click="searchButton"></div>
-    <div class="absolute w-full top-12 z-50 left-0" :class="{ hidden: !search }">
-      <div class="flex w-full px-4">
-        <form @submit.prevent="" class="w-full">
-          <div class="relative w-full">
-            <input v-model="searchData" type="text" class="w-full border p-3" placeholder="search..." />
-          </div>
-        </form>
-        <button @click="searchButton" class="p-3 border-white border rounded-full text-white px-4 mx-4">
-          <li class="fa fa-close"></li>
-        </button>
-      </div>
-    </div>
   </header>
 </template>
 
@@ -187,19 +167,11 @@ export default {
   name: "HeaderPage",
   data() {
     return {
-      searchData: '',
       isOpen: false,
       shopDropdown: false,
       isOpenCart: false,
-      search: false,
       account: false,
     };
-  },
-
-  watch:{
-    searchData: function(){
-      this.$router.push("/shop");
-    }
   },
 
   computed: {
@@ -217,9 +189,6 @@ export default {
     },
     onOpenCart() {
       this.isOpenCart = !this.isOpenCart;
-    },
-    searchButton() {
-      this.search = !this.search;
     },
     toggleAccount() {
       this.account = !this.account;
