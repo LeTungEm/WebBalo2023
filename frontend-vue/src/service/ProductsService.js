@@ -3,7 +3,7 @@ import axios from "axios";
 const PRODUCT_API_URL =
   "https://webbalo2023.000webhostapp.com/Controllers/ProductsController.php";
 
-  class ProductsController{
+  class ProductsService{
 
     getAll(){
         return axios.get(`${PRODUCT_API_URL}`, {
@@ -30,4 +30,4 @@ const PRODUCT_API_URL =
     }
   }
 
-  export default new ProductsController();
+  export default new ProductsService();

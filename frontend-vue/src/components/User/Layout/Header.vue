@@ -3,7 +3,7 @@
     <div class="flex justify-between p-3 border-b shadow-lg">
         <div class="flex justify-between items-center w-full">
           <router-link to="/">
-            <img class="object-fill h-16" src="../../../assets/images/logo/logo.jpg"
+            <img class="object-fill h-14" src="../../../assets/images/logo/logo.jpg"
               alt="" />
           </router-link>
           <div class="hidden lg:flex justify-between items-center w-4/5">

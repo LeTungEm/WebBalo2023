@@ -290,8 +290,8 @@
 <script>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper';
-import CategoriesController from "../../../service/CategoriesService.js";
-import ProductsController from "../../../service/ProductsService.js";
+import CategoriesService from "../../../service/CategoriesService.js";
+import ProductsService from "../../../service/ProductsService.js";
 import Header from '../Layout/Header.vue';
 import Footer from '../Layout/Footer.vue';
 import Banner from '../Layout/Banner.vue';
@@ -316,11 +316,11 @@ export default {
       this.sideBar = !this.sideBar;
     },
     getAll() {
-      CategoriesController.getAll().then((res) => {
+      CategoriesService.getAll().then((res) => {
         this.categories = res.data;
       });
 
-      ProductsController.getAll().then((res) => (
+      ProductsService.getAll().then((res) => (
         this.products = res.data
         ));
     },
