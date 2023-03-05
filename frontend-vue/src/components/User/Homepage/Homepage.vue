@@ -52,7 +52,7 @@
               Bamboo Bikes
             </p>
           </div>
-          <div @click="modelToggle = false" v-bind:class="{ hidden: !modelToggle }"
+          <div @click="modelToggle = false" v-bind:class="{ 'hidden': !modelToggle }"
             class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
             <div class="my-auto relative w-full md:w-1/2 ">
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0"
