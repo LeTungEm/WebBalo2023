@@ -64,13 +64,26 @@ const routes = [
     name: "adminBlog",
     component: () => import("../components/Admin/Blog/Index.vue"),
   },
-
+  {
+    path: "//adminContact",
+    name: "/adminContact",
+    component: () => import("../components/Admin/Contact/Index.vue"),
+  },
+  {
+    path: "/adminAbout",
+    name: "adminAbout",
+    component: () => import("../components/Admin/About/Index.vue"),
+  },
   {
     path: "/adminProduct",
     name: "adminProduct",
     component: () => import("../components/Admin/Product/Product.vue"),
   },
-
+  {
+    path: "/adminAuthentication",
+    name: "adminAuthentication",
+    component: () => import("../components/Admin/Authentication/Index.vue"),
+  },
   // 404 Page
   {
     path: "/:pathMatch(.*)*",
