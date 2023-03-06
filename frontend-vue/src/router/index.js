@@ -77,7 +77,7 @@ const routes = [
   {
     path: "/adminProduct",
     name: "adminProduct",
-    component: () => import("../components/Admin/Product/Product.vue"),
+    component: () => import("../components/Admin/Product/Index.vue"),
   },
   {
     path: "/adminAuthentication",

@@ -3,7 +3,7 @@
         <Header/>
         <Banner 
             :bannerName="'categories'" 
-            :shopName="'SHION HOUSE'" 
+            :shopName="'PALDNE'" 
             :menu="'Contact US'"/>
         <div class="my-24 px-6 mx-auto">
             <!-- Section: Design Block -->

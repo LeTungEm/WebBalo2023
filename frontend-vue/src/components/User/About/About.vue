@@ -4,7 +4,7 @@
         <div>
             <Banner 
             :bannerName="'categories'" 
-            :shopName="'SHION HOUSE'" 
+            :shopName="'PALDNE'" 
             :menu="'About US'"/>
             <AboutItem 
                 v-for="item in listAbout"

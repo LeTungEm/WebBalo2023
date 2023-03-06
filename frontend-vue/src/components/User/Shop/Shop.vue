@@ -3,7 +3,7 @@
         <Header/>
         <Banner 
             :bannerName="'categories'" 
-            :shopName="'SHION HOUSE'" 
+            :shopName="'PALDNE'" 
             :menu="'Shop'"/>
         <div class="lg:w-11/12 mx-auto">
             <div class="mb-12 mt-20 px-8 lg:px-0">

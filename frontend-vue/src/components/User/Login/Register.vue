@@ -2,7 +2,7 @@
     <div class="">
         <Banner 
             :bannerName="'categories'" 
-            :shopName="'SHION HOUSE'" 
+            :shopName="'PALDNE'" 
             :menu="'Register'"/>
         <div class="flex items-center justify-center my-12">
             <div class="lg:w-1/2">
