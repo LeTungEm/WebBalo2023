@@ -9,16 +9,16 @@
             <Table />
         </div>
     </div>
-</template>
+  </template>
   
-<script>
-import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
-import Header from '@/components/Admin/Layout/Header.vue'
-import Table from '@/components/Admin/Table/Table.vue'
-
-export default {
-    name: 'BlogPage',
-
+  <script>
+  import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
+  import Header from '@/components/Admin/Layout/Header.vue'
+  import Table from '@/components/Admin/Table/Table.vue'
+  
+  export default {
+    name: 'ContactPage',
+  
     data() {
         return {
             account: false,
@@ -35,6 +35,6 @@ export default {
         Header,
         Table
     }
-}
-</script>
+  }
+  </script>
   

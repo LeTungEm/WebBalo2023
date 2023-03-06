@@ -52,7 +52,7 @@
               Bamboo Bikes
             </p>
           </div>
-          <div @click="modelToggle = false" v-bind:class="{ hidden: !modelToggle }"
+          <div @click="modelToggle = false" v-bind:class="{ 'hidden': !modelToggle }"
             class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
             <div class="my-auto relative w-full md:w-1/2 ">
               <iframe width="100%" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0"
@@ -83,7 +83,7 @@
                 slidesPerView: 3,
                 spaceBetween: 50,
               },
-            }" class="swiper-container slider1 swiper-initialized swiper-horizontal swiper-pointer-events">
+            }" class="swiper-container grid grid-cols-1 h-full slider1 swiper-initialized swiper-horizontal swiper-pointer-events">
             <swiper-slide v-for="page in pages" :key="page.blogId" class="pb-12">
               <BlogItem :blogData="page" />
             </swiper-slide>
@@ -95,7 +95,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <ProductItem :productData="product" v-for="product in products" :key="product.productID" />
         </div>
-        <button
+        <button @click="$router.push('/shop')"
           class="flex my-12 border rounded-full px-8 py-3 mx-auto bg-gradient-to-r from-blue-900 to-blue-500 text-white hover:from-blue-500 hover:to-blue-900 duration-1000">
           Shop All Products
         </button>

@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="h-full shadow-md pb-5 bg-gray-50">
         <router-link to="/blog">
             <img
                 :src="require('@/assets/images/blog/'+blogData.image)"
                 class="w-full h-52 md:h-64 lg:h-96 xl:h-64 object-cover" />
         </router-link>
-        <div class="bg-gray-50 p-8">
+        <div class="p-8 h-80">
             <div class="text-xs text-gray-600 uppercase font-semibold">
                 {{blogData.createDate}}
             </div>

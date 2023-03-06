@@ -17,7 +17,7 @@ import Header from '@/components/Admin/Layout/Header.vue'
 import Table from '@/components/Admin/Table/Table.vue'
 
 export default {
-    name: 'BlogPage',
+    name: 'AboutPage',
 
     data() {
         return {

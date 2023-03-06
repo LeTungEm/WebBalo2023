@@ -7,10 +7,7 @@ export default {
     name: "tableColumns",
     props: {
         columnName: String,
-
     }
-
-
 }
 </script>
 
