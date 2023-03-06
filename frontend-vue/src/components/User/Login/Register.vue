@@ -145,7 +145,12 @@ export default {
                 this.notification = "your email is existed !!!"
                 this.modelToggle = true;
             }else{
-                AccountService.registerAccount(this.account.firstName, this.account.lastName, this.account.email, this.account.password).then(res => console.log("result: "+res.data));
+                AccountService.registerAccount(this.account.firstName, this.account.lastName, this.account.email, this.account.password).then(
+                    res => {
+                        if(res.data){
+                            this.$router.push("/login");
+                        }
+                    });
             }
         },
     }
