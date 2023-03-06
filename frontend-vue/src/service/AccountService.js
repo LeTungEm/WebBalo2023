@@ -28,7 +28,25 @@ const PRODUCT_API_URL =
           password: password,
       },
         });
-  }
+    }
+
+    checkEmailExisted(email){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+          action: "checkEmailExisted",
+          email: email,
+      },
+        });
+    }
+
+    registerAccount(firstName, lastName, email, passWord){
+      return axios.post(`${PRODUCT_API_URL}`, {
+        params: {
+          action: "checkEmailExisted",
+          email: email,
+      },
+        });
+    }
   }
 
 export default new AccountService();

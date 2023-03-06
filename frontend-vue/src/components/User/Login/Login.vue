@@ -8,14 +8,14 @@
     <div class="flex items-center justify-center my-12">
       <div class="lg:w-1/2">
         <h1
-          class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6"
-        >
-          Login
+          class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
+          <u>Login</u> <span><router-link to="/register">| Register</router-link></span>
         </h1>
         <form @submit.prevent="validate()" method="post">
           <div class="realtive border p-4 bg-gray-50 py-5">
             <div class="">
               <input
+                required
                 type="email"
                 v-model="account.email"
                 class="border px-4 py-2 my-2 w-full bg-white"
@@ -24,6 +24,7 @@
               <div class="flex items-center w-full">
                 <div class="w-full">
                   <input
+                    required
                     v-bind:type="showPassword ? 'text' : 'password'"
                     class="border px-4 py-2 my-2 w-full bg-white"
                     v-model="account.password"
