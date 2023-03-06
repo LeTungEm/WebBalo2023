@@ -6,8 +6,7 @@
           <img class="object-fill h-16 mx-auto" src="../../../assets/images/logo/logo.jpg" alt="" />
         </router-link>
 
-        <RouterLinkCPN v-for="link in router_links" :key="link" :link_name="link.link_to"  :Router_link_Name="link.name"
-          :routerIcon="link.icon" />
+        <RouterLinkCPN v-for="link in router_links" :key="link" :data="link"/>
       </nav>
     </div>
   </aside>
