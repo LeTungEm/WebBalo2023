@@ -7,7 +7,7 @@
 
 # How to run
 - cd frontend-vue
-- // npm install(neu chua download npm)
+- npm install(nếu chưa download npm)
 - npm run serve
 
 ### Account api trên 000webhostapp
