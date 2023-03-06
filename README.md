@@ -1,11 +1,11 @@
 # Website bán Balo
-# Công cụ
+# Tools
 - FE: vuejs
 - BE: php
 - DB: MySql
 - CSS: TailwindCss
 
-# Cac buoc chay website
+# How to run
 - cd frontend-vue
 - // npm install(neu chua download npm)
 - npm run serve
