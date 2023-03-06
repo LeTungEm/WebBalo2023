@@ -95,7 +95,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <ProductItem :productData="product" v-for="product in products" :key="product.productID" />
         </div>
-        <button
+        <button @click="$router.push('/shop')"
           class="flex my-12 border rounded-full px-8 py-3 mx-auto bg-gradient-to-r from-blue-900 to-blue-500 text-white hover:from-blue-500 hover:to-blue-900 duration-1000">
           Shop All Products
         </button>
