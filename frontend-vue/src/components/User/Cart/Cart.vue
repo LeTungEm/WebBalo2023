@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex justify-between w-full mt-24">
+            <div class="flex justify-between w-full mt-24">     
                 <div class="w-1/2 mr-5">
                     <h1 class="font-bold text-3xl mb-4">Pick a delivery date and Time</h1>
                     <input type="date" class="rounded-md w-2/3 border shadown-lg px-5 py-3 my-2">

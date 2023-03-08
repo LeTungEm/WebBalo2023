@@ -1,5 +1,7 @@
 <template>
   <div class="">
+    <Header />
+
     <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Login'" />
     <div class="flex items-center justify-center my-12">
       <div class="lg:w-1/2">
@@ -51,11 +53,15 @@
         </form>
       </div>
     </div>
-      <Notification @modelToggle="modelToggle = false" :content="notification" :status="modelToggle" />
+    <Notification @modelToggle="modelToggle = false" :content="notification" :status="modelToggle" />
+
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 import Banner from "../Layout/Banner.vue";
 import AccountService from "@/service/AccountService.js";
 import Notification from "./Notification.vue";
@@ -67,6 +73,8 @@ export default {
   components: {
     Banner,
     Notification,
+    Header,
+    Footer
   },
   data() {
     return {
@@ -102,9 +110,15 @@ export default {
       }
       this.getCheckLogin();
     },
+
     getCheckLogin() {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
+          // localStorage.setItem('accountId', res.data.accountId);
+          // console.log(res.data);
+          AccountService.getByID(res.data.accountId).then(res => {console.log(res.data)});
+
+          this.saveData(res.data);
           if(this.isUser(res.data)){
             if(this.remember){
               this.setCookies();
