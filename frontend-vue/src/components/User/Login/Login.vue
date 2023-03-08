@@ -54,8 +54,9 @@
 
 <script>
 import Banner from "../Layout/Banner.vue";
-import AccountService from "@/service/AccountService";
+import AccountService from "@/service/AccountService.js";
 import Notification from "./Notification.vue";
+import AdminService from '@/service/AdminService.js'
 
 export default {
   name: "LoginForm",
@@ -99,18 +100,36 @@ export default {
     getCheckLogin() {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
-          this.saveData(res.data);
+          if(this.isUser(res.data)){
+            this.$router.push("/");
+          }else{
+            AdminService.checkLogin(this.account.email, this.account.password).then(res => {
+              if(this.isAdmin(res.data)){
+                this.$router.push("/admin");
+              }else{
+                this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
+                this.modelToggle = true;
+                return false;
+              }
+            })
+          }
         }
       );
     },
-    saveData(data) {
+
+    isUser(data) {
       if (data != null) {
-        this.$router.push("/");
-      } else {
-        this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
-        this.modelToggle = true;
+        return true;
       }
+      return false;
     },
+
+    isAdmin(data){
+      if(data != null){
+        return true;
+      }
+      return false;
+    }
   },
 };
 </script>
