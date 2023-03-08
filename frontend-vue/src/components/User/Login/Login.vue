@@ -30,7 +30,10 @@
             </div>
             <div class="my-4 flex justify-between items-center">
               <div class="flex">
-                <input type="checkbox" class="mr-2" name="" id="" />
+                <input 
+                  v-model="remember" 
+                  type="checkbox" 
+                  class="mr-2"/>
                 <label for="">Remember me</label>
               </div>
               <router-link class="group text-pink-500 transition-all duration-300 ease-in-out" to="#">
@@ -56,7 +59,8 @@
 import Banner from "../Layout/Banner.vue";
 import AccountService from "@/service/AccountService.js";
 import Notification from "./Notification.vue";
-import AdminService from '@/service/AdminService.js'
+import AdminService from '@/service/AdminService.js';
+
 
 export default {
   name: "LoginForm",
@@ -67,6 +71,7 @@ export default {
   data() {
     return {
       showPassword: false,
+      remember: false,
       account: {
         password: "",
         email: "",
@@ -101,6 +106,9 @@ export default {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
           if(this.isUser(res.data)){
+            if(this.remember){
+              this.setCookies();
+            }
             this.$router.push("/");
           }else{
             AdminService.checkLogin(this.account.email, this.account.password).then(res => {
@@ -129,6 +137,10 @@ export default {
         return true;
       }
       return false;
+    },
+
+    setCookies(accountId){
+      this.$cookies.set('userId', accountId, 30);
     }
   },
 };
