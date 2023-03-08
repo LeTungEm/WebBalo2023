@@ -7,7 +7,7 @@
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <!-- Main content -->
             <main>
-                <div class="px-4">
+                <div class="px-4 mb-12">
                     <div class="my-5">
                         <router-link to="/admin">
                             <div class="flex">
@@ -22,7 +22,7 @@
                             </div>
                         </router-link>
                     </div>
-                    <div class="flex">
+                    <div class="lg:flex">
                         <div class="w-full mr-6">
                             <div class="flex items-center justify-between shadow-lg p-4 rounded-lg border mb-10">
                                 <div class=" w-full">
@@ -34,7 +34,7 @@
                                     alt="">
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 w-full gap-5">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 w-full gap-5">
                             <CartCPNVue v-for="card in cards" :key="card" :data="card" />
                             <!-- 
                  
