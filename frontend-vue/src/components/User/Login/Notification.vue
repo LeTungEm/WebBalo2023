@@ -1,6 +1,6 @@
 <template>
     <div @click="$emit('modelToggle', true)" v-bind:class="{ hidden: !status }"
-      class="absolute top-2 right-2 w-3/4 md:w-1/2 lg:w-1/4">
+      class="fixed top-2 right-2 w-3/4 md:w-1/2 lg:w-1/4">
       <div class="flex">
         <div class="bg-yellow-500 w-16 text-center p-2">
           <div class="flex justify-center h-full items-center">
