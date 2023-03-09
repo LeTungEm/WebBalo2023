@@ -84,6 +84,14 @@ const routes = [
     name: "adminAuthentication",
     component: () => import("../components/Admin/Authentication/Index.vue"),
   },
+
+  // CRUD
+  {
+    path: "/create",
+    name: "create",
+    component: () => import("../components/Admin/Product/Product.vue"),
+  },
+
   // 404 Page
   {
     path: "/:pathMatch(.*)*",
