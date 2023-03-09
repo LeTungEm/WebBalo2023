@@ -84,7 +84,7 @@
                 spaceBetween: 50,
               },
             }" class="swiper-container grid grid-cols-1 h-full slider1 swiper-initialized swiper-horizontal swiper-pointer-events">
-            <swiper-slide v-for="page in pages" :key="page.blogId" class="pb-12">
+            <swiper-slide v-for="page in pages" :key="page.blogId" class="cursor-pointer pb-12">
               <BlogItem :blogData="page" />
             </swiper-slide>
           </swiper>
