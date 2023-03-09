@@ -32,6 +32,8 @@
                 class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Register</router-link>
         </div>
     </div>
+
+    <p v-show="hideLogout">Hello{{ userInfo.first_name }}</p>
     <button @click="logout" v-show="hideLogout"
         class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
         Logout
@@ -47,6 +49,7 @@ export default {
         return {
             hidden: true,
             hideLogout: false,
+            userInfo: []
         }
     },
     methods: {
@@ -59,20 +62,24 @@ export default {
         getAllInfoByAccountId() {
             AccountService.getByID(localStorage.getItem('accountId')).then(
                 (res) => {
-                    console.log(localStorage.getItem('first_name', res.data.first_name))
+                    this.userInfo = res.data
                 }
             )
         },
-        created() {
-            // Get the session data from localStorage
-            let token = localStorage.getItem('accountId')
-            if (token != undefined) {
-                this.hidden = !this.hidden
-                this.hideLogout = !this.hideLogout
+        getItemFromLocalStorage() {
+            if (localStorage.getItem('accountId') != undefined) {
+                this.hidden = false
+                this.hideLogout = true
+            } else {
+                this.hidden = true
+                this.hideLogout = false
             }
-            this.getAllInfoByAccountId();
         }
-    }
+    },
+    created() {
+        this.getItemFromLocalStorage()
+        this.getAllInfoByAccountId()
+    },
 }
 </script>
 

@@ -28,9 +28,10 @@
           </button>
           <div class="absolute z-30 right-0 shadown-lg top-6" :class="{ hidden: !account }">
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
-              <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-200">Your profile</a>
-              <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-200">Settings</a>
-              <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-200">Sign out</a>
+              <p class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer border-b-2">{{ userInfo.first_name }} {{ userInfo.last_name }}</p>
+              <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Your profile</a>
+              <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Settings</a>
+              <button @click="logout" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Sign out</button>
             </div>
           </div>
         </div>
@@ -40,21 +41,50 @@
 </template>
 
 <script>
+import AccountService from '@/service/AccountService';
+
 export default {
   name: "HeaderPage",
   data() {
     return {
       account: false,
+      userInfo: []
     }
   },
   methods: {
     toggleAccount() {
       this.account = !this.account;
     },
+    logout() {
+      localStorage.removeItem('accountId');
+      // Điều hướng đến trang đăng nhập
+      this.hidden = true
+      this.$router.push('/login');
+    },
+    getAllInfoByAccountId() {
+      AccountService.getByID(localStorage.getItem('accountId')).then(
+        (res) => {
+          this.userInfo = res.data
+        }
+      )
+    },
+    getItemFromLocalStorage() {
+      if (localStorage.getItem('accountId') != undefined) {
+        this.hidden = false
+        this.hideLogout = true
+      } else {
+        this.hidden = true
+        this.hideLogout = false
+      }
+    }
   },
   props: {
     isSidebarVisible: Boolean
-  }
+  },
+  created() {
+    this.getItemFromLocalStorage()
+    this.getAllInfoByAccountId()
+  },
 };
 </script>
 

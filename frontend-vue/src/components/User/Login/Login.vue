@@ -32,10 +32,7 @@
             </div>
             <div class="my-4 flex justify-between items-center">
               <div class="flex">
-                <input 
-                  v-model="remember" 
-                  type="checkbox" 
-                  class="mr-2"/>
+                <input v-model="remember" type="checkbox" class="mr-2" />
                 <label for="">Remember me</label>
               </div>
               <router-link class="group text-pink-500 transition-all duration-300 ease-in-out" to="#">
@@ -65,7 +62,6 @@ import Footer from "../Layout/Footer.vue";
 import Banner from "../Layout/Banner.vue";
 import AccountService from "@/service/AccountService.js";
 import Notification from "./Notification.vue";
-
 
 export default {
   name: "LoginForm",
@@ -113,33 +109,36 @@ export default {
     getCheckLogin() {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
-          // localStorage.setItem('accountId', res.data.accountId);
-          // console.log(res.data);
-          // AccountService.getByID(res.data.accountId).then(res => {console.log(res.data)});
 
-          if(res.data != null){
-            if(this.remember){
+          this.getSession(res.data.accountId);
+
+          if (res.data != null) {
+            if (this.remember) {
               this.setCookies(res.data);
             }
-            AccountService.getByID(res.data.accountId).then(res =>{
-              if(res.data.roleID == 1){
+            AccountService.getByID(res.data.accountId).then(res => {
+              if (res.data.roleID == 1) {
                 this.$router.push('/admin');
-              }else{
+              } else {
                 this.$router.push('/');
               }
             });
-          }else{
+          } else {
             this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
             this.modelToggle = true;
             return false;
-      }
+          }
         }
       );
     },
 
-    setCookies(accountId){
+    setCookies(accountId) {
       this.$cookies.set('userId', accountId, 30);
+    },
+    getSession(accountId){
+      window.localStorage.setItem('accountId',accountId)
     }
+
   },
 };
 </script>
