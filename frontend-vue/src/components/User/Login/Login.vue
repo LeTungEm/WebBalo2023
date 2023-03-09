@@ -65,7 +65,6 @@ import Footer from "../Layout/Footer.vue";
 import Banner from "../Layout/Banner.vue";
 import AccountService from "@/service/AccountService.js";
 import Notification from "./Notification.vue";
-import AdminService from '@/service/AdminService.js';
 
 
 export default {
@@ -116,41 +115,26 @@ export default {
         (res) => {
           // localStorage.setItem('accountId', res.data.accountId);
           // console.log(res.data);
-          AccountService.getByID(res.data.accountId).then(res => {console.log(res.data)});
+          // AccountService.getByID(res.data.accountId).then(res => {console.log(res.data)});
 
-          this.saveData(res.data);
-          if(this.isUser(res.data)){
+          if(res.data != null){
             if(this.remember){
-              this.setCookies();
+              this.setCookies(res.data);
             }
-            this.$router.push("/");
-          }else{
-            AdminService.checkLogin(this.account.email, this.account.password).then(res => {
-              if(this.isAdmin(res.data)){
-                this.$router.push("/admin");
+            AccountService.getByID(res.data.accountId).then(res =>{
+              if(res.data.roleID == 1){
+                this.$router.push('/admin');
               }else{
-                this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
-                this.modelToggle = true;
-                return false;
+                this.$router.push('/');
               }
-            })
-          }
+            });
+          }else{
+            this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
+            this.modelToggle = true;
+            return false;
+      }
         }
       );
-    },
-
-    isUser(data) {
-      if (data != null) {
-        return true;
-      }
-      return false;
-    },
-
-    isAdmin(data){
-      if(data != null){
-        return true;
-      }
-      return false;
     },
 
     setCookies(accountId){
