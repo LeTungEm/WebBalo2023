@@ -6,7 +6,7 @@
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <!-- Main content -->
-            <Table />
+            <Table :data="listAccount"/>
         </div>
     </div>
 </template>
@@ -15,6 +15,7 @@
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
 import Table from '@/components/Admin/Table/Table.vue'
+import AccountService from '@/service/AccountService'
 
 export default {
     name: 'AuthenticationAccount',
@@ -22,18 +23,34 @@ export default {
     data() {
         return {
             account: false,
-            isSidebarVisible: true
+            isSidebarVisible: true,
+            listAccount: [],
         }
     },
     methods: {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
+        },
+        getAllAccount(){
+            AccountService.getAll().then(res => {
+                res.data.map(data => {
+                    this.listAccount.push(
+                        {header: data.last_name+" "+data.first_name, 
+                        title: data.email, 
+                        description: data.phone}
+                    );
+                })
+                console.log(this.listAccount);
+            });
         }
     },
     components: {
         Sidebar,
         Header,
         Table
+    },
+    created(){
+        this.getAllAccount();
     }
 }
 </script>
