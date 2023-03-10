@@ -68,6 +68,7 @@ export default {
         }
       )
     },
+    // Láy item
     getItemFromsessionStorage() {
       if (sessionStorage.getItem('accountId') != undefined) {
         this.hidden = false
