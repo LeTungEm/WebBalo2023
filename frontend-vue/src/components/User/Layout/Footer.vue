@@ -134,14 +134,14 @@
                         </ul>
                     </nav>
                     <div class="flex lg:justify-between items-center relative">
-                        <a href="" class="px-1"><img src="../../../../src/assets/images/payments/visaIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="../../../../src/assets/images/payments/atmIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="../../../../src/assets/images/payments/paypalIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="../../../../src/assets/images/payments/visaIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/visaIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/atmIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/paypalIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/visaIcon.png" alt=""></a>
                     </div>
                 </div>
                 <div class="flex pt-5">
-                    <img src="../../../../src/assets/images/vietnamIcon.png" alt="">
+                    <img src="https://webbalo2023.000webhostapp.com/images/vietnamIcon.png" alt="">
                     <p class="pl-2">Vietnam</p>
                 </div>
             </div>

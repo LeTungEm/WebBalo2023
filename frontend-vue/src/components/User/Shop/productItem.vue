@@ -16,7 +16,7 @@
                 </div>
             </div><img alt=""
                 class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                :src="require('@/assets/images/balo/'+productData.image_1)">
+                :src="'https://webbalo2023.000webhostapp.com/images/balo/'+productData.image_1">
         </div>
         <div class="text-center my-6"><router-link to="" class="text-xl uppercase">{{productData.productName}}</router-link>
             <p class="text-red-500 hover:text-red-600 mt-3">{{formatNumber(productData.price)}}</p>

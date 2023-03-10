@@ -26,14 +26,14 @@
             </ul>
           </div>
           <div class="flex-auto">
-            <img src="../../../assets/images/banner/banner.jpg" class="w-full h-1/2 lg:h-screen" alt="" />
+            <img src="https://webbalo2023.000webhostapp.com/images/banner/banner.jpg" class="w-full h-1/2 lg:h-screen" alt="" />
           </div>
         </div>
         <div class="flex items-center mt-6 pl-7">
           <!-- Open Video -->
           <button @click="modelToggle = true" class="border border-gray-500 p-2 rounded-full relative">
             <img class="w-16 h-16 lg:w-24 lg:h-24 rounded-full"
-              src="../../../assets/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg"
+              src="https://webbalo2023.000webhostapp.com/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg"
               alt="">
             <div class="absolute top-1/2 left-1/2 opacity-60">
               <svg xmlns="http://www.w3.org/2000/svg"
@@ -196,8 +196,10 @@ export default {
   },
   computed: {
     images() {
-      const path = require.context('../../../assets/images/clients/', false, /\.png$/)
-      return path.keys().map(path)
+      // require Dũng
+      // const path = require.context('https://webbalo2023.000webhostapp.com/images/clients/', false, /\.png$/)
+      // return path.keys().map(path)
+      return [];
     }
   },
   created() {

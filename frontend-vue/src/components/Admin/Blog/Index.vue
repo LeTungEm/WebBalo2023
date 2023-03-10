@@ -15,7 +15,6 @@
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
 import Table from '@/components/Admin/Table/Table.vue'
-import TableRow from '../Table/TableRow.vue'
 import PagesService from '../../../service/PagesService'
 
 export default {
@@ -52,7 +51,6 @@ export default {
         Sidebar,
         Header,
         Table,
-        TableRow,
     },
     created(){
         this.getAllBlog();
