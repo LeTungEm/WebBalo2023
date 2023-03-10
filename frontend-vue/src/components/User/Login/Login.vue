@@ -109,13 +109,13 @@ export default {
     getCheckLogin() {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
-
-          this.getSession(res.data.accountId);
-
           if (res.data != null) {
+
             if (this.remember) {
-              this.setCookies(res.data);
+              this.setCookies(res.data.accountId);
             }
+            this.getSession(res.data.accountId);
+
             AccountService.getByID(res.data.accountId).then(res => {
               if (res.data.roleID == 1) {
                 this.$router.push('/admin');
@@ -133,10 +133,10 @@ export default {
     },
 
     setCookies(accountId) {
-      this.$cookies.set('userId', accountId, 30);
+      this.$cookies.set('accountId', accountId, 30);
     },
-    getSession(accountId){
-      window.localStorage.setItem('accountId',accountId)
+    getSession(accountId) {
+      window.sessionStorage.setItem('accountId', accountId)
     }
 
   },

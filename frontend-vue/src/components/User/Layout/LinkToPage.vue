@@ -33,8 +33,8 @@
         </div>
     </div>
 
-    <p v-show="hideLogout">Hello{{ userInfo.first_name }}</p>
-    <button @click="logout" v-show="hideLogout"
+    <!-- <p v-show="hideLogout">Hello{{ userInfo.first_name }}</p> -->
+    <button @click="logout" v-if="!hidden"
         class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
         Logout
     </button>
@@ -48,31 +48,36 @@ export default {
     data() {
         return {
             hidden: true,
-            hideLogout: false,
             userInfo: []
         }
     },
     methods: {
         logout() {
-            localStorage.removeItem('accountId');
+            sessionStorage.removeItem('accountId');
             // Điều hướng đến trang đăng nhập
             this.hidden = true
             this.$router.push('/login');
         },
         getAllInfoByAccountId() {
-            AccountService.getByID(localStorage.getItem('accountId')).then(
+
+            AccountService.getByID(sessionStorage.getItem('accountId')).then(
                 (res) => {
-                    this.userInfo = res.data
+                    this.userInfo = res.data;
                 }
             )
         },
         getItemFromLocalStorage() {
-            if (localStorage.getItem('accountId') != undefined) {
+            if (this.$cookies.get("accountId") != null) {
                 this.hidden = false
-                this.hideLogout = true
+            } else {
+                this.hideItems();
+            }
+        },
+        hideItems() {
+            if (sessionStorage.getItem('accountId') != undefined) {
+                this.hidden = false
             } else {
                 this.hidden = true
-                this.hideLogout = false
             }
         }
     },
