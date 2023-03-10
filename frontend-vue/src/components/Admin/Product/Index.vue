@@ -6,7 +6,7 @@
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <!-- Main content -->
-            <Table />
+            <Table :data="listProduct"/>
         </div>
     </div>
 </template>
@@ -15,25 +15,45 @@
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
 import Table from '@/components/Admin/Table/Table.vue'
+import ProductsService from '@/service/ProductsService'
 
 export default {
-    name: 'BlogPage',
+    name: 'ProductAdmin',
 
     data() {
         return {
             account: false,
-            isSidebarVisible: true
+            isSidebarVisible: true,
+            listProduct: [],
         }
     },
     methods: {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
+        },
+        getAllProduct(){
+            ProductsService.getAll().then(res => {
+                res.data.map(data => {
+                    this.listProduct.push(
+                        {
+                            header: data.productName, 
+                            title: data.createDate, 
+                            description: data.amount,
+                            image: (data.image_1)?"balo/"+data.image_1:'default.jpg'
+                        }
+                    )
+                });
+                console.log(res.data);
+            })
         }
     },
     components: {
         Sidebar,
         Header,
         Table
+    },
+    created(){
+        this.getAllProduct();
     }
 }
 </script>

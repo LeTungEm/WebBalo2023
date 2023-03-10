@@ -40,7 +40,7 @@ export default {
                             header: data.title, 
                             title: '', 
                             description: data.description.substr(0, 80)+"...",
-                            image: "about/"+data.image
+                            image: (data.image)?"about/"+data.image:'default.jpg'
                         }
                     )
                 })
