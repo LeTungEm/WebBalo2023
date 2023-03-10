@@ -4,7 +4,7 @@
             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                 <div class="relative h-10 w-10">
                     <img class="h-full w-full rounded-full object-cover object-center"
-                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        :src="'https://webbalo2023.000webhostapp.com/images/'+image"
                         alt="" />
                     <span
                         class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
@@ -67,6 +67,7 @@ export default {
         header: String,
         title: String,
         description: String,
+        image: String,
     }
     
 

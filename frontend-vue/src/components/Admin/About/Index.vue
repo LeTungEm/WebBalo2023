@@ -6,7 +6,7 @@
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <!-- Main content -->
-            <Table />
+            <Table :data="listAbout"/>
         </div>
     </div>
 </template>
@@ -15,6 +15,7 @@
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
 import Table from '@/components/Admin/Table/Table.vue'
+import AboutService from '@/service/AboutService'
 
 export default {
     name: 'AboutPage',
@@ -22,19 +23,39 @@ export default {
     data() {
         return {
             account: false,
-            isSidebarVisible: true
+            isSidebarVisible: true,
+            listAbout: [],
         }
     },
     methods: {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
+        },
+        
+        getAllAbout(){
+            AboutService.getAll().then(res =>{
+                res.data.map(data =>{
+                    this.listAbout.push(
+                        {
+                            header: data.title, 
+                            title: '', 
+                            description: data.description.substr(0, 80)+"...",
+                            image: "about/"+data.image
+                        }
+                    )
+                })
+            })
         }
     },
     components: {
         Sidebar,
         Header,
         Table
-    }
+    },
+    created(){
+        this.getAllAbout();
+    },
+
 }
 </script>
   

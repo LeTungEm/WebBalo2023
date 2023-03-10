@@ -35,12 +35,14 @@ export default {
             AccountService.getAll().then(res => {
                 res.data.map(data => {
                     this.listAccount.push(
-                        {header: data.last_name+" "+data.first_name, 
-                        title: data.email, 
-                        description: data.phone}
+                        {
+                            header: data.last_name+" "+data.first_name, 
+                            title: data.email, 
+                            description: data.phone,
+                            image: (data.avatar)?"user/"+data.avatar:'default.jpg'
+                        }
                     );
                 })
-                console.log(this.listAccount);
             });
         }
     },

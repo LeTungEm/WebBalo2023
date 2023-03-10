@@ -29,6 +29,7 @@
                     :header="value.header" 
                     :title="value.title" 
                     :description="value.description" 
+                    :image="value.image"
                     :key="key"/>
             </table>
         </div>
@@ -46,7 +47,7 @@ export default {
         TableRow,
     },
     props:{
-        data: [],
+        data: Array,
     },
     data() {
         return {
