@@ -123,7 +123,7 @@ export default {
             return false;
           }
         }
-      );
+    });
     },
 
     saveCookie(accountId){
