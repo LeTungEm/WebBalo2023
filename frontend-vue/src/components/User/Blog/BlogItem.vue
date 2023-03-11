@@ -1,5 +1,5 @@
 <template>
-    <div class="h-full shadow-md pb-5 bg-gray-50">
+    <div class="h-full shadow-md pb-5 bg-gray-50 relative">
         <router-link to="/blog">
             <img
                 :src="'https://webbalo2023.000webhostapp.com/images/blog/'+blogData.image"
@@ -17,7 +17,7 @@
             </p>
             <router-link 
                 to="/blog"
-                class="absolute bottom-0 flex items-center mt-6 uppercase text-sm text-gray-500 hover:text-black font-semibold">Read article
+                class="absolute bottom-0 my-4 flex items-center mt-6 uppercase text-sm text-black hover:text-gray-600 font-semibold">Read article
                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"></path>

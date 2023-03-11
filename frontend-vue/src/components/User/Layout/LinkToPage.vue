@@ -32,7 +32,9 @@
                 class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">Register</router-link>
         </div>
     </div>
-    <button @click="logout" v-show="hideLogout"
+
+    <!-- <p v-show="hideLogout">Hello{{ userInfo.first_name }}</p> -->
+    <button @click="logout" v-if="!hidden"
         class="mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] before:bottom-0 before:left-0 before:bg-red-500 before:hover:scale-x-100 before:scale-x-0 before:origin-top-left before:transition before:ease-in-out before:duration-300">
         Logout
     </button>
@@ -46,33 +48,49 @@ export default {
     data() {
         return {
             hidden: true,
-            hideLogout: false,
+            userInfo: []
         }
     },
     methods: {
         logout() {
+<<<<<<< Updated upstream
+            sessionStorage.removeItem('accountId');
+=======
             localStorage.removeItem('accountId');
+            this.$cookies.set("userId","","Sat, 13 Mar 2017 12:25:57 GMT");
+            this.$cookies.set("roleId","","Sat, 13 Mar 2017 12:25:57 GMT");
+>>>>>>> Stashed changes
             // Điều hướng đến trang đăng nhập
             this.hidden = true
             this.$router.push('/login');
         },
         getAllInfoByAccountId() {
-            AccountService.getByID(localStorage.getItem('accountId')).then(
+
+            AccountService.getByID(sessionStorage.getItem('accountId')).then(
                 (res) => {
-                    console.log(localStorage.getItem('first_name', res.data.first_name))
+                    this.userInfo = res.data;
                 }
             )
         },
-        created() {
-            // Get the session data from localStorage
-            let token = localStorage.getItem('accountId')
-            if (token != undefined) {
-                this.hidden = !this.hidden
-                this.hideLogout = !this.hideLogout
+        getItemFromStorage() {
+            if (this.$cookies.get("accountId") != null) {
+                this.hidden = false
+            } else {
+                this.hideItems();
             }
-            this.getAllInfoByAccountId();
+        },
+        hideItems() {
+            if (sessionStorage.getItem('accountId') != undefined) {
+                this.hidden = false
+            } else {
+                this.hidden = true
+            }
         }
-    }
+    },
+    created() {
+        this.getItemFromStorage()
+        this.getAllInfoByAccountId()
+    },
 }
 </script>
 

@@ -15,7 +15,7 @@
             </p>
         </div>
         <div class="mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 pt-12 pb-24">
-            <BlogItem :blogData="page" v-for="page in pages" :key="page.blogId"/>
+            <BlogItem class="h-96 " :blogData="page" v-for="page in pages" :key="page.blogId"/>
         </div>
         <Footer/>
     </div>

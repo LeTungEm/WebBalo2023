@@ -32,10 +32,7 @@
             </div>
             <div class="my-4 flex justify-between items-center">
               <div class="flex">
-                <input 
-                  v-model="remember" 
-                  type="checkbox" 
-                  class="mr-2"/>
+                <input v-model="remember" type="checkbox" class="mr-2" />
                 <label for="">Remember me</label>
               </div>
               <router-link class="group text-pink-500 transition-all duration-300 ease-in-out" to="#">
@@ -65,7 +62,6 @@ import Footer from "../Layout/Footer.vue";
 import Banner from "../Layout/Banner.vue";
 import AccountService from "@/service/AccountService.js";
 import Notification from "./Notification.vue";
-
 
 export default {
   name: "LoginForm",
@@ -119,27 +115,41 @@ export default {
 
           if(res.data != null){
             if(this.remember){
-              this.setCookies(res.data);
+              this.$cookies.set('userId', res.data.accountId, 30);
             }
-            AccountService.getByID(res.data.accountId).then(res =>{
-              if(res.data.roleID == 1){
-                this.$router.push('/admin');
-              }else{
-                this.$router.push('/');
-              }
-            });
           }else{
-            this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
-            this.modelToggle = true;
-            return false;
-      }
+            AdminService.checkLogin(this.account.email, this.account.password).then(res => {
+              if(this.isAdmin(res.data)){
+                this.$router.push("/admin");
+              }else{
+                this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
+                this.modelToggle = true;
+                return false;
+              }
+            })
+          }
         }
-      );
+    });
+    },
+
+    isUser(data) {
+      if (data != null) {
+        return true;
+      }
+      return false;
+    },
+
+    isAdmin(data){
+      if(data != null){
+        return true;
+      }
+      return false;
     },
 
     setCookies(accountId){
       this.$cookies.set('userId', accountId, 30);
     }
+
   },
 };
 </script>
