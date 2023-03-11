@@ -53,7 +53,13 @@ export default {
     },
     methods: {
         logout() {
+<<<<<<< Updated upstream
             sessionStorage.removeItem('accountId');
+=======
+            localStorage.removeItem('accountId');
+            this.$cookies.set("userId","","Sat, 13 Mar 2017 12:25:57 GMT");
+            this.$cookies.set("roleId","","Sat, 13 Mar 2017 12:25:57 GMT");
+>>>>>>> Stashed changes
             // Điều hướng đến trang đăng nhập
             this.hidden = true
             this.$router.push('/login');

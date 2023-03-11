@@ -111,34 +111,34 @@ export default {
         (res) => {
           if (res.data != null) {
 
-            if (this.remember) {
-              this.setCookies(res.data.accountId);
+          if(res.data != null){
+            if(this.remember){
+              this.$cookies.set('userId', res.data.accountId, 30);
             }
-            this.getSession(res.data.accountId);
-
-            AccountService.getByID(res.data.accountId).then(res => {
-              if (res.data.roleID == 1) {
-                // this.$router.push('/admin');
-                console.log("Hello", res.data.roleID);
-              } else {
-                // this.$router.push('/');
-                console.log("Hello", res.data.roleID);
-              }
-            });
-          } else {
+            this.saveCookie(res.data.accountId);
+          }else{
             this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
             this.modelToggle = true;
             return false;
           }
         }
-      );
+    });
     },
 
-    setCookies(accountId) {
-      this.$cookies.set('accountId', accountId, 30);
-    },
-    getSession(accountId) {
-      window.sessionStorage.setItem('accountId', accountId)
+    saveCookie(accountId){
+      AccountService.getByID(accountId).then(res =>{
+        if(res.data.roleID == 1){
+          this.$router.push('/admin');
+          if(this.remember){
+            this.$cookies.set('roleId', res.data.roleID, 30);
+          }
+        }else{
+          this.$router.push('/');
+          if(this.remember){
+            this.$cookies.set('roleId', res.data.roleID, 30);
+          }
+        }
+      });
     }
 
   },
