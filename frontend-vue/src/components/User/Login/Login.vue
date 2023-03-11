@@ -112,18 +112,12 @@ export default {
           if (res.data != null) {
             this.getSession(res.data.accountId);
 
-            if (this.remember) {
-              this.setCookies(res.data.accountId);
+          if(res.data != null){
+            if(this.remember){
+              this.$cookies.set('userId', res.data.accountId, 30);
             }
-
-            AccountService.getByID(res.data.accountId).then(res => {
-              if (res.data.roleID == 1) {
-                this.$router.push('/admin');
-              } else {
-                this.$router.push('/');
-              }
-            });
-          } else {
+            this.saveCookie(res.data.accountId);
+          }else{
             this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
             this.modelToggle = true;
             return false;
@@ -132,11 +126,20 @@ export default {
       );
     },
 
-    setCookies(accountId) {
-      this.$cookies.set('accountId', accountId, 30);
-    },
-    getSession(accountId) {
-      window.sessionStorage.setItem('accountId', accountId)
+    saveCookie(accountId){
+      AccountService.getByID(accountId).then(res =>{
+        if(res.data.roleID == 1){
+          this.$router.push('/admin');
+          if(this.remember){
+            this.$cookies.set('roleId', res.data.roleID, 30);
+          }
+        }else{
+          this.$router.push('/');
+          if(this.remember){
+            this.$cookies.set('roleId', res.data.roleID, 30);
+          }
+        }
+      });
     }
 
   },
