@@ -31,7 +31,7 @@
               <!-- <p class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer border-b-2">{{ userInfo.first_name }} {{ userInfo.last_name }}</p> -->
               <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Your profile</a>
               <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Settings</a>
-              <button @click="logout" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Sign out</button>
+              <button @click="logout" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer w-full text-left">Sign out</button>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default {
   name: "HeaderPage",
   data() {
     return {
-      account: true,
+      account: false,
       userInfo: []
     }
   },

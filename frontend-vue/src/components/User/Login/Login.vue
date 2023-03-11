@@ -110,17 +110,19 @@ export default {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
           if (res.data != null) {
-            this.getSession(res.data.accountId);
 
             if (this.remember) {
               this.setCookies(res.data.accountId);
             }
+            this.getSession(res.data.accountId);
 
             AccountService.getByID(res.data.accountId).then(res => {
               if (res.data.roleID == 1) {
-                this.$router.push('/admin');
+                // this.$router.push('/admin');
+                console.log("Hello", res.data.roleID);
               } else {
-                this.$router.push('/');
+                // this.$router.push('/');
+                console.log("Hello", res.data.roleID);
               }
             });
           } else {

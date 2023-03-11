@@ -48,7 +48,7 @@ export default {
     data() {
         return {
             hidden: true,
-            userInfo: [] 
+            userInfo: []
         }
     },
     methods: {
@@ -66,7 +66,7 @@ export default {
                 }
             )
         },
-        getItemFromSessionStorage() {
+        getItemFromStorage() {
             if (this.$cookies.get("accountId") != null) {
                 this.hidden = false
             } else {
@@ -82,7 +82,7 @@ export default {
         }
     },
     created() {
-        this.getItemFromSessionStorage()
+        this.getItemFromStorage()
         this.getAllInfoByAccountId()
     },
 }
