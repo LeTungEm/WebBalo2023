@@ -57,7 +57,7 @@ export default {
     components: {
         Sidebar,
         Header,
-        Table
+        Table,
     },
     created(){
         this.getAllAbout();
