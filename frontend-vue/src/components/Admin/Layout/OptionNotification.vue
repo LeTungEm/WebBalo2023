@@ -14,6 +14,7 @@
             close
         </div>
         <div 
+            @click="$emit('deleteItem')"
             class="inline-block px-5 py-2 border">
             delete
         </div>
