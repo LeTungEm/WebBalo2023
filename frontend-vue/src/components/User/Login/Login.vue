@@ -110,13 +110,13 @@ export default {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
           if(res.data != null){
-            AccountService.getByID(res.data.accountId).then(res => {
-              sessionStorage.setItem('accountId', res.data.accountId);
-              this.$cookies.set("roleId", res.data.roleID, 30);
+            AccountService.getByID(res.data.accountId).then(responsive => {
+              sessionStorage.setItem('accountId', responsive.data.accountId);
+              this.$cookies.set("roleId", responsive.data.roleID, 30);
               if(this.remember){
-                  this.$cookies.set('accountId', res.data.accountId, 30);
+                  this.$cookies.set('accountId', responsive.data.accountId, 30);
                 }
-              if(res.data.roleId == 1){
+              if(responsive.data.roleID == 1){
                 this.$router.push("/admin");
               }else{
                 this.$router.push("/");
