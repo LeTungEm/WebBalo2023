@@ -109,20 +109,27 @@ export default {
     getCheckLogin() {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
-          if(res.data != null){
+          if (res.data != null) {
             AccountService.getByID(res.data.accountId).then(res => {
               sessionStorage.setItem('accountId', res.data.accountId);
+              sessionStorage.setItem('roleID', res.data.roleID);
               this.$cookies.set("roleId", res.data.roleID, 30);
-              if(this.remember){
-                  this.$cookies.set('accountId', res.data.accountId, 30);
+              if (this.remember) {
+                this.$cookies.set('accountId', res.data.accountId, 30);
+                if (this.$cookies.set('roleID') == 1) {
+                  // this.$cookies.set('AdminHome', '/admin');
                 }
-              if(res.data.roleId == 1){
+                else {
+                  // this.$cookies.set('UserHome', '/');
+                }
+              }
+              if (res.data.roleID == "1") {
                 this.$router.push("/admin");
-              }else{
+              } else {
                 this.$router.push("/");
               }
             })
-          }else{
+          } else {
             this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
             this.modelToggle = true;
             return false;

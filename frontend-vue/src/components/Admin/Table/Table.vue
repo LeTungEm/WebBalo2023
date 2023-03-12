@@ -14,7 +14,6 @@
                     placeholder="Search something.." />
             </div>
         </div>
-                <router-link to="/create" class="inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
 
         <div class="rounded-lg shadow-md border overflow-scroll">
             <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">

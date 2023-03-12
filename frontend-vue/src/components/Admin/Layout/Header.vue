@@ -10,13 +10,6 @@
         </span>
       </button>
       <div class="flex items-center">
-        <form action="/search" class="flex justify-between md:flex-row">
-          <input type="search" name="query" placeholder="Search Components" required="required"
-            class="border w-full py-2 px-2">
-          <button type="submit" class="px-4 py-2 border">
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </button>
-        </form>
         <button class="inline-block relative mx-3">
           <i class="fa fa-bell" aria-hidden="true"></i>
           <span
@@ -28,10 +21,11 @@
           </button>
           <div class="absolute z-30 right-0 shadown-lg top-6" :class="{ hidden: !account }">
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
-              <!-- <p class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer border-b-2">{{ userInfo.first_name }} {{ userInfo.last_name }}</p> -->
+              <p class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer border-b-2">{{ userInfo.first_name }} {{ userInfo.last_name }}</p>
               <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Your profile</a>
               <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Settings</a>
-              <button @click="logout" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer w-full text-left">Sign out</button>
+              <button @click="logout"
+                class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer w-full text-left">Sign out</button>
             </div>
           </div>
         </div>
@@ -57,6 +51,9 @@ export default {
     },
     logout() {
       sessionStorage.removeItem('accountId');
+      sessionStorage.removeItem('roleID');
+      this.$cookies.remove("accountId");
+      this.$cookies.remove("roleId");
       // Điều hướng đến trang đăng nhập
       this.hidden = true
       this.$router.push('/login');
