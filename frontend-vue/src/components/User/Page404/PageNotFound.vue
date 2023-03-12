@@ -54,7 +54,7 @@ export default {
       let formData = new FormData();
 
       formData.append("file", this.file);
-      formData.append("targetFolder", "balo");
+      formData.append("targetFolder", "balo anh");
 
       UploadImageService.uploadImage(formData)
         .then(function (data) {
@@ -70,7 +70,7 @@ export default {
       this.file = e.target.files[0];
       this.submitForm();
     },
-    
+
   },
 };
 </script>
