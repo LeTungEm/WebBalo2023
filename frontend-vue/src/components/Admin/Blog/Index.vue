@@ -3,10 +3,11 @@
         <!-- Sidebar -->
         <Sidebar :isSidebarVisible="isSidebarVisible" />
         <div class="w-full h-screen overflow-scroll">
+            <h1>{{removeID}}</h1>
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <!-- Main content -->
-            <Table :data="listBlog"/>
+            <Table @removeID="changeRemoveID" :data="listBlog"/>
         </div>
     </div>
 </template>
@@ -25,6 +26,7 @@ export default {
             account: false,
             isSidebarVisible: true,
             listBlog: [],
+            removeID: "",
         }
     },
     methods: {
@@ -37,6 +39,7 @@ export default {
                 res.data.map(data => {
                     this.listBlog.push(
                         {
+                            id: data.blogId,
                             header: data.blogName, 
                             title: data.createDate, 
                             description: data.content.substr(0,80),
@@ -45,6 +48,9 @@ export default {
                     );
                 })
             })
+        },
+        changeRemoveID(value){
+            this.removeID = value;
         }
     },
     components: {

@@ -1,6 +1,6 @@
 <template>
     <div class="mx-5 mb-12">
-        <div class="flex my-5">
+        <div @click="this.$router.push('/admin')" class="flex my-5 cursor-pointer">
             <span aria-hidden="true">
                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">

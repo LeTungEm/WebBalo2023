@@ -25,7 +25,10 @@
                 </thead>
                 
                 <TableRow 
+                    @removeID="changeRemoveID"
+                    @click="$emit('removeID', removeID)"
                     v-for="(value, key) in data" 
+                    :id="value.id"
                     :header="value.header" 
                     :title="value.title" 
                     :description="value.description" 
@@ -51,10 +54,15 @@ export default {
     },
     data() {
         return {
-            columnNames: ["name", "id"]
+            columnNames: ["name", "id"],
+            removeID: '',
+        }
+    },
+    methods:{
+        changeRemoveID(value){
+            this.removeID = value;
         }
     }
-
 }
 </script>
 

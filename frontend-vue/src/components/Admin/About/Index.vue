@@ -5,8 +5,9 @@
         <div class="w-full h-screen overflow-scroll">
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
+            <h1>{{removeID}}</h1>
             <!-- Main content -->
-            <Table :data="listAbout"/>
+            <Table @removeID="changeRemoveID" :data="listAbout"/>
         </div>
     </div>
 </template>
@@ -25,6 +26,7 @@ export default {
             account: false,
             isSidebarVisible: true,
             listAbout: [],
+            removeID:"",
         }
     },
     methods: {
@@ -37,6 +39,7 @@ export default {
                 res.data.map(data =>{
                     this.listAbout.push(
                         {
+                            id: data.aboutId,
                             header: data.title, 
                             title: '', 
                             description: data.description.substr(0, 80)+"...",
@@ -45,6 +48,10 @@ export default {
                     )
                 })
             })
+        },
+
+        changeRemoveID(value){
+            this.removeID = value;
         }
     },
     components: {

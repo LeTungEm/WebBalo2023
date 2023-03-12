@@ -3,10 +3,11 @@
         <!-- Sidebar -->
         <Sidebar :isSidebarVisible="isSidebarVisible" />
         <div class="w-full h-screen overflow-scroll">
+            <h1>{{removeID}}</h1>
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <!-- Main content -->
-            <Table :data="listProduct"/>
+            <Table @removeID="changeRemoveID" :data="listProduct"/>
         </div>
     </div>
 </template>
@@ -25,6 +26,7 @@ export default {
             account: false,
             isSidebarVisible: true,
             listProduct: [],
+            removeID: "",
         }
     },
     methods: {
@@ -36,6 +38,7 @@ export default {
                 res.data.map(data => {
                     this.listProduct.push(
                         {
+                            id: data.productID,
                             header: data.productName, 
                             title: data.createDate, 
                             description: data.amount,
@@ -43,8 +46,10 @@ export default {
                         }
                     )
                 });
-                console.log(res.data);
             })
+        },
+        changeRemoveID(value){
+            this.removeID = value;
         }
     },
     components: {
