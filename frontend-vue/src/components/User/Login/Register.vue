@@ -43,14 +43,14 @@
                                     />
                             </div>
                             <div class="border py-2 px-3">
-                                <button class="button" @click="toggleShow">
+                                <div class="button" @click="toggleShow">
                                     <span class="icon is-small is-right">
                                         <i class="fas" :class="{
                                             'fa fa-eye': showPassword,
                                             'fa fa-eye-slash': !showPassword
                                         }"></i>
                                     </span>
-                                </button>
+                                </div>
                             </div>
                         </div>
                         <div class="flex items-center w-full">
@@ -64,14 +64,14 @@
                                     />
                             </div>
                             <div class="border py-2 px-3">
-                                <button class="button" @click="toggleShowRepwd">
+                                <div class="button" @click="toggleShowRepwd">
                                     <span class="icon is-small is-right">
                                         <i class="fas" :class="{
                                             'fa fa-eye': showRePassword,
                                             'fa fa-eye-slash': !showRePassword
                                         }"></i>
                                     </span>
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>

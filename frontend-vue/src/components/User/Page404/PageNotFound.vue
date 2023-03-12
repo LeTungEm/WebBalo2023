@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <section class="bg-white dark:bg-gray-900 ">
+  <div>
+    <!-- <section class="bg-white dark:bg-gray-900 ">
             <div class="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-12">
                 <div class="wf-ull lg:w-1/2">
                     <p class="text-sm font-medium text-blue-500 dark:text-blue-400">404 error</p>
@@ -34,14 +34,45 @@
                         alt="">
                 </div>
             </div>
-        </section>
-</div>
+        </section> -->
+
+    <input type="file" v-on:change="onChangeFileUpload" />
+  </div>
 </template>
 
 <script>
-export default {
+import UploadImageService from "@/service/UploadImageService.js"
 
-}
+export default {
+  data() {
+    return {
+      file: [],
+    };
+  },
+  methods: {
+    submitForm() {
+      let formData = new FormData();
+
+      formData.append("file", this.file);
+      formData.append("targetFolder", "balo");
+
+      UploadImageService.uploadImage(formData)
+        .then(function (data) {
+          console.log(data.data);
+        })
+
+        .catch(function () {
+          console.log("FAILURE!!");
+        });
+    },
+
+    onChangeFileUpload(e) {
+      this.file = e.target.files[0];
+      this.submitForm();
+    },
+    
+  },
+};
 </script>
 
 <style></style>

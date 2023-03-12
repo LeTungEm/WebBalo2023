@@ -19,14 +19,14 @@
                     class="border px-4 py-2 my-2 w-full bg-white" v-model="account.password" placeholder="Password*" />
                 </div>
                 <div class="border py-2 px-3">
-                  <button class="" @click="toggleShow">
+                  <div class="" @click="toggleShow">
                     <span class="icon is-small is-right">
                       <i class="fas" :class="{
                         'fa fa-eye': showPassword,
                         'fa fa-eye-slash': !showPassword,
                       }"></i>
                     </span>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -109,47 +109,27 @@ export default {
     getCheckLogin() {
       AccountService.checkLogin(this.account.email, this.account.password).then(
         (res) => {
-          // localStorage.setItem('accountId', res.data.accountId);
-          // console.log(res.data);
-          // AccountService.getByID(res.data.accountId).then(res => {console.log(res.data)});
-
           if(res.data != null){
-            if(this.remember){
-              this.$cookies.set('userId', res.data.accountId, 30);
-            }
-          }else{
-            AdminService.checkLogin(this.account.email, this.account.password).then(res => {
-              if(this.isAdmin(res.data)){
+            AccountService.getByID(res.data.accountId).then(res => {
+              sessionStorage.setItem('accountId', res.data.accountId);
+              this.$cookies.set("roleId", res.data.roleID, 30);
+              if(this.remember){
+                  this.$cookies.set('accountId', res.data.accountId, 30);
+                }
+              if(res.data.roleId == 1){
                 this.$router.push("/admin");
               }else{
-                this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
-                this.modelToggle = true;
-                return false;
+                this.$router.push("/");
               }
             })
+          }else{
+            this.notification = "Sai tên đăng nhập hoặc mật khẩu!!!"
+            this.modelToggle = true;
+            return false;
           }
         }
-    });
+      );
     },
-
-    isUser(data) {
-      if (data != null) {
-        return true;
-      }
-      return false;
-    },
-
-    isAdmin(data){
-      if(data != null){
-        return true;
-      }
-      return false;
-    },
-
-    setCookies(accountId){
-      this.$cookies.set('userId', accountId, 30);
-    }
-
   },
 };
 </script>
