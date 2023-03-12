@@ -36,18 +36,22 @@
                     :key="key"/>
             </table>
         </div>
+        <OptionNotification @modelToggle="notiStatus = false" :status="notiStatus"/>
     </div>
 </template>
 
 <script>
 import columnName from './TableColumn.vue'
 import TableRow from './TableRow.vue';
+import OptionNotification from '../Layout/OptionNotification.vue'
+
 
 export default {
     name: "ListOfItems",
     components: {
         columnName,
         TableRow,
+        OptionNotification,
     },
     props:{
         data: Array,
@@ -56,11 +60,13 @@ export default {
         return {
             columnNames: ["name", "id"],
             removeID: '',
+            notiStatus: false,
         }
     },
     methods:{
-        changeRemoveID(value){
+        changeRemoveID(value, notiStatus){
             this.removeID = value;
+            this.notiStatus = notiStatus;
         }
     }
 }
