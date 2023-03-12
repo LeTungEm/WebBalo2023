@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import VueCookie from "vue-cookie";
-const getRole = VueCookie.get("roleID");
 
 
 const requireAdmin = (to, from, next) => {
