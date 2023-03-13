@@ -61,7 +61,6 @@
 <script>
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
-import AboutService from '@/service/AboutService'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
@@ -71,8 +70,6 @@ export default {
         return {
             account: false,
             isSidebarVisible: true,
-            listAbout: [],
-            removeID: "",
             description:"",
             title:"",
 
@@ -82,36 +79,11 @@ export default {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
         },
-        loggerT() {
-            console.log(this.init);
-        },
-        getAllAbout() {
-            AboutService.getAll().then(res => {
-                res.data.map(data => {
-                    this.listAbout.push(
-                        {
-                            id: data.aboutId,
-                            header: data.title,
-                            title: '',
-                            description: data.description.substr(0, 80) + "...",
-                            image: (data.image) ? "about/" + data.image : 'default.jpg'
-                        }
-                    )
-                })
-            })
-        },
-
-        changeRemoveID(value) {
-            this.removeID = value;
-        }
     },
     components: {
         Sidebar,
         Header,
         'editor': Editor
-    },
-    created() {
-        this.getAllAbout();
     },
 
 }

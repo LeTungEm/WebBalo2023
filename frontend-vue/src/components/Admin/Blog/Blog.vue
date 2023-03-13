@@ -37,8 +37,8 @@
                                     placeholder="Add a products...">
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
-                                <h4 class="font-bold mb-2 text-md">Contect</h4>
-                                <editor v-model="contect" class="w-full"
+                                <h4 class="font-bold mb-2 text-md">Contact</h4>
+                                <editor v-model="Contact" class="w-full"
                                     api-key="yjaj2vzf11w5iyzfwroudo6smnvj72djze7vsfl7y23n9q1e" :init="{
                                         menubar: false,
                                         plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
@@ -78,7 +78,6 @@
 <script>
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
-import AboutService from '@/service/AboutService'
 import Editor from '@tinymce/tinymce-vue'
 
 export default {
@@ -88,9 +87,7 @@ export default {
         return {
             account: false,
             isSidebarVisible: true,
-            listAbout: [],
-            removeID: "",
-            Contect: "",
+            Contact: "",
             blogName: "",
             author: '',
             publishs: [
@@ -105,38 +102,12 @@ export default {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
         },
-        loggerT() {
-            console.log(this.init);
-        },
-        getAllAbout() {
-            AboutService.getAll().then(res => {
-                res.data.map(data => {
-                    this.listAbout.push(
-                        {
-                            id: data.aboutId,
-                            header: data.title,
-                            title: '',
-                            description: data.description.substr(0, 80) + "...",
-                            image: (data.image) ? "about/" + data.image : 'default.jpg'
-                        }
-                    )
-                })
-            })
-        },
-
-        changeRemoveID(value) {
-            this.removeID = value;
-        }
     },
     components: {
         Sidebar,
         Header,
         'editor': Editor
     },
-    created() {
-        this.getAllAbout();
-    },
-
 }
 </script>
   
