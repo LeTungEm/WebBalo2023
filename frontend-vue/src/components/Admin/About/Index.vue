@@ -22,6 +22,7 @@ import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
 import Table from '@/components/Admin/Table/Table.vue'
 import AboutService from '@/service/AboutService'
+import UploadImageService from '@/service/UploadImageService'
 
 export default {
     name: 'AboutPage',
@@ -64,11 +65,16 @@ export default {
         deleteAbout(){
             AboutService.deleteAbout(this.removeID).then(res =>{
                 if(res.data){
+                    // Tìm item đã xóa
                     this.message = "Đã xóa "+this.listAbout.find(about => {
                         if(about.id == this.removeID){
+                            // Xóa ảnh khỏi api
+                            this.deleteImage(about);
                             return about;
                         }
                     }).header;
+
+                    // Xoá item khỏi danh sách local
                     this.listAbout = this.listAbout.filter(about =>{
                         if(about.id != this.removeID){
                             return about;
@@ -78,6 +84,21 @@ export default {
                     this.message = "Xóa không thành công";
                 }
             })
+        },
+
+        deleteImage(about){
+            let formData = new FormData();
+            formData.append("action", "delete");
+            formData.append("path", "../images/"+about.image);
+
+            UploadImageService.uploadImage(formData)
+                .then(function (data) {
+                console.log("delete image: "+data.data);
+                })
+
+                .catch(function () {
+                console.log("FAILURE!!");
+                });
         }
     },
     components: {
