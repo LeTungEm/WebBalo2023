@@ -39,7 +39,7 @@ const PRODUCT_API_URL =
         });
     }
 
-    registerAccount(firstName, lastName, email, passWord){
+    registerAccount(email){
       return axios.post(`${PRODUCT_API_URL}`, {
         params: {
           action: "checkEmailExisted",

@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-5 px-4 lg:px-8 xl:px-36 my-24 wrap max-w-max mx-auto">
+    <div class="grid grid-cols-5 px-4 lg:px-8 xl:px-36 my-24 wrap max-w-max mx-auto"  data-aos="fade-down" data-aos-duration="1500" data-aos-delay='500'>
         <div class="col-span-5 md:col-span-2 w-full">
             <img 
                 class="w-fit mx-auto h-full object-cover" 

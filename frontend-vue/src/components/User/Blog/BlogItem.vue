@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div  data-aos="fade-down" data-aos-duration="1200" data-aos-delay='500'>
         <router-link to="/blog">
             <img
                 :src="require('@/assets/images/blog/'+blogData.image)"
                 class="w-full h-52 md:h-64 lg:h-96 xl:h-64 object-cover" />
         </router-link>
-        <div class="bg-gray-50 p-8">
+        <div class="bg-gray-50 p-8"  data-aos="fade-down" data-aos-duration="1500" data-aos-delay='1500'>
             <div class="text-xs text-gray-600 uppercase font-semibold">
                 {{blogData.createDate}}
             </div>

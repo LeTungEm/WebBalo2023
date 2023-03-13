@@ -1,11 +1,11 @@
 <template>
-    <div class="">
+    <div class=""  data-aos="fade-down" data-aos-duration="1000" data-aos-delay='300'>
         <Header/>
         <Banner 
             :bannerName="'categories'" 
             :shopName="'SHION HOUSE'" 
             :menu="'Contact US'"/>
-        <div class="my-24 px-6 mx-auto">
+        <div class="my-24 px-6 mx-auto" >
             <!-- Section: Design Block -->
             <div class="mb-32 text-gray-800">
                 <div class="flex justify-center">

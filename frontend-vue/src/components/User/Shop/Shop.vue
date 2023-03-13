@@ -5,7 +5,7 @@
             :bannerName="'categories'" 
             :shopName="'SHION HOUSE'" 
             :menu="'Shop'"/>
-        <div class="lg:w-11/12 mx-auto">
+        <div class="lg:w-11/12 mx-auto" data-aos="fade-up" data-aos-duration="1500">
             <div class="mb-12 mt-20 px-8 lg:px-0">
                 <h1 class="text-6xl font-bold mb-4">Shop with us</h1>
                 <p>Browse from 230 latest items</p>
