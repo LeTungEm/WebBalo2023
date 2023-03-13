@@ -1,5 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
+import VueCookie from "vue-cookie";
 
+
+const requireAdmin = (to, from, next) => {
+  if (VueCookie.get("roleID") == 1 || sessionStorage.getItem("roleID") == 1) {
+    next();
+  } else {
+    next("/", "/");
+  }
+};
 const routes = [
   {
     path: "/",
@@ -57,38 +66,74 @@ const routes = [
     path: "/admin",
     name: "admin",
     component: () => import("../components/Admin/Homepage/Dashboard.vue"),
+    beforeEnter: requireAdmin,
   },
 
   {
     path: "/adminBlog",
     name: "adminBlog",
     component: () => import("../components/Admin/Blog/Index.vue"),
+    beforeEnter: requireAdmin,
   },
   {
     path: "//adminContact",
     name: "/adminContact",
     component: () => import("../components/Admin/Contact/Index.vue"),
+    beforeEnter: requireAdmin,
   },
   {
     path: "/adminAbout",
     name: "adminAbout",
     component: () => import("../components/Admin/About/Index.vue"),
+    beforeEnter: requireAdmin,
   },
   {
     path: "/adminProduct",
     name: "adminProduct",
     component: () => import("../components/Admin/Product/Index.vue"),
+    beforeEnter: requireAdmin,
   },
   {
-    path: "/adminAuthentication",
-    name: "adminAuthentication",
-    component: () => import("../components/Admin/Authentication/Index.vue"),
+    path: "/adminAccount",
+    name: "adminAccount",
+    component: () => import("../components/Admin/Account/Index.vue"),
+    beforeEnter: requireAdmin,
   },
-
+  {
+    path: "/createAbout",
+    name: "createAbout",
+    component: () => import("../components/Admin/About/About.vue"),
+    beforeEnter: requireAdmin,
+  },
+  {
+    path: "/createAccount",
+    name: "createAccount",
+    component: () => import("../components/Admin/Account/Account.vue"),
+    beforeEnter: requireAdmin,
+  },
+  {
+    path: "/createPage",
+    name: "createPage",
+    component: () => import("../components/Admin/Blog/Blog.vue"),
+    beforeEnter: requireAdmin,
+  },
+  {
+    path: "/createContact",
+    name: "createContact",
+    component: () => import("../components/Admin/Contact/Contact.vue"),
+    beforeEnter: requireAdmin,
+  },
+  {
+    path: "/createProduct",
+    name: "createProduct",
+    component: () => import("../components/Admin/Product/Product.vue"),
+    beforeEnter: requireAdmin,
+  },
   {
     path: "/create",
     name: "create",
     component: () => import("../components/Admin/Table/CRUD.vue"),
+    beforeEnter: requireAdmin,
   },
   // 404 Page
   {
@@ -101,6 +146,27 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = VueCookie.get("isAuthenticated");
+  const roleID = VueCookie.get("roleID");
+
+  if (to.matched.some((record) => record.meta.requiresAdmin)) {
+    if (!isAuthenticated || roleID !== 1) {
+      next({ name: "home" });
+    } else {
+      next();
+    }
+  } else if (to.matched.some((record) => record.meta.requiresUser)) {
+    if (!isAuthenticated || roleID !== 3) {
+      next({ name: "login" });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

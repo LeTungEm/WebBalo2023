@@ -5,6 +5,8 @@
         <div class="w-full h-screen overflow-scroll">
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
+            <router-link to="/createAbout" class="m-5 inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
+
             <h1>{{removeID}}</h1>
             <!-- Main content -->
             <Table @removeID="changeRemoveID" :data="listAbout"/>

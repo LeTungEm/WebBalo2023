@@ -3,11 +3,13 @@
         <!-- Sidebar -->
         <Sidebar :isSidebarVisible="isSidebarVisible" />
         <div class="w-full h-screen overflow-scroll">
-            <h1>{{removeID}}</h1>
+            <h1>{{ removeID }}</h1>
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
+            <router-link to="/createProduct"
+                class="m-5 inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
             <!-- Main content -->
-            <Table @removeID="changeRemoveID" :data="listProduct"/>
+            <Table @removeID="changeRemoveID" :data="listProduct" />
         </div>
     </div>
 </template>
@@ -33,22 +35,22 @@ export default {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
         },
-        getAllProduct(){
+        getAllProduct() {
             ProductsService.getAll().then(res => {
                 res.data.map(data => {
                     this.listProduct.push(
                         {
                             id: data.productID,
-                            header: data.productName, 
-                            title: data.createDate, 
+                            header: data.productName,
+                            title: data.createDate,
                             description: data.amount,
-                            image: (data.image_1)?"balo/"+data.image_1:'default.jpg'
+                            image: (data.image_1) ? "balo/" + data.image_1 : 'default.jpg'
                         }
                     )
                 });
             })
         },
-        changeRemoveID(value){
+        changeRemoveID(value) {
             this.removeID = value;
         }
     },
@@ -57,7 +59,7 @@ export default {
         Header,
         Table
     },
-    created(){
+    created() {
         this.getAllProduct();
     }
 }
