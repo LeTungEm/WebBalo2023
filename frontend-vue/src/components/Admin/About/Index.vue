@@ -7,9 +7,12 @@
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <router-link to="/createAbout" class="m-5 inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
 
-            <h1>{{removeID}}</h1>
+            <h1 v-if="message" class="text-center bg-blue-300 text-white text-lg py-3">{{message}}</h1>
             <!-- Main content -->
-            <Table @removeID="changeRemoveID" :data="listAbout"/>
+            <Table 
+                @removeID="changeRemoveID" 
+                @deleteItem="deleteAbout"
+                :data="listAbout"/>
         </div>
     </div>
 </template>
@@ -29,6 +32,7 @@ export default {
             isSidebarVisible: true,
             listAbout: [],
             removeID:"",
+            message: "",
         }
     },
     methods: {
@@ -54,6 +58,26 @@ export default {
 
         changeRemoveID(value){
             this.removeID = value;
+            this.message = "";
+        },
+
+        deleteAbout(){
+            AboutService.deleteAbout(this.removeID).then(res =>{
+                if(res.data){
+                    this.message = "Đã xóa "+this.listAbout.find(about => {
+                        if(about.id == this.removeID){
+                            return about;
+                        }
+                    }).header;
+                    this.listAbout = this.listAbout.filter(about =>{
+                        if(about.id != this.removeID){
+                            return about;
+                        }
+                    })
+                }else{
+                    this.message = "Xóa không thành công";
+                }
+            })
         }
     },
     components: {

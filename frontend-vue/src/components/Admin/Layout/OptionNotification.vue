@@ -7,9 +7,8 @@
       <div class="py-5 ml-5">        
             Do you want to delete this?    
       </div>
-      <div class="float-right">
+      <div class="float-right"  @click="$emit('modelToggle', true)">
         <div
-            @click="$emit('modelToggle', true)"
             class="inline-block text-white font-bold bg-gray-700 px-5 py-2">
             close
         </div>

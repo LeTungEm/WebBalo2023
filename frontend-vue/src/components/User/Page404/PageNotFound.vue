@@ -54,6 +54,7 @@ export default {
       let formData = new FormData();
 
       formData.append("file", this.file);
+      formData.append("action", "upload");
       formData.append("targetFolder", "balo anh");
 
       UploadImageService.uploadImage(formData)

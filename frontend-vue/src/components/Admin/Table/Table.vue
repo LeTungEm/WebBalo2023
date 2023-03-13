@@ -35,7 +35,10 @@
                     :key="key"/>
             </table>
         </div>
-        <OptionNotification @modelToggle="notiStatus = false" :status="notiStatus"/>
+        <OptionNotification 
+            @deleteItem="$emit('deleteItem')"
+            @modelToggle="notiStatus = false" 
+            :status="notiStatus"/>
     </div>
 </template>
 

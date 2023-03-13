@@ -19,6 +19,26 @@ const PRODUCT_API_URL =
             },
           });
     }
+
+    insertAbout(title, image, description){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "insertAbout",
+            title: title,
+            image: image,
+            description: description,
+        },
+      });
+    }
+
+    deleteAbout(aboutId){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "deleteAbout",
+            aboutId: aboutId,
+        },
+      });
+    }
   }
 
 export default new AboutService();
