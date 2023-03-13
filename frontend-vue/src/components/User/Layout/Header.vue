@@ -1,6 +1,6 @@
 <template>
   
-  <header class="sticky w-full top-0 z-20 bg-white"  data-aos="fade-down" data-aos-duration="1000" data-aos-delay='500'>
+  <header class="sticky w-full top-0 z-20 bg-white" >
     <div class="flex justify-between p-3 border-b shadow-lg">
         <div class="flex justify-between items-center w-full">
           <router-link to="/">
