@@ -149,7 +149,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = VueCookie.get("isAuthenticated");
-  const roleID = getRole;
+  const roleID = VueCookie.get("roleID");
 
   if (to.matched.some((record) => record.meta.requiresAdmin)) {
     if (!isAuthenticated || roleID !== 1) {
