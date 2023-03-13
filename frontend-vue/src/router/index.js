@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import VueCookie from "vue-cookie";
 
+
 const requireAdmin = (to, from, next) => {
   if (VueCookie.get("roleID") == 1 || sessionStorage.getItem("roleID") == 1) {
     next();
