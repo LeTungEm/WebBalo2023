@@ -21,7 +21,7 @@
                     Active
                 </span>
             </td>
-            <td class="px-6 py-4">{{description}}</td>
+            <td v-html="description" class="px-6 py-4"></td>
             <td class="px-6 py-4">
                 <div class="flex gap-2">
                     <span

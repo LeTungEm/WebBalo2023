@@ -18,14 +18,21 @@
                     <span class="mx-2">/</span>
                     Create
                 </div>
+                <!-- Thông báo -->
+                <h1 v-if="message" class="text-center bg-blue-300 text-white text-lg py-3">{{message}}</h1>
                 <div class="">
                     <div class="flex justify-between items-center">
-                        <h1 class="text-3xl font-bold">Create {{ title }}</h1>
+                        <h1 class="text-3xl font-bold">Create</h1>
                         <div class="flex">
                             <div
-                                class="cursor-pointer block border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-red-500 text-white hover:bg-red-600 mx-4">Discard</div>
-                            <button
-                                class="cursor-pointer border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-blue-500 text-white hover:bg-blue-600 mx-4">Create</button>
+                                class="cursor-pointer block border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-red-500 text-white hover:bg-red-600 mx-4">
+                                Discard
+                            </div>
+                            <div
+                                v-on:click="submitForm"
+                                class="cursor-pointer border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-blue-500 text-white hover:bg-blue-600 mx-4">
+                                Create
+                            </div>
                         </div>
                     </div>
                     <div class="">
@@ -46,7 +53,7 @@
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <h4 class="font-bold mb-2 text-md">Display images 1</h4>
-                                <input type="file" class="mb-5">
+                                <input type="file" v-on:change="onChangeFileUpload" class="mb-5">
                                 <img :src="img" alt="">
                             </div>
 
@@ -62,9 +69,11 @@
 import Sidebar from '@/components/Admin/Layout/Sidebar.vue'
 import Header from '@/components/Admin/Layout/Header.vue'
 import Editor from '@tinymce/tinymce-vue'
+import AboutService from '@/service/AboutService'
+import UploadImageService from '@/service/UploadImageService'
 
 export default {
-    name: 'AboutPage',
+    name: 'CreateAbout',
 
     data() {
         return {
@@ -72,12 +81,46 @@ export default {
             isSidebarVisible: true,
             description:"",
             title:"",
-
+            file: [],
+            fileName: "",
+            message: "",
         }
     },
     methods: {
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
+        },
+        submitForm() {
+
+            // upload file
+            if(this.file.size > 0){
+                let formData = new FormData();
+                formData.append("file", this.file);
+                formData.append("action", "upload");
+                formData.append("targetFolder", "about");
+                formData.append("fileName", this.fileName);
+
+                UploadImageService.uploadImage(formData)
+                    .then(function (data) {
+                        console.log("upload image: "+data.data);
+                    })
+
+                    .catch(function () {
+                    console.log("FAILURE!!");
+                    });
+            }
+            AboutService.insertAbout(this.title, this.fileName, this.description).then(res =>{
+                if(res.data){
+                    this.message = "Đã thêm "+this.title;
+                }
+            })
+
+        },
+
+        onChangeFileUpload(e) {
+            this.file = e.target.files[0];
+            var number = Math.floor(Math.random()*10000000000);
+            this.fileName = number+this.file.name;
         },
     },
     components: {

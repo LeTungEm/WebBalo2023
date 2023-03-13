@@ -49,7 +49,7 @@ export default {
                             id: data.aboutId,
                             header: data.title, 
                             title: '', 
-                            description: data.description.substr(0, 80)+"...",
+                            description: data.description,
                             image: (data.image)?"about/"+data.image:'default.jpg'
                         }
                     )

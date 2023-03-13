@@ -55,7 +55,7 @@ export default {
 
       formData.append("file", this.file);
       formData.append("action", "upload");
-      formData.append("targetFolder", "balo anh");
+      formData.append("targetFolder", "balo");
 
       UploadImageService.uploadImage(formData)
         .then(function (data) {
