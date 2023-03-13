@@ -16,13 +16,13 @@
                         </svg>
                     </span>
                     <span class="mx-2">/</span>
-                    Create
+                    {{ (aboutId == 0)?"Create":"Update" }}
                 </div>
                 <!-- Thông báo -->
                 <h1 v-if="message" class="text-center bg-blue-300 text-white text-lg py-3">{{message}}</h1>
                 <div class="">
                     <div class="flex justify-between items-center">
-                        <h1 class="text-3xl font-bold">Create</h1>
+                        <h1 class="text-3xl font-bold">{{ (aboutId == 0)?"Create":"Update" }}</h1>
                         <div class="flex">
                             <div
                                 class="cursor-pointer block border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-red-500 text-white hover:bg-red-600 mx-4">
@@ -31,7 +31,7 @@
                             <div
                                 v-on:click="submitForm"
                                 class="cursor-pointer border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-blue-500 text-white hover:bg-blue-600 mx-4">
-                                Create
+                                Submit
                             </div>
                         </div>
                     </div>
@@ -52,9 +52,10 @@
                                     }" />
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
-                                <h4 class="font-bold mb-2 text-md">Display images 1</h4>
-                                <input type="file" v-on:change="onChangeFileUpload" class="mb-5">
-                                <img :src="img" alt="">
+                                <h4 class="font-bold mb-2 text-md">Image</h4>
+                                <img v-if="fileName" :src="'https://webbalo2023.000webhostapp.com/images/about/'+fileName" alt="">
+                                <label for="file" class="inline-block px-5 py-2 text-white bg-blue-500 rounded font-bold border">Upload Image</label>
+                                <input id="file" hidden type="file" v-on:change="onChangeFileUpload" class="mb-5">
                             </div>
 
                         </div>
@@ -79,6 +80,7 @@ export default {
         return {
             account: false,
             isSidebarVisible: true,
+            aboutId: this.$route.params.aboutId,
             description:"",
             title:"",
             file: [],
@@ -87,9 +89,21 @@ export default {
         }
     },
     methods: {
+        
+        getAbout(){
+            AboutService.getByID(this.aboutId).then(res =>{
+                if(res.data){
+                    this.title = res.data.title;
+                    this.description = res.data.description;
+                    this.fileName = res.data.image;
+                }
+            })
+        },
+
         toggleSidebar() {
             this.isSidebarVisible = !this.isSidebarVisible;
         },
+
         submitForm() {
 
             // upload file
@@ -109,11 +123,16 @@ export default {
                     console.log("FAILURE!!");
                     });
             }
-            AboutService.insertAbout(this.title, this.fileName, this.description).then(res =>{
-                if(res.data){
-                    this.message = "Đã thêm "+this.title;
-                }
-            })
+
+            if(this.aboutId == 0){
+                AboutService.insertAbout(this.title, this.fileName, this.description).then(res =>{
+                    if(res.data){
+                        this.message = "Đã thêm "+this.title;
+                    }
+                })
+            }else{
+                console.log("update");
+            }
 
         },
 
@@ -128,6 +147,9 @@ export default {
         Header,
         'editor': Editor
     },
+    created(){
+        this.getAbout();
+    }
 
 }
 </script>

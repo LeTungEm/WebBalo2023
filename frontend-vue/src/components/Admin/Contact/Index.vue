@@ -6,10 +6,14 @@
             <h1>{{ removeID }}</h1>
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
-            <router-link to="/createContact"
+            <router-link to="/createContact/0"
                 class="m-5 inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
             <!-- Main content -->
-            <Table @removeID="changeRemoveID" :data="listContact" />
+            <Table 
+                @removeID="changeRemoveID" 
+                @deleteItem="deleteContact"
+                :data="listContact" 
+                :from-type="'/createContact/'"/>
         </div>
     </div>
 </template>

@@ -32,7 +32,8 @@
                     :title="value.title" 
                     :description="value.description" 
                     :image="value.image"
-                    :key="key"/>
+                    :key="key"
+                    :fromType="fromType"/>
             </table>
         </div>
         <OptionNotification 
@@ -57,6 +58,7 @@ export default {
     },
     props:{
         data: Array,
+        fromType: String,
     },
     data() {
         return {

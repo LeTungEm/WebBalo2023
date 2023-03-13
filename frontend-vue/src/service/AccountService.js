@@ -53,6 +53,15 @@ class AccountService {
       },
     });
   }
+
+  deleteAccount(accountId){
+    return axios.get(`${PRODUCT_API_URL}`, {
+      params: {
+          action: "deleteAccount",
+          accountId: accountId,
+      },
+    });
+  }
 }
 // https://webbalo2023.000webhostapp.com/Controllers/AccountController.php?action=insertAccount&first_name=test&last_name=testLast&email=&password=&image=&gender=2&phone=&address=
 export default new AccountService();
