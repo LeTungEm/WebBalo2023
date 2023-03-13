@@ -10,18 +10,28 @@
         </span>
       </button>
       <div class="flex items-center">
-        <button class="inline-block relative mx-3">
-          <i class="fa fa-bell" aria-hidden="true"></i>
-          <span
-            class="animate-ping absolute top-1 right-0.5 block h-1 w-1 rounded-full ring-2 ring-green-400 bg-green-600"></span>
-        </button>
+        <p class="block font-semibold px-4 py-2 ">{{ userInfo.email }}</p>
         <div class="relative">
-          <button class="mx-3" @click="toggleAccount">
+          <button class="inline-block relative mx-3" @click="notify = !notify">
+            <i class="fa fa-bell" aria-hidden="true"></i>
+            <span
+              class="animate-ping absolute top-1 right-0.5 block h-1 w-1 rounded-full ring-2 ring-green-400 bg-green-600"></span>
+          </button>
+          <div class="absolute z-30 right-2 shadown-lg top-6" :class="{ hidden: !notify }">
+            <div class="bg-white rounded-lg shadow-lg py-2 w-48">
+              <p class="block font-semibold px-4 py-2 cursor-pointer">Get Nofify</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button class="mx-3" @click="this.account = !this.account">
             <i class="fa fa-user" aria-hidden="true"></i>
           </button>
           <div class="absolute z-30 right-0 shadown-lg top-6" :class="{ hidden: !account }">
             <div class="bg-white rounded-lg shadow-lg py-2 w-48">
-              <p class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer border-b-2">{{ userInfo.first_name }} {{ userInfo.last_name }}</p>
+              <p class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer border-b-2">{{ userInfo.first_name
+              }} {{ userInfo.last_name }}</p>
               <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Your profile</a>
               <a href="#" class="block font-semibold px-4 py-2 | hover:bg-gray-50 cursor-pointer">Settings</a>
               <button @click="logout"
@@ -42,13 +52,11 @@ export default {
   data() {
     return {
       account: false,
-      userInfo: []
+      userInfo: [],
+      notify: false,
     }
   },
   methods: {
-    toggleAccount() {
-      this.account = !this.account;
-    },
     logout() {
       sessionStorage.removeItem('accountId');
       sessionStorage.removeItem('roleID');
@@ -59,11 +67,20 @@ export default {
       this.$router.push('/login');
     },
     getAllInfoByAccountId() {
-      AccountService.getByID(sessionStorage.getItem('accountId')).then(
-        (res) => {
-          this.userInfo = res.data
-        }
-      )
+      if (sessionStorage.getItem('accountId') != null) {
+        AccountService.getByID(sessionStorage.getItem('accountId')).then(
+          (res) => {
+            this.userInfo = res.data
+          }
+        )
+      }
+      else {
+        AccountService.getByID(this.$cookies.get('accountId')).then(
+          (res) => {
+            this.userInfo = res.data
+          }
+        )
+      }
     },
     // Láy item
     getItemFromsessionStorage() {

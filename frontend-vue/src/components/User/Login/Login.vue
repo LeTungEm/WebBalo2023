@@ -113,15 +113,17 @@ export default {
             AccountService.getByID(res.data.accountId).then(res => {
               sessionStorage.setItem('accountId', res.data.accountId);
               sessionStorage.setItem('roleID', res.data.roleID);
-              this.$cookies.set("roleId", res.data.roleID, 30);
+              this.$cookies.set("roleID", res.data.roleID, 30);
+              this.$cookies.set("accountId", res.data.accountId, 30);
               if (this.remember) {
                 this.$cookies.set('accountId', res.data.accountId, 30);
-                if (this.$cookies.set('roleID') == 1) {
-                  // this.$cookies.set('AdminHome', '/admin');
-                }
-                else {
-                  // this.$cookies.set('UserHome', '/');
-                }
+                this.$cookies.set('roleID', res.data.roleID);
+                // if (this.$cookies.set('roleID') == 1) {
+                //   // this.$cookies.set('AdminHome', '/admin');
+                // }
+                // else {
+                //   // this.$cookies.set('UserHome', '/');
+                // }
               }
               if (res.data.roleID == "1") {
                 this.$router.push("/admin");

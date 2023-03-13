@@ -58,7 +58,7 @@ export default {
             sessionStorage.removeItem('accountId');
             sessionStorage.removeItem('roleID');
             this.$cookies.remove("accountId");
-            this.$cookies.remove("roleId");
+            this.$cookies.remove("roleID");
             // Điều hướng đến trang đăng nhập
             this.hidden = true
             this.$router.push('/login');
