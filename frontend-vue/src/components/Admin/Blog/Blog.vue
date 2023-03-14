@@ -47,7 +47,8 @@
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <h4 class="font-bold mb-2 text-md">image</h4>
-                                <input type="file" class="mb-5">
+                                <label for="file" class="inline-block px-5 py-2 text-white bg-blue-500 rounded font-bold border">Upload Image</label>
+                                <input id="file" hidden type="file" class="mb-5">
                                 <img :src="img" alt="">
                             </div>
                             <div class="relative z-0 w-full mb-6 group">

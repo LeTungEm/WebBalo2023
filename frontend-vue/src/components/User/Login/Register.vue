@@ -147,6 +147,7 @@ export default {
             }else{
                 AccountService.registerAccount(this.account.firstName, this.account.lastName, this.account.email, this.account.password).then(
                     res => {
+                        console.log(res.data);
                         if(res.data){
                             this.$router.push("/login");
                         }
