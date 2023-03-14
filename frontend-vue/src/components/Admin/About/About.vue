@@ -53,7 +53,10 @@
                             </div>
                             <div class="relative z-0 w-full mb-6 group">
                                 <h4 class="font-bold mb-2 text-md">Image</h4>
-                                <img v-if="fileName" :src="'https://webbalo2023.000webhostapp.com/images/about/'+fileName" alt="">
+                                <img v-if="blobURL" :src="blobURL" alt="">
+                                <div v-else>
+                                    <img v-if="fileName" :src="'https://webbalo2023.000webhostapp.com/images/about/'+fileName" alt="">
+                                </div>                                
                                 <label for="file" class="inline-block px-5 py-2 text-white bg-blue-500 rounded font-bold border">Upload Image</label>
                                 <input id="file" hidden type="file" v-on:change="onChangeFileUpload" class="mb-5">
                             </div>
@@ -80,6 +83,7 @@ export default {
         return {
             account: false,
             isSidebarVisible: true,
+            blobURL: "",
             aboutId: this.$route.params.aboutId,
             description:"",
             title:"",
@@ -107,7 +111,7 @@ export default {
         submitForm() {
 
             // upload file
-            if(this.file.size > 0){
+            if(this.file && this.file.size > 0){
                 let formData = new FormData();
                 formData.append("file", this.file);
                 formData.append("action", "upload");
@@ -138,6 +142,7 @@ export default {
 
         onChangeFileUpload(e) {
             this.file = e.target.files[0];
+            this.blobURL = URL.createObjectURL(this.file);
             var number = Math.floor(Math.random()*10000000000);
             this.fileName = number+this.file.name;
         },

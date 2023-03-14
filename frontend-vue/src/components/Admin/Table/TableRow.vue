@@ -4,7 +4,9 @@
             <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
                 <div class="relative h-10 w-10">
                     <img class="h-full w-full rounded-full object-cover object-center"
-                        :src="'https://webbalo2023.000webhostapp.com/images/'+image"
+                        :src="(image != 'default.jpg')?
+                        'https://webbalo2023.000webhostapp.com/images/'+image
+                        :'https://webbalo2023.000webhostapp.com/images/Ddefault.jpg'"
                         alt="" />
                     <span
                         class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
@@ -71,8 +73,6 @@ export default {
         image: String,
         fromType: String,
     },
-
-
 }
 </script>
 

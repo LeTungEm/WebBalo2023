@@ -11,13 +11,36 @@ const PRODUCT_API_URL =
           });
     }
 
-    getByID(catID){
+    getByID(blogId){
         return axios.get(`${PRODUCT_API_URL}`, {
             params: {
                 action: "getByID",
-                catID: catID,
+                blogId: blogId,
             },
           });
+    }
+
+    insertPage(blogName, content, image, createDate, author, published){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "insertPage",
+            blogName: blogName,
+            content: content,
+            image: image,
+            createDate: createDate,
+            author: author, 
+            published: published
+        },
+      });
+    }
+
+    deletePage(blogId){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "deletePage",
+            blogId: blogId,
+        },
+      });
     }
   }
 
