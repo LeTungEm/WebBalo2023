@@ -26,7 +26,7 @@
                         <div class="w-full mr-6">
                             <div class="flex items-center justify-between shadow-lg p-4 rounded-lg border mb-10">
                                 <div class=" w-full">
-                                    <h1 class="text-purple-500">Congratulations {{ name }}</h1>
+                                    <h1 class="text-purple-500">Congratulations</h1>
                                     <p class="text-sm text-gray-600">“Do or do not, there is no try.”</p>
                                 </div>
                                 <img style="height:140px"

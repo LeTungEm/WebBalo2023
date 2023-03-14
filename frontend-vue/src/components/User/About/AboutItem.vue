@@ -2,7 +2,7 @@
     <div class="grid grid-cols-5 px-4 lg:px-8 xl:px-36 my-24 wrap max-w-max mx-auto">
         <div class="col-span-5 md:col-span-2 w-full">
             <img 
-                class="w-fit mx-auto h-full object-cover" 
+                class="w-full mx-auto h-96 object-cover" 
                 :src="'https://webbalo2023.000webhostapp.com/images/about/'+ about.image" />
         </div>
         <div class="col-span-5 md:col-span-3 px-8 text-md leading-8 my-6">
