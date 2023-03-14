@@ -8,7 +8,8 @@
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <router-link to="/createContact/0"
                 class="m-5 inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
-            <!-- Main content -->
+            <h1 v-if="message" class="text-center bg-blue-300 text-white text-lg py-3">{{message}}</h1>
+                <!-- Main content -->
             <Table 
                 @removeID="changeRemoveID" 
                 @deleteItem="deleteContact"
@@ -33,6 +34,7 @@ export default {
             isSidebarVisible: true,
             listContact: [],
             removeID: "",
+            message: "",
         }
     },
     methods: {
@@ -56,7 +58,29 @@ export default {
         },
         changeRemoveID(value) {
             this.removeID = value;
-        }
+            this.message = "";
+        },
+        deleteContact(){
+            ContactService.deleteContact(this.removeID).then(res =>{
+                if(res.data){
+                    // Tìm item đã xóa
+                    this.message = "Đã xóa "+this.listContact.find(contact => {
+                        if(contact.id == this.removeID){
+                            return contact;
+                        }
+                    }).header;
+
+                    // Xoá item khỏi danh sách local
+                    this.listContact = this.listContact.filter(contact =>{
+                        if(contact.id != this.removeID){
+                            return contact;
+                        }
+                    })
+                }else{
+                    this.message = "Xóa không thành công";
+                }
+            })
+        },
     },
     components: {
         Sidebar,

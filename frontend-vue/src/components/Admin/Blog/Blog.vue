@@ -43,7 +43,7 @@
           v-if="errMessage"
           class="text-center bg-red-300 text-white text-lg py-3"
         >
-          {{ message }}
+          {{ errMessage }}
         </h1>
         <div class="">
           <div class="flex justify-between items-center">

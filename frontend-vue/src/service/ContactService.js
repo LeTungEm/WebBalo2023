@@ -19,6 +19,26 @@ const PRODUCT_API_URL =
             },
           });
     }
+
+    insertContact(contactName, email, author){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "insertContact",
+            contactName: contactName,
+            email: email,
+            author: author,
+        },
+      });
+    }
+
+    deleteContact(contactId){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "deleteContact",
+            contactId: contactId,
+        },
+      });
+    }
   }
 
 export default new ContactService();
