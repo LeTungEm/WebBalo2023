@@ -17,7 +17,7 @@
                     Shop now
                 </p>
             </router-link>
-            <div class="py-12 bg-slate-100">
+            <div class="py-12 bg-slate-100" >
                 <div class="w-10/12 mx-auto">
                     <h1 class="text-6xl text-red-500 font-bold leading-none mb-7 text-center border-b pb-6">
                         Why Shop With Us

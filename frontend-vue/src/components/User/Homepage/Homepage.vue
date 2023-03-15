@@ -90,7 +90,7 @@
           </swiper>
         </div>
       </div>
-      <div class="relative w-11/12 md:w-8/12 mx-auto" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay='500'>
+      <div class="relative w-11/12 md:w-8/12 mx-auto" data-aos="fade-down" data-aos-duration="1500" data-aos-delay='500'>
         <h1 class="text-center text-5xl font-bold mb-6">BEST SELLERS</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <ProductItem :productData="product" v-for="product in products" :key="product.productID" />
@@ -100,7 +100,7 @@
           Shop All Products
         </button>
       </div>
-      <div class="relative my-32" data-aos="zoom-out" data-aos-duration="1500" data-aos-delay='500'>
+      <div class="relative my-32" data-aos="flip-right" data-aos-duration="2000" data-aos-delay='2200'>
         <div class="text-center mb-10">
           <h1 class="font-bold text-4xl mb-4">News</h1>
           <p class="text-gray-600 italic text-sm">
