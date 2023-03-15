@@ -4,8 +4,8 @@
             <div class="lg:w-10/12 mx-auto">
                 <div class="lg:flex w-full justify-between pt-5">
                     <div class="pt-6 mr-5">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
-                            class="w-1/2 mx-auto lg:w-full" alt="">
+                        <img src="https://webbalo2023.000webhostapp.com/images/logo/logo.jpg"
+                            class="w-2/3 mx-auto" alt="">
                         <p class="pt-4 pb-3 text-left">SIGN UP FOR NEWSLETTER</p>
                         <div class="w-full relative">
                             <div class="w-full">
@@ -31,19 +31,9 @@
                             </button>
                             <div class="block top-full min-w-full w-max">
                                 <ul class="text-left">
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">New In</a>
+                                    <li class="py-2"><router-link to="/shop"
+                                            class="whitespace-nowrap hover:text-gray-300">New In</router-link>
                                     </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Women</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Men</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Bags &
-                                            Accessories</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Top Brands</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Sale & Special
-                                            Offers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -56,24 +46,14 @@
                             </button>
                             <div class="top-full min-w-full w-max">
                                 <ul class="text-left">
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">About</a>
+                                    <li class="py-2"><router-link to="about"
+                                            class="whitespace-nowrap hover:text-gray-300">About Us</router-link>
                                     </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Customer
-                                            Service</a>
+                                    <li class="py-2"><router-link to="blog"
+                                            class="whitespace-nowrap hover:text-gray-300">Blog For News</router-link>
                                     </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Reward
-                                            Program</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Shipping &
-                                            Returns</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Privacy
-                                            Policy</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Terms &
-                                            Conditions</a>
-                                    </li>
-                                    <li class="py-2"><a href="" class="whitespace-nowrap hover:text-gray-300">Blogs</a>
+                                    <li class="py-2"><router-link to="shop"
+                                            class="whitespace-nowrap hover:text-gray-300">Shop Now</router-link>
                                     </li>
                                 </ul>
                             </div>
@@ -81,29 +61,14 @@
                         <div class="pt-5">
                             <button class="relative w-full border-b-2 border-white pb-4 focus:outline-none">
                                 <div class="flex justify-between w-full">
-                                    <p class="text-2xl">CUSTOMER SERVICE</p>
+                                    <p class="text-2xl whitespace-nowrap">CUSTOMER SERVICE</p>
                                     <span><i class="fa fa-plus lg:hidden" aria-hidden="true"></i></span>
                                 </div>
                             </button>
                             <div class="top-full min-w-full w-max">
                                 <ul>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Search
-                                            Terms</a>
-                                    </li>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Advanced
-                                            Search</a>
-                                    </li>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Orders And
-                                            Returns</a>
-                                    </li>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Contact Us</a>
-                                    </li>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Theme FAQs</a>
-                                    </li>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Consultant</a>
-                                    </li>
-                                    <li class="py-2"><a class="whitespace-nowrap hover:text-gray-300" href="">Store
-                                            Locations</a>
+                                    <li class="py-2"><router-link to="contact"
+                                            class="whitespace-nowrap hover:text-gray-300">Contact us</router-link>
                                     </li>
                                 </ul>
                             </div>
@@ -134,10 +99,14 @@
                         </ul>
                     </nav>
                     <div class="flex lg:justify-between items-center relative">
-                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/visaIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/atmIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/paypalIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/visaIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img
+                                src="https://webbalo2023.000webhostapp.com/images/payments/visaIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img src="https://webbalo2023.000webhostapp.com/images/payments/atmIcon.png"
+                                alt=""></a>
+                        <a href="" class="px-1"><img
+                                src="https://webbalo2023.000webhostapp.com/images/payments/paypalIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img
+                                src="https://webbalo2023.000webhostapp.com/images/payments/visaIcon.png" alt=""></a>
                     </div>
                 </div>
                 <div class="flex pt-5">
@@ -155,7 +124,7 @@ export default {
     name: "FooterPage",
     data() {
         return {
-
+            categories: []
         }
     },
     methods: {
@@ -165,7 +134,7 @@ export default {
                 behavior: "smooth"
             });
         }
-    }
+    },
 }
 </script>
 
