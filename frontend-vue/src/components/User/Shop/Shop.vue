@@ -151,50 +151,6 @@
                                         class="mb-4 cursor-pointer">{{category.catName}}</li>
                                 </ul>
                             </div>
-                            <!-- Brand -->
-                            <button @click="isBrand = !isBrand"
-                                class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                                brand
-                                <i :class="isBrand ? 'fa fa-minus' : 'fa fa-plus'" class="" aria-hidden="true"></i>
-                            </button>
-                            <div class="mb-6 w-full px-4 w-full" v-show="isBrand">
-                                <ul>
-                                    <li class="border-b" v-for="index in 6" :key="index">
-                                        <div class="flex justify-between items-center">
-                                            <div class="my-4">
-                                                <input type="checkbox" class="mr-2">
-                                                Brand {{ index }}
-                                            </div>
-                                            <p class="text-gray-400">(120)</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Product Type -->
-                            <button @click="isProduct = !isProduct"
-                                class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                                product
-                                <i :class="isProduct ? 'fa fa-minus' : 'fa fa-plus'" class="" aria-hidden="true"></i>
-                            </button>
-                            <div class="mb-6 w-full px-4" v-show="isProduct">
-                                <ul>
-                                    <li class="border-b" v-for="index in 6" :key="index">
-                                        <div class="flex justify-between items-center">
-                                            <div class="my-4">
-                                                <input type="checkbox" class="mr-2">
-                                                Product {{ index }}
-                                            </div>
-                                            <p class="text-gray-400">(120)</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Slider -->
-                            <h3 class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                                Best seller
-                            </h3>
 
                             <!-- Availibility -->
                             <h3 class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
