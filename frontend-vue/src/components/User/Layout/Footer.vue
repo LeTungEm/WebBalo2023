@@ -1,10 +1,10 @@
 <template>
-    <footer data-aos="fade-right" data-aos-duration="1500" data-aos-delay='500'>
+    <footer data-aos="fade-down" data-aos-duration="1500" data-aos-delay='1500'>
         <div class="bg-gray-800 text-white p-5">
             <div class="lg:w-10/12 mx-auto">
                 <div class="lg:flex w-full justify-between pt-5">
                     <div class="pt-6 mr-5">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxBClJiLKIN7S25p3gK_5aX_HSxGZ_kbnrA&usqp=CAU"
+                        <img src="https://webbalo2023.000webhostapp.com/images/logo/logo.jpg"
                             class="w-1/2 mx-auto lg:w-full" alt="">
                         <p class="pt-4 pb-3 text-left">SIGN UP FOR NEWSLETTER</p>
                         <div class="w-full relative">

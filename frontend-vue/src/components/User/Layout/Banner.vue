@@ -1,5 +1,5 @@
 <template>
-    <div class="relative w-full py-8 px-12 bg-yellow-900 z-0">
+    <div class="relative w-full py-8 px-12 bg-yellow-900 z-0"  >
         <div class="relative z-10 text-center py-12">
             <h1 class="text-white text-center text-4xl mb-4">
                 {{ bannerName }}</h1>
