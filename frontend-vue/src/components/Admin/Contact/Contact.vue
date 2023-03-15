@@ -39,6 +39,7 @@
         >
           {{ message }}
         </h1>
+        <!-- Thông báo lỗi -->
         <h1
           v-if="errMessage"
           class="text-center bg-red-300 text-white text-lg py-3"
