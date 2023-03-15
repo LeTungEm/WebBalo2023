@@ -1,5 +1,5 @@
 <template>
-    <div @click="showProductDetail(productData.productID)" class="mb-6 h-full border-2 rounded-xl cursor-pointer relative">
+    <div @click="showProductDetail(productData.productID)" class="mb-6 h-full border-2 rounded-xl cursor-pointer relative pb-5">
         <div class="overflow-hidden cursor-pointer rounded-t-xl relative group">
             <div
                 class="z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-x-0 -bottom-2 pt-30 text-white flex items-end">
@@ -17,7 +17,7 @@
             <div class="text-center my-6">
                 <router-link to="" class="text-xl uppercase">{{ productData.productName }}</router-link>
             </div>
-            <p class="absolute bottom-0 left-0 right-0 text-center text-red-500 hover:text-red-600 mt-3">{{ formatNumber(productData.price) }}</p>
+            <p class="absolute bottom-5 left-0 right-0 text-center text-red-500 hover:text-red-600 mt-3">{{ formatNumber(productData.price) }}</p>
     </div>
 </template>
 
