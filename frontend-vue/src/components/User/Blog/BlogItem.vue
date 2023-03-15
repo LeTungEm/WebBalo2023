@@ -1,10 +1,10 @@
 <template>
-    <div  data-aos="fade-down" data-aos-duration="1200" data-aos-delay='500'>
+    <div class="h-full shadow-md pb-12 bg-gray-50 relative">
         <router-link to="/blog">
             <img :src="'https://webbalo2023.000webhostapp.com/images/blog/' + blogData.image"
                 class="w-full h-52 md:h-64 lg:h-96 xl:h-64 object-cover" />
         </router-link>
-        <div class="bg-gray-50 p-8"  data-aos="fade-down" data-aos-duration="1500" data-aos-delay='1500'>
+        <div class="p-8 relative">
             <div class="text-xs text-gray-600 uppercase font-semibold">
                 {{ blogData.createDate }}
             </div>
@@ -14,15 +14,15 @@
             <p class="mt-4 max-w-md">
                 {{ blogData.content.substr(0, 150) }}...
             </p>
-            <router-link to="/blog"
-                class="absolute bottom-0 my-4 flex items-center mt-6 uppercase text-sm text-black hover:text-gray-600 font-semibold">Read
-                article
-                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </router-link>
         </div>
+        <router-link to="/blog"
+            class="px-8 absolute bottom-5 flex items-center  uppercase text-sm text-black hover:text-gray-600 font-semibold">Read
+            article
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </router-link>
     </div>
 </template>
 
