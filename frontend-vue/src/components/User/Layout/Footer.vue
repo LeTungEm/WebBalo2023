@@ -4,7 +4,7 @@
             <div class="lg:w-10/12 mx-auto">
                 <div class="lg:flex w-full justify-between pt-5">
                     <div class="pt-6 mr-5">
-                        <img src="../../../../src/assets/images/logo/logo.jpg"
+                        <img src="https://webbalo2023.000webhostapp.com/images/logo/logo.jpg"
                             class="w-1/2 mx-auto lg:w-full" alt="">
                         <p class="pt-4 pb-3 text-left">SIGN UP FOR NEWSLETTER</p>
                         <div class="w-full relative">
