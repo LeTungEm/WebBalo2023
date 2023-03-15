@@ -4,7 +4,6 @@
         <Sidebar :isSidebarVisible="isSidebarVisible" />
         <div class="w-full h-screen overflow-scroll">
             <!-- Header -->
-            
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <router-link to="/createAccount/0" class="m-5 inline-block border px-8 py-3 shadown-lg rounded-md my-5 uppercase hover:bg-gray-100">Create</router-link>
             <h1 v-if="message" class="text-center bg-blue-300 text-white text-lg py-3">{{message}}</h1>

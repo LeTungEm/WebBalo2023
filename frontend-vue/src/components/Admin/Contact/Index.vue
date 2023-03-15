@@ -3,7 +3,6 @@
         <!-- Sidebar -->
         <Sidebar :isSidebarVisible="isSidebarVisible" />
         <div class="w-full h-screen overflow-scroll">
-            <h1>{{ removeID }}</h1>
             <!-- Header -->
             <Header :isSidebarVisible="isSidebarVisible" @toggleSidebar="toggleSidebar" />
             <router-link to="/createContact/0"
