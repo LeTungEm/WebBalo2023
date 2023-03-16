@@ -137,23 +137,41 @@
                                     </h1>
 
                                     <p>
-                                        Eos no lorem eirmod diam diam, eos elitr et gubergren diam
-                                        sea. Consetetur vero aliquyam invidunt duo dolores et duo
-                                        sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod
-                                        consetetur invidunt sed sed et, lorem duo et eos elitr,
-                                        sadipscing kasd ipsum rebum diam. Dolore diam stet rebum
-                                        sed tempor kasd eirmod. Takimata kasd ipsum accusam
-                                        sadipscing, eos dolores sit no ut diam consetetur duo
-                                        justo est, sit sanctus diam tempor aliquyam eirmod nonumy
-                                        rebum dolor accusam, ipsum kasd eos consetetur at sit
-                                        rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr
-                                        sanctus eirmod takimata dolor ea invidunt. Dolore magna
-                                        est eirmod sanctus dolor, amet diam et eirmod et ipsum.
-                                        Amet dolore tempor consetetur sed lorem dolor sit lorem
-                                        tempor. Gubergren amet amet labore sadipscing clita clita
-                                        diam clita. Sea amet et sed ipsum lorem elitr et, amet et
-                                        labore voluptua sit rebum. Ea erat sed et diam takimata
-                                        sed justo. Magna takimata justo et amet magna et.
+                                        Not bringing convenience and satisfaction to customers, we have appropriate policies when customers need to exchange / return products. We hope that the products customers have chosen are the most satisfactory products.
+
+Change/return products with specific conditions, please refer to the details below:
+ <b>1. Cases of exchange/return</b>  <br>
+
+1.1 - Goods delivered with technical defects: <br>
+1.2 - Delivered goods are broken, wrong content or missing:<br>
+
+The product is only considered a technical defect when it is confirmed by the Technical Center or the Warranty Center of the product.
+<br> <b>2. List of free exchange/return (products do not apply for exchange)</b> <br>
+
+Promotional products (with a discount of 10% or more compared to the original price), goods of the same price.
+Returned products are not due to technical errors
+Accessory
+<br> <b> 3. Conditions of exchange</b>  <br>
+Please read carefully the provisions outlined in our Return Policy to ensure that the product/goods requested for exchange/return meets all of the following conditions:
+
+Products to be returned must be ordered online or purchased at the store system
+Still in original packaging and undamaged.
+Stamps/warranty cards, brand stamps, technical instructions and accompanying gifts (if any) etc. must be complete and intact.
+There is no data in the product with a storage device.
+Must not be dirty, scratched, broken, damaged, have a strange smell or show signs of being washed or used.
+Goods can only be exchanged for a similar product (same model), another product (same brand) of equal or lower value.
+You are required to have a purchase receipt when exchanging goods. The company does not accept the exchange of goods without the above documents.
+Parts, details, accessories, user manuals, accompanying gifts (if any), etc. must be complete and have no signs of use.
+Each order can only be exchanged once.
+Returned products that do not meet the above conditions will be automatically returned to the address registered by you in the order.
+<br> <b>4. Time to return goods</b> <br>
+
+The time to apply for return and exchange of goods purchased at the store system of the store system is 3-7 days.
+For customers ordering at the website, the return time is 3-7 days from the date you receive the product.
+<br> <b>  5. Cost of returning goods</b> <br>
+
+For products exchanged due to technical defects, customers will be free of charge for exchange and free delivery to the location indicated on the return request form.
+For products exchanged due to the subjective opinion of the customer, you will pay the 2-way shipping fee.
                                     </p>
                                 </div>
                             </div>

@@ -9,8 +9,7 @@
             <h1 class="font-display font-bold text-5xl mb-6">The Blog</h1>
             <p class="text-gray-400">
                 <i>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel arcu
-                    commodo, sodales nibh sed, efficitur sapien.
+                    Through the Website, we agree and respect the Customer's search, reference, display of information contained on the Website on the computer screen, the Customer's online shopping at all times with the condition is that such activities of the Customer must be consistent with the Terms and Conditions and in accordance with the laws of Vietnam.
                 </i>
             </p>
         </div>
