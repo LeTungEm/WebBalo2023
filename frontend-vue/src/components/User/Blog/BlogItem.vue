@@ -15,7 +15,7 @@
                 {{ blogData.content.substr(0, 150) }}...
             </p>
         </div>
-        <router-link to="/blog"
+        <router-link to="/page"
             class="px-8 absolute bottom-5 flex items-center  uppercase text-sm text-black hover:text-gray-600 font-semibold">Read
             article
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
