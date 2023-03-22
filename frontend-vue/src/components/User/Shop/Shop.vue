@@ -1,11 +1,8 @@
 <template>
     <div>
-        <Header/>
-        <Banner 
-            :bannerName="'categories'" 
-            :shopName="'PALDNE'" 
-            :menu="'Shop'"/>
-        <div class="lg:w-11/12 mx-auto" data-aos="fade-down" data-aos-duration="1500">
+        <HeaderPage :quant="getTotalQuantity()" />
+        <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
+        <div class="lg:w-11/12 mx-auto">
             <div class="mb-12 mt-20 px-8 lg:px-0">
                 <h1 class="text-6xl font-bold mb-4">Shop with us</h1>
                 <p>Browse from {{ products.length }} latest items</p>
@@ -21,17 +18,12 @@
                         </button>
                         <div class="mb-6 w-full px-4" v-show="isopenCategories">
                             <ul>
-                                <li 
-                                        v-bind:class="{'border-b-2': catInput == ''}"
-                                        @click="catInput = ''" 
-                                        :key="'allProduct'" 
-                                        class="mb-4 cursor-pointer">All</li>
-                                <li 
-                                    v-bind:class="{'border-b-2': catInput == category.catId}"
-                                    v-for="category in categories" 
-                                    @click="catInput = category.catId" 
-                                    :key="category.catId" 
-                                    class="mb-4 cursor-pointer">{{category.catName}}</li>
+                                <li v-bind:class="{ 'border-b-2': catInput == '' }" @click="catInput = ''"
+                                    :key="'allProduct'" class="mb-4 cursor-pointer">All</li>
+                                <li v-bind:class="{ 'border-b-2': catInput == category.catId }"
+                                    v-for="category in categories" @click="catInput = category.catId" :key="category.catId"
+                                    class="mb-4 cursor-pointer">
+                                    {{ category.catName }}</li>
                             </ul>
                         </div>
 
@@ -40,7 +32,7 @@
                             dynamicBullets: true,
                         }" :modules="modules" class="hidden lg:block">
                             <swiper-slide v-for="product in products" :key="product.productID">
-                                <ProductItem :productData="product"/>
+                                <ProductItem :productData="product" />
                             </swiper-slide>
 
                         </swiper>
@@ -90,9 +82,9 @@
                         <div class="w-1/2">
                             <button @click="onToggle"
                                 class="lg:hidden mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] 
-                                                                                                                                                  before:bottom-0 before:left-0 before:bg-black
-                                                                                                                                                  before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-                                                                                                                                                  before:transition before:ease-in-out before:duration-300">
+                                                                                                                                                                                      before:bottom-0 before:left-0 before:bg-black
+                                                                                                                                                                                      before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
+                                                                                                                                                                                      before:transition before:ease-in-out before:duration-300">
                                 <i class="fa fa-filter" aria-hidden="true"></i>
                                 <span class="ml-2">Filters</span>
                             </button>
@@ -105,15 +97,19 @@
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </div>
-                            <input type="search" v-model="search" id="default-search" class="block w-full p-4 pl-10 w-full text-sm border"
-                                placeholder="Search Mockups, Logos..." required>
+                            <input type="search" v-model="search" id="default-search"
+                                class="block w-full p-4 pl-10 w-full text-sm border" placeholder="Search Mockups, Logos..."
+                                required>
                         </div>
                     </div>
                     <h1 class="uppercase text-5xl mb-12">Classical Balos</h1>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                        <ProductItem v-for="product in orderByProduct()" :productData="product" :key="product.productID" />
+                        <ProductItem v-for="product in orderByProduct()" :productData="product" :key="product.productID"
+                            @add-to-cart="addToCart" />
                     </div>
-                    <button class="flex mx-auto rounded-full border bg-black text-white hover:bg-gray-800 duration-200 px-8 py-3 my-8">Load more</button>
+                    <button
+                        class="flex mx-auto rounded-full border bg-black text-white hover:bg-gray-800 duration-200 px-8 py-3 my-8">Load
+                        more</button>
                 </div>
             </div>
             <transition name="fade">
@@ -138,17 +134,11 @@
                             </button>
                             <div class="mb-6 w-full px-4" v-show="isopenCategories">
                                 <ul>
-                                    <li 
-                                        v-bind:class="{'border-b-2': catInput == ''}"
-                                        @click="catInput = ''" 
-                                        :key="'allProduct'" 
-                                        class="mb-4 cursor-pointer">All</li>
-                                    <li 
-                                        v-bind:class="{'border-b-2': catInput == category.catId}"
-                                        v-for="category in categories" 
-                                        @click="catInput = category.catId" 
-                                        :key="category.catId" 
-                                        class="mb-4 cursor-pointer">{{category.catName}}</li>
+                                    <li v-bind:class="{ 'border-b-2': catInput == '' }" @click="catInput = ''"
+                                        :key="'allProduct'" class="mb-4 cursor-pointer">All</li>
+                                    <li v-bind:class="{ 'border-b-2': catInput == category.catId }"
+                                        v-for="category in categories" @click="catInput = category.catId"
+                                        :key="category.catId" class="mb-4 cursor-pointer">{{ category.catName }}</li>
                                 </ul>
                             </div>
 
@@ -196,7 +186,7 @@
                 </div>
             </transition>
         </div>
-        <Footer/>
+        <Footer />
     </div>
 </template>
 
@@ -205,82 +195,97 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination } from 'swiper';
 import CategoriesService from "../../../service/CategoriesService.js";
 import ProductsService from "../../../service/ProductsService.js";
-import Header from '../Layout/Header.vue';
+import HeaderPage from '../Layout/Header.vue';
 import Footer from '../Layout/Footer.vue';
 import Banner from '../Layout/Banner.vue';
 import ProductItem from './productItem.vue';
 
 export default {
-  name: "ShoppingPage",
-  data() {
-    return {
-        categories: [],
-        products: [],
-        isopenCategories: true,
-        sideBar: false,
-        search: '',
-        catInput: '',
-    };
-  },
-  methods: {
-    onToggle() {
-      this.sideBar = !this.sideBar;
+    name: "ShoppingPage",
+    data() {
+        return {
+            categories: [],
+            products: [],
+            isopenCategories: true,
+            sideBar: false,
+            search: '',
+            catInput: '',
+            cart: [],
+        };
     },
-    getAll() {
-      CategoriesService.getAll().then((res) => {
-        this.categories = res.data;
-      });
+    methods: {
+        getTotalQuantity() {
+            // if (localStorage.getItem('cart')) {
+            //     return localStorage.getItem('cart').length
+            // }
+            // return 0;
+            return this.cart.length;
+        },
 
-      ProductsService.getAll().then((res) => (
-        this.products = res.data
-        ));
-    },
-    orderByProduct(){
-        var data =  this.products;
-        if(this.search){
-            data = this.products.filter((product) => {
-                    if(product.productName.toLowerCase().indexOf(this.search.toLowerCase()) > -1){
-                    return this.products;
-                }
+        addToCart(productId) {
+            if (this.products[parseInt(productId)].amount > 0) {
+                this.cart.push(productId);
+                this.products[parseInt(productId)].amount--;
+            }
+            localStorage.setItem('cart', this.cart)
+            this.$emit('cart-updated', this.cart);
+        },
+
+        onToggle() {
+            this.sideBar = !this.sideBar;
+        },
+        getAll() {
+            CategoriesService.getAll().then((res) => {
+                this.categories = res.data;
             });
+
+            ProductsService.getAll().then((res) => (
+                this.products = res.data
+            ));
+        },
+        orderByProduct() {
+            var data = this.products;
+            if (this.search) {
+                data = this.products.filter((product) => {
+                    if (product.productName.toLowerCase().indexOf(this.search.toLowerCase()) > -1) {
+                        return this.products;
+                    }
+                });
+            }
+            if (this.catInput) {
+                data = data.filter((product) => {
+                    if (product.catId == this.catInput) {
+                        return this.products;
+                    }
+                });
+            }
+            return data;
         }
-        if(this.catInput){
-            data = data.filter((product) => {
-                    if(product.catId == this.catInput){
-                    return this.products;
-                }
-            });
-        }
-        return data;
-    }
-
-
-  },
-
-
-  components: {
-    Swiper,
-    SwiperSlide,
-    Header,
-    Footer,
-    Banner,
-    ProductItem,
-  },
-  computed: {
-    isModalVisible() {
-      return this.sideBar;
     },
 
-    
-  },
-  setup() {
-    return {
-      modules: [Pagination],
-    };
-  },
-  created() {
-    this.getAll();
-  },
+    components: {
+        Swiper,
+        SwiperSlide,
+        HeaderPage,
+        Footer,
+        Banner,
+        ProductItem,
+    },
+    computed: {
+        isModalVisible() {
+            return this.sideBar;
+        },
+
+
+    },
+    setup() {
+        return {
+            modules: [Pagination],
+        };
+    },
+    created() {
+        this.getAll();
+    },
 };
 </script>
 

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import VueCookie from "vue-cookie";
 
+
 const requireAdmin = (to, from, next) => {
   if (VueCookie.get("roleID") == 1 || sessionStorage.getItem("roleID") == 1) {
     next();
@@ -54,6 +55,11 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: () => import("../components/User/Contact/Contact.vue"),
+  },
+  {
+    path: "/checkout",
+    name: "checkout",
+    component: () => import("../components/User/Checkout/ProceedCheckout.vue"),
   },
   {
     path: "/login",

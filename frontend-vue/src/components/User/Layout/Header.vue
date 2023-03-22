@@ -8,12 +8,13 @@
         </router-link>
         <div class="hidden lg:flex justify-between items-center w-4/5">
           <LinkToPage />
-
         </div>
       </div>
       <div class="flex items-center">
         <button class="mx-3 flex" @click="onOpenCart">
-          <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>0</sup>
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+          <sup>{{ quant }}</sup>
+
         </button>
         <button class="lg:hidden border px-2 py-1" @click="onToggle">
           <i class="fa fa-bars" aria-hidden="true"></i>
@@ -33,31 +34,7 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
               </button>
             </div>
-            <div class="" v-for="index in 5" :key="index">
-              <div class="flex w-full mt-5">
-                <img src="https://www.smartdatajob.com/images/joomlart/demo/default.jpg"
-                  class="object-cover w-24 h-24 mr-4" alt="" />
-                <div class="">
-                  <p>Product</p>
-                  <p>1 x <span class="font-bold text-lg">$92.00</span></p>
-                </div>
-              </div>
-            </div>
-            <div class="border-b py-5 mb-5"></div>
-            <div class="border-b pb-5">
-              <div class="flex justify-between font-bold">
-                <h1>Total:</h1>
-                <p>$92.00</p>
-              </div>
-            </div>
-            <div class="mt-5">
-              <button class="w-full border my-2 py-3 bg-green-500 hover:bg-green-600 text-white">
-                proceed to checkout
-              </button>
-              <button class="w-full border my-2 py-3 bg-gray-300 hover:bg-gray-400">
-                view cart
-              </button>
-            </div>
+            <CartCPN />
           </div>
         </div>
       </div>
@@ -91,17 +68,24 @@
 
 <script>
 import LinkToPage from './LinkToPage.vue';
+import CartCPN from '@/components/User/Cart/Cart.vue';
+
+
+
 export default {
   name: "HeaderPage",
   data() {
     return {
       isOpen: false,
       shopDropdown: false,
-      isOpenCart: false,
+      isOpenCart: true,
       account: false,
+      cart: [],
     };
   },
-
+  props: {
+    quant: Number
+  },
   computed: {
     isModalVisible() {
       return this.isOpen;
@@ -110,8 +94,14 @@ export default {
       return this.isOpenCart;
     },
   },
-
   methods: {
+    updateCart(cart) {
+      this.cart = cart;
+    },
+
+    handleChange(value) {
+      this.value = value;
+    },
     onToggle() {
       this.isOpen = !this.isOpen;
     },
@@ -123,7 +113,8 @@ export default {
     }
   },
   components: {
-    LinkToPage
+    LinkToPage,
+    CartCPN,
   }
 };
 </script>

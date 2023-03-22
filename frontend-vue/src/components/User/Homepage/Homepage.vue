@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :quant="getTotalQuantity()" />
     <!-- End Header -->
     <div class="overflow-hidden">
       <div class="pt-12 bg-gray-200 pb-12">
@@ -46,11 +46,8 @@
             </ul>
           </div>
           <div class="flex-auto">
-            <img
-              src="https://webbalo2023.000webhostapp.com/images/banner/banner.jpg"
-              class="w-full h-1/2 lg:h-screen"
-              alt=""
-            />
+            <img src="https://webbalo2023.000webhostapp.com/images/banner/banner.jpg" class="w-full h-1/2 lg:h-screen"
+              alt="" />
           </div>
         </div>
         <div class="flex items-center mt-6 pl-7">
@@ -85,8 +82,8 @@
           <div class="mx-3">
             <h3 class="text-xl lg:text-3xl font-bold mb-2">Watch</h3>
             <p class="text-sm">
-              The Eco-making of Bogo <br />
-              Bamboo Bikes
+              The Eco-making of Paldne <br />
+              Balos
             </p>
           </div>
           <div
@@ -140,13 +137,8 @@
                 spaceBetween: 50,
               },
             }"
-            class="swiper-container grid grid-cols-1 h-full slider1 swiper-initialized swiper-horizontal swiper-pointer-events"
-          >
-            <swiper-slide
-              v-for="page in pages"
-              :key="page.blogId"
-              class="cursor-pointer pb-12"
-            >
+            class="swiper-container grid grid-cols-1 h-full slider1 swiper-initialized swiper-horizontal swiper-pointer-events">
+            <swiper-slide v-for="page in pages" :key="page.blogId" class="cursor-pointer pb-12">
               <BlogItem :blogData="page" />
             </swiper-slide>
           </swiper>
@@ -159,14 +151,9 @@
         data-aos-delay="500"
       >
         <h1 class="text-center text-5xl font-bold mb-6">BEST SELLERS</h1>
-        <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-        >
-          <ProductItem
-            :productData="product"
-            v-for="product in products"
-            :key="product.productID"
-          />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <ProductItem :productData="product" v-for="product in products" :key="product.productID"
+            @add-to-cart="addToCart" />
         </div>
         <button
           @click="$router.push('/shop')"
@@ -199,47 +186,26 @@
         </div>
       </div>
       <!-- tailwind Carousel -->
-      <div
-        class=""
-        data-aos="flip-up"
-        data-aos-duration="1500"
-        data-aos-delay="500"
-      >
-        <swiper
-          class="relative overflow-hidden w-full cursor-grab py-4 bg-gray-300 px-2"
-          :autoplay="{
-            delay: 1500,
-            disableOnInteraction: false,
-          }"
-          :loop="true"
-          :scrollbar="false"
-          :modules="modules"
-          :slidesPerView="1"
-          :spaceBetween="30"
-          :breakpoints="{
-            '640': {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            '768': {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            '1024': {
-              slidesPerView: 5,
-              spaceBetween: 40,
-            },
-          }"
-        >
-          <swiper-slide
-            v-for="imageDT in images"
-            :key="imageDT"
-            class="flex justify-center my-auto"
-            ><img
-              :src="'https://webbalo2023.000webhostapp.com/images/clients/'+imageDT"
-              class="grayscale"
-              style="width: 150px; height: 100px"
-          /></swiper-slide>
+      <div class="" data-aos="flip-up" data-aos-duration="1500" data-aos-delay='500'>
+        <swiper class="relative overflow-hidden w-full cursor-grab py-4 bg-gray-300 px-2" :autoplay="{
+          delay: 1500,
+          disableOnInteraction: false,
+        }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
+  '640': {
+    slidesPerView: 2,
+    spaceBetween: 20,
+  },
+  '768': {
+    slidesPerView: 3,
+    spaceBetween: 30,
+  },
+  '1024': {
+    slidesPerView: 5,
+    spaceBetween: 40,
+  },
+}">
+          <swiper-slide v-for="imageDT in images" :key="imageDT" class="flex justify-center my-auto"><img :src="imageDT"
+              class="grayscale" style="width:150px; height:100px" /></swiper-slide>
         </swiper>
       </div>
     </div>
@@ -266,19 +232,8 @@ export default {
       countPages: 0,
       products: [],
       modelToggle: false,
-      sortKKey: "productName",
-      images: [
-        "client-1.png",
-        "client-2.png",
-        "client-3.png",
-        "client-4.png",
-        "client-5.png",
-        "client-6.png",
-        "client-7.png",
-        "client-8.png",
-        "client-9.png",
-        "client-10.png",
-      ],
+      sortKKey: 'productName',
+      cart: [],
     };
   },
   components: {
@@ -295,6 +250,31 @@ export default {
     };
   },
   methods: {
+    updateCart(cart) {
+      this.cart = cart;
+    },
+
+    getTotalQuantity() {
+      // if (localStorage.getItem('cart')) {
+      //   return localStorage.getItem('cart').length
+      // }
+      // return 0;
+      return this.cart.length;
+    },
+
+
+    addToCart(productId) {
+      if (this.products[parseInt(productId)].amount > 0) {
+        this.cart.push(productId);
+        this.products[parseInt(productId)].amount--;
+      }
+      localStorage.setItem('cart', this.cart)
+
+      this.$emit('cart-updated', this.cart);
+      // console.log("Quantity: ", this.products[parseInt(productId)].amount)
+      // console.log("quantity Product ", this.cart.length);
+      // console.log("Product ", this.cart);
+    },
     toggleMenu() {
       this.toggle = !this.toggle;
     },
