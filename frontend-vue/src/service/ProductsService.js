@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "http://localhost/LeTungEm/WebBalo2023/backend/Controllers/ProductsController.php";
+  "http://localhost/webbalo2023/backend/Controllers/ProductsController.php";
 
 class ProductsService {
 
@@ -54,6 +54,27 @@ class ProductsService {
       params: {
         action: "deleteProduct",
         productID: productID,
+      },
+    });
+  }
+
+  updateProduct(productName, description, createDate, price, shortDescription, image_1, image_2, image_3, image_4, amount, dateChange, catId, productID) {
+    return axios.get(`${PRODUCT_API_URL}`, {
+      params: {
+        action: "updateProduct",
+        productID: productID,
+        productName: productName,
+        description: description,
+        createDate: createDate,
+        price: price,
+        shortDescription: shortDescription,
+        image_1: image_1,
+        image_2: image_2,
+        image_3: image_3,
+        image_4: image_4,
+        amount: amount,
+        dateChange: dateChange,
+        catId: catId,
       },
     });
   }

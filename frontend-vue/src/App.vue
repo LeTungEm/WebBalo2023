@@ -1,7 +1,6 @@
 <template>
   <div>
 
-    <!-- User -->
     <router-view />
 
   </div>

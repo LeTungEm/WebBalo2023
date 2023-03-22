@@ -40,6 +40,22 @@ switch ($action) {
         $catId = $_GET["catId"];
         $message = ($products->insertProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId) > 0)?'true':'false';
         break;
+    case "updateProduct":
+        $productID = $_GET["productID"];
+        $productName = $_GET["productName"];
+        $description = $_GET["description"];
+        $createDate = $_GET["createDate"];
+        $price = $_GET["price"];
+        $shortDescription = $_GET["shortDescription"];
+        $image_1 = $_GET["image_1"];
+        $image_2 = $_GET["image_2"];
+        $image_3 = $_GET["image_3"];
+        $image_4 = $_GET["image_4"];
+        $amount = $_GET["amount"];
+        $dateChange = $_GET["dateChange"];
+        $catId = $_GET["catId"];
+        $message = ($products->updateProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId, $productID) > 0)?'true':'false';
+        break;
 }
 
 header('Content-Type: application/json; charset=utf-8');
