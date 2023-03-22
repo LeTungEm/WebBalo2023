@@ -39,6 +39,18 @@ const PRODUCT_API_URL =
         },
       });
     }
+
+    updateAbout(title, image, description, aboutId){
+      return axios.get(`${PRODUCT_API_URL}`, {
+        params: {
+            action: "updateAbout",
+            aboutId: aboutId,
+            title: title,
+            image: image,
+            description: description,
+        },
+      });
+    }
   }
 
 export default new AboutService();

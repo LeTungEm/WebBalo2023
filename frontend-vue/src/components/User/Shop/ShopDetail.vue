@@ -5,8 +5,8 @@
             :bannerName="'categories'" 
             :shopName="'PALDNE'" 
             :menu="'Product'"/>
-        <div class="lg:w-8/12 mx-auto">
-            <div class="pb-24 border-b  mb-16">
+        <div class="lg:w-8/12 mx-auto my-16">
+            <div class="pb-24 border-b">
                 <div class="lg:flex justify-between">
                     <div class="mx-8 lg:w-1/2">
                         <swiper :spaceBetween="10" :navigation="true" :thumbs="{ swiper: thumbsSwiper }" class="mb-12">
@@ -28,28 +28,6 @@
                         <p class="text-red-500 my-3">{{formatNumber(product.price)}}</p>
                         <p class="mb-3">Availability: <span class="text-red-500">{{product.amount}}</span></p>
                         <p class="text-gray-600 mb-6">{{product.description}}</p>
-                        <div class="my-5">
-                            <div class="flex w-full my-3">
-                                <h3 class="text-lg w-1/4">Size:</h3>
-                                <div>
-                                    <ul class="flex w-full">
-                                        <li><button class="w-full mx-4 hover:text-gray-500"> XL</button></li>
-                                        <li><button class="w-full mx-4 hover:text-gray-500"> ML</button></li>
-                                        <li><button class="w-full mx-4 hover:text-gray-500"> XS</button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="flex w-full my-3">
-                                <h3 class="text-lg w-1/4">Material:</h3>
-                                <div>
-                                    <ul class="flex justify-between">
-                                        <li><button class="w-full mx-4 hover:text-gray-500"> Partex</button></li>
-                                        <li><button class="w-full mx-4 hover:text-gray-500"> Wood</button></li>
-                                        <li><button class="w-full mx-4 hover:text-gray-500"> Glass</button></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                         <div class="flex justify-between mt-12">
                             <div class="flex w-full">
                                 <button class="border-b border-t border-l px-3 py-1 border-gray-500 hover:bg-gray-200"
@@ -65,8 +43,6 @@
                             </div>
                             <button class="fixed z-10 lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add to
                                 cart</button>
-                            <button class="border-2 ml-2 lg:ml-0 p-2 border-gray-500 hover:bg-gray-500 rounded-sm"><i class="fa fa-heart-o"
-                                    aria-hidden="true"></i></button>
                         </div>
                         <button class="w-full py-2 bg-gray-200 hover:bg-gray-300 mt-12">buy it now</button>
                         <p class="text-lg my-6">Guaranteed safe checkout</p>

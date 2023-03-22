@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/ProductsController.php";
+  "http://localhost/LeTungEm/WebBalo2023/backend/Controllers/ProductsController.php";
 
 class ProductsService {
 
@@ -11,11 +11,11 @@ class ProductsService {
     });
   }
 
-  getByID(id) {
+  getByID(productID) {
     return axios.get(`${PRODUCT_API_URL}`, {
       params: {
         action: "getByID",
-        productID: id,
+        productID: productID,
       },
     });
   }

@@ -8,7 +8,7 @@
         <div class="lg:w-11/12 mx-auto" data-aos="fade-down" data-aos-duration="1500">
             <div class="mb-12 mt-20 px-8 lg:px-0">
                 <h1 class="text-6xl font-bold mb-4">Shop with us</h1>
-                <p>Browse from 230 latest items</p>
+                <p>Browse from {{ products.length }} latest items</p>
             </div>
             <div class="lg:flex relative mb-24 px-8">
                 <div class="hidden lg:block mr-8 w-full lg:w-1/4 border-t-2 border-b-2 bg-white p-4 h-full">
@@ -44,50 +44,7 @@
                             </swiper-slide>
 
                         </swiper>
-                        <!-- Brand -->
-                        <button @click="isBrand = !isBrand"
-                            class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                            brand
-                            <i :class="isBrand ? 'fa fa-minus' : 'fa fa-plus'" class="" aria-hidden="true"></i>
-                        </button>
-                        <div class="mb-6 w-full px-4 w-full" v-show="isBrand">
-                            <ul>
-                                <li class="border-b" v-for="index in 6" :key="index">
-                                    <div class="flex justify-between items-center">
-                                        <div class="my-4">
-                                            <input type="checkbox" class="mr-2">
-                                            Brand {{ index }}
-                                        </div>
-                                        <p class="text-gray-400">(120)</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
 
-                        <!-- Product Type -->
-                        <button @click="isProduct = !isProduct"
-                            class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                            product
-                            <i :class="isProduct ? 'fa fa-minus' : 'fa fa-plus'" class="" aria-hidden="true"></i>
-                        </button>
-                        <div class="mb-6 w-full px-4" v-show="isProduct">
-                            <ul>
-                                <li class="border-b" v-for="index in 6" :key="index">
-                                    <div class="flex justify-between items-center">
-                                        <div class="my-4">
-                                            <input type="checkbox" class="mr-2">
-                                            Product {{ index }}
-                                        </div>
-                                        <p class="text-gray-400">(120)</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Slider -->
-                        <h3 class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                            Best seller
-                        </h3>
 
                         <!-- Availibility -->
                         <h3 class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
@@ -152,7 +109,7 @@
                                 placeholder="Search Mockups, Logos..." required>
                         </div>
                     </div>
-                    <h1 class="uppercase text-5xl mb-12">Classical bikes</h1>
+                    <h1 class="uppercase text-5xl mb-12">Classical Balos</h1>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                         <ProductItem v-for="product in orderByProduct()" :productData="product" :key="product.productID" />
                     </div>
@@ -194,50 +151,6 @@
                                         class="mb-4 cursor-pointer">{{category.catName}}</li>
                                 </ul>
                             </div>
-                            <!-- Brand -->
-                            <button @click="isBrand = !isBrand"
-                                class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                                brand
-                                <i :class="isBrand ? 'fa fa-minus' : 'fa fa-plus'" class="" aria-hidden="true"></i>
-                            </button>
-                            <div class="mb-6 w-full px-4 w-full" v-show="isBrand">
-                                <ul>
-                                    <li class="border-b" v-for="index in 6" :key="index">
-                                        <div class="flex justify-between items-center">
-                                            <div class="my-4">
-                                                <input type="checkbox" class="mr-2">
-                                                Brand {{ index }}
-                                            </div>
-                                            <p class="text-gray-400">(120)</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Product Type -->
-                            <button @click="isProduct = !isProduct"
-                                class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                                product
-                                <i :class="isProduct ? 'fa fa-minus' : 'fa fa-plus'" class="" aria-hidden="true"></i>
-                            </button>
-                            <div class="mb-6 w-full px-4" v-show="isProduct">
-                                <ul>
-                                    <li class="border-b" v-for="index in 6" :key="index">
-                                        <div class="flex justify-between items-center">
-                                            <div class="my-4">
-                                                <input type="checkbox" class="mr-2">
-                                                Product {{ index }}
-                                            </div>
-                                            <p class="text-gray-400">(120)</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Slider -->
-                            <h3 class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
-                                Best seller
-                            </h3>
 
                             <!-- Availibility -->
                             <h3 class="w-full uppercase font-bold mb-5 mt-10 flex items-center justify-between">
@@ -304,8 +217,6 @@ export default {
         categories: [],
         products: [],
         isopenCategories: true,
-        isBrand: true,
-        isProduct: true,
         sideBar: false,
         search: '',
         catInput: '',
