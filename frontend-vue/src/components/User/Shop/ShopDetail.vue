@@ -1,33 +1,38 @@
 <template>
     <div class="">
-        <Header/>
-        <Banner 
-            :bannerName="'categories'" 
-            :shopName="'PALDNE'" 
-            :menu="'Product'"/>
+        <Header />
+        <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Product'" />
         <div class="lg:w-8/12 mx-auto my-16">
             <div class="pb-24 border-b">
                 <div class="lg:flex justify-between">
                     <div class="mx-8 lg:w-1/2">
                         <swiper :spaceBetween="10" :navigation="true" :thumbs="{ swiper: thumbsSwiper }" class="mb-12">
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_1" /></swiper-slide>
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_2" /></swiper-slide>
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_3" /></swiper-slide>
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_4" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_1" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_2" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_3" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_4" /></swiper-slide>
                         </swiper>
                         <swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="4" :freeMode="true"
                             :watchSlidesVisibility="true" :watchSlidesProgress="true" class="mySwiper">
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_1" /></swiper-slide>
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_2" /></swiper-slide>
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_3" /></swiper-slide>
-                            <swiper-slide><img :src="'https://webbalo2023.000webhostapp.com/images/balo/'+product.image_4" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_1" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_2" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_3" /></swiper-slide>
+                            <swiper-slide><img
+                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_4" /></swiper-slide>
                         </swiper>
                     </div>
                     <div class="mt-12 lg:mt-0 mx-8 leading-loose">
-                        <h1 class="text-3xl font-bold">{{product.productName}}</h1>
-                        <p class="text-red-500 my-3">{{formatNumber(product.price)}}</p>
-                        <p class="mb-3">Availability: <span class="text-red-500">{{product.amount}}</span></p>
-                        <p class="text-gray-600 mb-6">{{product.description}}</p>
+                        <h1 class="text-3xl font-bold">{{ product.productName }}</h1>
+                        <p class="text-red-500 my-3">{{ formatNumber(product.price) }}</p>
+                        <p class="mb-3">Availability: <span class="text-red-500">{{ product.amount }}</span></p>
+                        <p class="text-gray-600 mb-6 text-justify">{{ product.description }}</p>
                         <div class="flex justify-between mt-12">
                             <div class="flex w-full">
                                 <button class="border-b border-t border-l px-3 py-1 border-gray-500 hover:bg-gray-200"
@@ -41,7 +46,9 @@
                                     +
                                 </button>
                             </div>
-                            <button class="fixed z-10 lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add to
+                            <button
+                                class="fixed z-10 lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add
+                                to
                                 cart</button>
                         </div>
                         <button class="w-full py-2 bg-gray-200 hover:bg-gray-300 mt-12">buy it now</button>
@@ -102,7 +109,7 @@
                                     block: openTab === 1,
                                 }">
                                     <h1 class="my-8 text-3xl font-bold">Product Description</h1>
-                                    <p>{{product.shortDescription}}</p>
+                                    <p>{{ product.shortDescription }}</p>
                                 </div>
                                 <div v-bind:class="{
                                     hidden: openTab !== 2,
@@ -112,7 +119,7 @@
                                         Additional Information
                                     </h1>
 
-                                    <p>
+                                    <p class="text-justify">
                                         Eos no lorem eirmod diam diam, eos elitr et gubergren diam
                                         sea. Consetetur vero aliquyam invidunt duo dolores et duo
                                         sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod
@@ -145,29 +152,31 @@
                 <swiper class="relative grid overflow-hidden w-full cursor-grab px-2" :navigation="true" :pagination="{
                     clickable: true,
                 }" :autoplay="{
-                    delay: 1500,
-                    disableOnInteraction: false,
-                }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
-                    '640': {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    '768': {
-                        slidesPerView: 3,
-                        spaceBetween: 40,
-                    },
-                    '1024': {
-                        slidesPerView: 4,
-                        spaceBetween: 30,
-                    },
-                }">
-                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full" v-for="productItem in relatedProduct" :key="productItem.productId">
-                        <ProductItem :productData="productItem"/>
+    delay: 1500,
+    disableOnInteraction: false,
+}" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30"
+                    :breakpoints="{
+                        '640': {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        '768': {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                        '1024': {
+                            slidesPerView: 4,
+                            spaceBetween: 30,
+                        },
+                    }">
+                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full"
+                        v-for="productItem in relatedProduct" :key="productItem.productId">
+                        <ProductItem :productData="productItem" />
                     </swiper-slide>
                 </swiper>
             </div>
         </div>
-        <Footer/>
+        <Footer />
     </div>
 </template>
 
@@ -195,7 +204,7 @@ export default {
     },
     computed: {
         productId() {
-            return this.$route.params.id;            
+            return this.$route.params.id;
         },
     },
     data() {
@@ -223,35 +232,35 @@ export default {
             !isNaN(this.counter) && this.counter > 0 ? this.counter : this.counter = 0;
 
         },
-        getRalatedProduct(id){
-            ProductsService.getByCategoryID(id).then(res => {this.relatedProduct = res.data;});
+        getRalatedProduct(id) {
+            ProductsService.getByCategoryID(id).then(res => { this.relatedProduct = res.data; });
         },
-        getProduct(id){
+        getProduct(id) {
             ProductsService.getByID(id).then(res => {
-                    this.product = res.data;
-                    if(this.relatedProduct.length == 0){
-                        this.getRalatedProduct(this.product.catId);
-                    }
+                this.product = res.data;
+                if (this.relatedProduct.length == 0) {
+                    this.getRalatedProduct(this.product.catId);
                 }
-                );
+            }
+            );
         },
-        formatNumber(value){
+        formatNumber(value) {
             return (new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value));
         },
-        changeProductID(){
-            return this.$route.params.id;            
+        changeProductID() {
+            return this.$route.params.id;
         }
-        
+
     },
     setup() {
         return {
             modules: [Pagination],
         };
     },
-    created(){
+    created() {
         this.getProduct(this.productId);
     },
-    
+
 }
 </script>
 
