@@ -91,7 +91,7 @@ export default {
     },
 
     created() {
-        // this.getItemsFromLocalstorage();
+        this.getItemsFromLocalstorage();
         // this.getAllProducts();
     }
 }
