@@ -57,6 +57,27 @@ class ProductsService {
       },
     });
   }
+
+  updateProduct(productName, description, createDate, price, shortDescription, image_1, image_2, image_3, image_4, amount, dateChange, catId, productID) {
+    return axios.get(`${PRODUCT_API_URL}`, {
+      params: {
+        action: "updateProduct",
+        productID: productID,
+        productName: productName,
+        description: description,
+        createDate: createDate,
+        price: price,
+        shortDescription: shortDescription,
+        image_1: image_1,
+        image_2: image_2,
+        image_3: image_3,
+        image_4: image_4,
+        amount: amount,
+        dateChange: dateChange,
+        catId: catId,
+      },
+    });
+  }
 }
 
 export default new ProductsService();
