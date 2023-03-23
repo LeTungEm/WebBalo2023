@@ -3,7 +3,7 @@ $configDB = array();
 $configDB["host"] 		= "localhost";
 $configDB["database"]	= "webbalo";
 $configDB["username"] 	= "root";
-$configDB["password"] 	= "";
+$configDB["password"] 	= "b4U/6RvOnw5";
 define("HOST", "localhost");
 define("DB_NAME", "webbalo");
 define("DB_USER", "root");
