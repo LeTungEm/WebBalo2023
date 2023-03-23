@@ -8,8 +8,6 @@ header("Access-Control-Allow-Origin: *");
 
 include("../Config/config.php");
 include('../Models/Db.class.php');
-include('../Models/About.class.php');
-include('../Models/Pages.class.php');
 include('../Models/Role.class.php');
 
 $action = isset($_GET["action"]) ? $_GET["action"] : '';
