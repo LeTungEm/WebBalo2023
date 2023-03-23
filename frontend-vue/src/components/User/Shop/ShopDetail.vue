@@ -261,7 +261,7 @@ export default {
         this.getProduct(this.productId);
     },
 
-}
+};
 </script>
 
 <style></style>
