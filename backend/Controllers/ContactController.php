@@ -8,35 +8,28 @@ header("Access-Control-Allow-Origin: *");
 
 include("../Config/config.php");
 include('../Models/Db.class.php');
-include('../Models/About.class.php');
+include('../Models/Contact.class.php');
 
 $action = isset($_GET["action"]) ? $_GET["action"] : '';
-$about = new About();
+$contact = new Contact();
 $message = array();
 switch ($action) {
     case "getAll":
-        $message = $about->getAll();
+        $message = $contact->getAll();
         break;
     case "getByID":
-        $aboutId = $_GET["aboutId"];
-        $message = $about->getByID($aboutId);
+        $contactId = $_GET["contactId"];
+        $message = $contact->getByID($contactId);
         break;
-    case "insertAbout":
+    case "insertContact":
         $title = $_GET["title"];
         $image = $_GET["image"];
         $description = $_GET["description"];
-        $message = ($about->insertAbout($title, $image, $description) > 0)?'true':'false';
+        $message = ($products->insertContact($title, $image, $description) > 0)?'true':'false';
         break;
-    case "deleteAbout":
-        $aboutId = $_GET["aboutId"];
-        $message = $about->deleteAbout($aboutId);
-        break;
-    case "updateAbout":
-        $aboutId = $_GET["aboutId"];
-        $title = $_GET["title"];
-        $image = $_GET["image"];
-        $description = $_GET["description"];
-        $message = $about->updateAbout($title, $image, $description, $aboutId);
+    case "deleteContact":
+        $contactId = $_GET["contactId"];
+        $message = $contact->deleteContact($contactId);
         break;
 
 }
