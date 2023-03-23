@@ -56,7 +56,6 @@ export default {
                 this.listproducts = localStorage.getItem('cart').split(',');
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
-                        res.data
                         this.products.push(res.data)
                     })
                 });
