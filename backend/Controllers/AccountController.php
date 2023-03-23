@@ -40,8 +40,8 @@ switch ($action) {
         $phone = $_GET["phone"];
         $address = $_GET["address"];
         $Birthday = $_GET["Birthday"];
-        $roleID = $_GET["roleId"];
-        $message = $account->insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId);
+        $roleID = $_GET["roleID"];
+        $message = $account->insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID);
         break;
     case "deleteAccount":
         $accountId = $_GET["accountId"];
@@ -58,8 +58,8 @@ switch ($action) {
         $phone = $_GET["phone"];
         $address = $_GET["address"];
         $Birthday = $_GET["Birthday"];
-        $roleID = $_GET["roleId"];
-        $message = $account->updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId);
+        $roleID = $_GET["roleID"];
+        $message = $account->updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID, $accountId);
         break;
 
 }
