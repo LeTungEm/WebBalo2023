@@ -207,9 +207,6 @@ export default {
       localStorage.setItem('cart', this.cart)
 
       this.$emit('cart-updated', this.cart);
-      // console.log("Quantity: ", this.products[parseInt(productId)].amount)
-      // console.log("quantity Product ", this.cart.length);
-      // console.log("Product ", this.cart);
     },
     toggleMenu() {
       this.toggle = !this.toggle;

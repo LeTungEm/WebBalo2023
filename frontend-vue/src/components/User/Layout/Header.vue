@@ -78,7 +78,7 @@ export default {
     return {
       isOpen: false,
       shopDropdown: false,
-      isOpenCart: true,
+      isOpenCart: false,
       account: false,
       cart: [],
     };

@@ -1,14 +1,12 @@
 <template>
-    <div class="" v-for="(product, index) in products" :key="product">
-        {{ index }}
+    <div class="" v-for="(product, index) in products" :key="index">
         <div class="flex justify-between items-center w-full mt-5">
             <div class="flex items-center">
-                <!-- <img :src="index.image_1" class="object-cover w-24 h-24 mr-4" alt="" /> -->
+                <img :src="product.image_1" class="object-cover w-24 h-24 mr-4" alt="" />
                 <div class="">
-                    <!-- <p> {{ product }}</p> -->
+                    <p> {{ product.productName }}</p>
                     <p>
-                        <!-- {{ listproducts }} -->
-                        <!-- x <span class="font-bold text-lg">{{ item.price }}</span> -->
+                        x <span class="font-bold text-lg">{{ formatNumber(product.price) }}</span>
                     </p>
                 </div>
             </div>
@@ -21,7 +19,7 @@
         <div class="flex justify-between font-bold">
             <h1>Total:</h1>
             <p>
-                <!-- {{ totalPrice() }} -->
+                <!-- {{ totalPrice }} -->
             </p>
         </div>
     </div>
@@ -53,36 +51,20 @@ export default {
     },
 
     methods: {
-        // totalPrice() {
-        //     var total = 0;
-
-        //     this.products = localStorage.getItem('cart').split(',')
-
-        //     this.products.forEach(item => {
-        //         ProductsService.getByID(item).then(
-        //             res => {
-        //                 this.products = res.data;
-        //                 total += this.products.price
-        //             }
-        //         )
-        //     });
-
-        //     return total;
-        // },
-
         getItemsFromLocalstorage() {
             if (localStorage.getItem('cart') != null) {
                 this.listproducts = localStorage.getItem('cart').split(',');
-
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
-                        this.products = res.data
-                        console.log("Da luu vo products: ", res.data);
+                        res.data
+                        this.products.push(res.data)
                     })
                 });
             }
         },
-
+        formatNumber(value) {
+            return (new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value));
+        },
 
         removeItem() {
             console.log("Remove");
@@ -92,7 +74,6 @@ export default {
 
     created() {
         this.getItemsFromLocalstorage();
-        // this.getAllProducts();
     }
 }
 </script>
