@@ -23,11 +23,11 @@
             return ($data != null)?true:false;
         }
     
-        function insertAccount($firstName, $lastName, $email, $passWord){
+        function insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId){
             $sql = "INSERT INTO `account`(`first_name`, `last_name`, `email`,
              `password`, `avatar`, `gender`, `phone`, `address`, `accountId`, `LastLogin`, `Birthday`, 
-             `roleId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-            return $this->insert($sql, array($firstName, $lastName, $email, $passWord));
+             `roleID`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            return $this->insert($sql, array($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId));
         }
 
         function deleteAccount($accountId){
@@ -35,11 +35,11 @@
             return $this->select($sql, array($accountId));
         }
 
-        function updateAccount($firstName, $lastName, $email, $passWord){
+        function updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId){
             $sql = 'UPDATE `account` SET `first_name`= ?,`last_name`=?,`email`=?,
             `password`=?,`avatar`=?,`gender`=?,`phone`=?,`address`=?,`accountId`=?,
-            `LastLogin`=?,`Birthday`=?,`roleId`=? WHERE accountId = ?';
-            return $this->update($sql, array($firstName, $lastName, $email, $passWord));
+            `LastLogin`=?,`Birthday`=?,`roleID`=? WHERE accountId = ?';
+            return $this->update($sql, array($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId));
         }
     }
 

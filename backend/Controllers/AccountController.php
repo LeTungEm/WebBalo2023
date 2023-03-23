@@ -44,15 +44,22 @@ switch ($action) {
         $message = $account->insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId);
         break;
     case "deleteAccount":
-        $aboutId = $_GET["accountId"];
+        $accountId = $_GET["accountId"];
         $message = $account->deleteAccount($accountId);
         break;
     case "updateAccount":
-        $firstName = $_GET["first_name"];
-        $lastName = $_GET["last_name"];
+        $accountId = $_GET["accountId"];
+        $first_name = $_GET["firstName"];
+        $last_name = $_GET["lastName"];
         $email = $_GET["email"];
-        $passWord=$_GET["email"];
-        $message = $account->updateAccount($firstName, $lastName, $email, $passWord);
+        $password = $_GET["passWord"];
+        $image = $_GET["image"];
+        $gender = $_GET["gender"];
+        $phone = $_GET["phone"];
+        $address = $_GET["address"];
+        $Birthday = $_GET["Birthday"];
+        $roleID = $_GET["roleId"];
+        $message = $account->updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId);
         break;
 
 }
