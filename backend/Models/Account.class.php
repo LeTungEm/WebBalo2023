@@ -13,12 +13,14 @@
         }
 
         function checkLogin($email, $password){
-            $sql = "INSERT INTO `account`(`email`,`password`) VALUES(?,?)";
-            return $this->insert($sql, array($email, $password));
+            $sql = "select * from `account` where email = ? and password = ?";
+            $data = $this->select($sql, array($email, $password));
+            return ($data != null)?$data[0]:null;
         }
         function checkEmailExisted($email){
-            $sql = "INSERT INTO `account`(`email`) VALUES(?)";
-            return $this->insert($sql, array($email));
+            $sql = "select * from `account` where email = ?";
+            $data = $this->select($sql, array($email));
+            return ($data != null)?true:false;
         }
     
         function insertAccount($firstName, $lastName, $email, $passWord){

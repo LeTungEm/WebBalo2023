@@ -16,7 +16,7 @@
                 </div>
             </div>
             <img alt="" class="object-cover w-full h-72 group-hover:scale-110 transition duration-300 ease-in-out"
-                :src="'https://webbalo2023.000webhostapp.com/images/balo/' + productData.image_1">
+                :src="'https://data.webbalo.online/images/balo/' + productData.image_1">
         </div>
         <div class="text-center my-6">
             <div @click="showProductDetail(productData.productID)" class="text-xl uppercase cursor-pointer">{{

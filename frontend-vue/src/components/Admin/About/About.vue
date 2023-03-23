@@ -55,7 +55,7 @@
                                 <h4 class="font-bold mb-2 text-md">Image</h4>
                                 <img v-if="blobURL" :src="blobURL" alt="">
                                 <div v-else>
-                                    <img v-if="fileName" :src="'https://webbalo2023.000webhostapp.com/images/about/'+fileName" alt="">
+                                    <img v-if="fileName" :src="'https://data.webbalo.online/images/about/'+fileName" alt="">
                                 </div>                                
                                 <label for="file" class="inline-block px-5 py-2 text-white bg-blue-500 rounded font-bold border">Upload Image</label>
                                 <input id="file" hidden type="file" v-on:change="onChangeFileUpload" class="mb-5">

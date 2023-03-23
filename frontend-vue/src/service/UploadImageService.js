@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/uploadImage.php";
+  "https://data.webbalo.online/Controllers/uploadImage.php";
 
   class UploadImageService{
 

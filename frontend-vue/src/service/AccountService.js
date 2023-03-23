@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/AccountController.php";
+  "https://data.webbalo.online/Controllers/AccountController.php";
 
 class AccountService {
   getAll() {
@@ -83,5 +83,5 @@ class AccountService {
     });
   }
 }
-// https://webbalo2023.000webhostapp.com/Controllers/AccountController.php?action=insertAccount&first_name=test&last_name=testLast&email=&password=&image=&gender=2&phone=&address=
+// https://data.webbalo.online/Controllers/AccountController.php?action=insertAccount&first_name=test&last_name=testLast&email=&password=&image=&gender=2&phone=&address=
 export default new AccountService();

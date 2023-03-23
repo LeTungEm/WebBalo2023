@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/RolesController.php";
+  "https://data.webbalo.online/Controllers/RolesController.php";
 
   class RolesService{
 
