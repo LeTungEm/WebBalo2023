@@ -234,6 +234,7 @@ export default {
       modelToggle: false,
       sortKKey: 'productName',
       cart: [],
+      images: [],
     };
   },
   components: {
