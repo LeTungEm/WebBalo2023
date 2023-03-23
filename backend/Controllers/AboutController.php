@@ -25,7 +25,7 @@ switch ($action) {
         $title = $_GET["title"];
         $image = $_GET["image"];
         $description = $_GET["description"];
-        $message = ($products->insertAbout($title, $image, $description) > 0)?'true':'false';
+        $message = ($about->insertAbout($title, $image, $description) > 0)?'true':'false';
         break;
     case "deleteAbout":
         $aboutId = $_GET["aboutId"];
