@@ -84,7 +84,7 @@ export default {
     };
   },
   props: {
-    quant: Number
+    quant: String
   },
   computed: {
     isModalVisible() {

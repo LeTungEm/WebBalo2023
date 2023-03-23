@@ -169,6 +169,7 @@ export default {
       modelToggle: false,
       sortKKey: 'productName',
       cart: [],
+      quantity: 0,
     };
   },
   components: {
@@ -190,11 +191,10 @@ export default {
     },
 
     getTotalQuantity() {
-      if (localStorage.getItem('cart')) {
-        return this.cart.length
+      if (localStorage.getItem('quantity') != null) {
+        return localStorage.getItem('quantity')
       }
       return 0;
-      // return this.cart.length;
     },
 
 
@@ -203,12 +203,12 @@ export default {
       if (this.products[index].amount > 0) {
         this.cart.push(this.products[index].productID);
         this.products[index].amount--;
+        this.quantity++;
       }
-      localStorage.setItem('cart', this.cart)
-
+      localStorage.setItem('quantity', this.quantity)
       this.$emit('cart-updated', this.cart);
     },
-    
+
     toggleMenu() {
       this.toggle = !this.toggle;
     },

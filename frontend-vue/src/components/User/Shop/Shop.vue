@@ -211,15 +211,16 @@ export default {
             search: '',
             catInput: '',
             cart: [],
+            quantity:0,
         };
     },
     methods: {
         getTotalQuantity() {
-            // if (localStorage.getItem('cart')) {
-            //     return localStorage.getItem('cart').length
-            // }
-            // return 0;
-            return this.cart.length;
+            if (localStorage.getItem('quantity') != null) {
+                console.log(localStorage.getItem('quantity'));
+                return localStorage.getItem('quantity')
+            }
+            return 0;
         },
 
         addToCart(productId) {
@@ -227,9 +228,9 @@ export default {
             if (this.products[index].amount > 0) {
                 this.cart.push(this.products[index].productID);
                 this.products[index].amount--;
+                this.quantity++;
             }
-            localStorage.setItem('cart', this.cart)
-
+            localStorage.setItem('quantity', this.quantity)
             this.$emit('cart-updated', this.cart);
         },
 

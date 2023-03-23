@@ -97,11 +97,10 @@ export default {
     },
     methods: {
         getTotalQuantity() {
-            if (localStorage.getItem('cart') != null) {
-                return this.cart.length
+            if (localStorage.getItem('quantity') != null) {
+                return localStorage.getItem('quantity')
             }
             return 0;
-            // return this.cart.length;
         },
 
         getItemsFromLocalstorage() {
@@ -116,10 +115,7 @@ export default {
         },
 
         total() {
-            if (this.quantity < 0) { this.quantity = 1 }
-            else {
-                return this.quantity * 1;
-            }
+      
         }
     },
 
@@ -128,7 +124,7 @@ export default {
             return this.sideBar;
         },
     },
-    created(){
+    created() {
         this.getItemsFromLocalstorage()
     }
 };
