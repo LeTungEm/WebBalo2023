@@ -119,7 +119,7 @@
                                         Additional Information
                                     </h1>
 
-                                    <p class="text-justify">
+                                    <p>
                                         Eos no lorem eirmod diam diam, eos elitr et gubergren diam
                                         sea. Consetetur vero aliquyam invidunt duo dolores et duo
                                         sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod
@@ -152,26 +152,24 @@
                 <swiper class="relative grid overflow-hidden w-full cursor-grab px-2" :navigation="true" :pagination="{
                     clickable: true,
                 }" :autoplay="{
-    delay: 1500,
-    disableOnInteraction: false,
-}" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30"
-                    :breakpoints="{
-                        '640': {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        '768': {
-                            slidesPerView: 3,
-                            spaceBetween: 40,
-                        },
-                        '1024': {
-                            slidesPerView: 4,
-                            spaceBetween: 30,
-                        },
-                    }">
-                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full"
-                        v-for="productItem in relatedProduct" :key="productItem.productId">
-                        <ProductItem :productData="productItem" />
+                    delay: 1500,
+                    disableOnInteraction: false,
+                }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
+                    '640': {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    '768': {
+                        slidesPerView: 3,
+                        spaceBetween: 40,
+                    },
+                    '1024': {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                }">
+                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full" v-for="productItem in relatedProduct" :key="productItem.productId">
+                        <ProductItem :productData="productItem"/>
                     </swiper-slide>
                 </swiper>
             </div>
@@ -260,8 +258,8 @@ export default {
     created() {
         this.getProduct(this.productId);
     },
-
-};
+    
+}
 </script>
 
 <style></style>
