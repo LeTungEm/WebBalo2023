@@ -199,15 +199,16 @@ export default {
 
 
     addToCart(productId) {
-      console.log("Add", this.products[productId]);
-      if (this.products[productId].amount > 0) {
-        this.cart.push(productId);
-        this.products[productId].amount--;
+      const index = this.products.findIndex((element) => element.productID === productId);
+      if (this.products[index].amount > 0) {
+        this.cart.push(this.products[index].productID);
+        this.products[index].amount--;
       }
       localStorage.setItem('cart', this.cart)
 
       this.$emit('cart-updated', this.cart);
     },
+    
     toggleMenu() {
       this.toggle = !this.toggle;
     },
