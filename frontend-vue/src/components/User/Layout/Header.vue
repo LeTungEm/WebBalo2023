@@ -78,13 +78,13 @@ export default {
     return {
       isOpen: false,
       shopDropdown: false,
-      isOpenCart: true,
+      isOpenCart: false,
       account: false,
       cart: [],
     };
   },
   props: {
-    quant: Number
+    quant: String
   },
   computed: {
     isModalVisible() {

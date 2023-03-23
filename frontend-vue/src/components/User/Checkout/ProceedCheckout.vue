@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header />
+        <Header :quant="getTotalQuantity()" />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
         <div class="my-24 w-8/12 mx-auto">
             <table class="w-full mb-12">
@@ -27,14 +27,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr v-for="product in products" :key="product.productID">
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
-                            <img class="" src="https://webbalo2023.000webhostapp.com/images/balo/balohs1.png" alt="">
+                            <img class="" :src=product.image_1 alt="">
                         </td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"> Lorem ipsum dolor sit amet</td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">$30</td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"><input type="number"></td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">$ 80.0</td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"> {{ product.productName }}</td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ product.price }}</td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"><input type="number" min="1"
+                                v-model="quantity"></td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ total() }}</td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"><button
                                 class="border p-4 hover:bg-gray-100 rouded-sm"><i class="fa fa-times"
                                     aria-hidden="true"></i></button></td>
@@ -53,17 +54,14 @@
                         </thead>
                         <tbody>
                             <tr class="border-b text-gray-800 pb-5">
-                                <td class=" py-5">Sub Total</td>
-                                <td class="font-bold text-2xl">$ 130</td>
-                            </tr>
-                            <tr class="border-b text-gray-800 pb-5">
                                 <td class=" py-5">Grand Total</td>
                                 <td class="font-bold text-2xl">$ 388</td>
                             </tr>
                             <tr class="border-b text-gray-800 pb-5">
                                 <td class=""></td>
                                 <td class="py-5 text-right"><button
-                                        class="text-white px-5 py-3 bg-green-600 hover:bg-green-500 rounded-md">Checkout</button> </td>
+                                        class="text-white px-5 py-3 bg-green-600 hover:bg-green-500 rounded-md">Checkout</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,16 +76,18 @@
 import Header from '../Layout/Header.vue';
 import Footer from '../Layout/Footer.vue';
 import Banner from '../Layout/Banner.vue';
+import ProductsService from '@/service/ProductsService';
 
 export default {
     name: "ProoceedCheckout",
     data() {
         return {
             sideBar: false,
+            products: [],
+            listproducts: [],
+            quantity: 1,
+            cart: [],
         };
-    },
-    methods: {
-
     },
 
     components: {
@@ -95,11 +95,38 @@ export default {
         Footer,
         Banner,
     },
+    methods: {
+        getTotalQuantity() {
+            if (localStorage.getItem('quantity') != null) {
+                return localStorage.getItem('quantity')
+            }
+            return 0;
+        },
+
+        getItemsFromLocalstorage() {
+            if (localStorage.getItem('cart') != null) {
+                this.listproducts = localStorage.getItem('cart').split(',');
+                this.listproducts.forEach(element => {
+                    ProductsService.getByID(element).then(res => {
+                        this.products.push(res.data)
+                    })
+                });
+            }
+        },
+
+        total() {
+      
+        }
+    },
+
     computed: {
         isModalVisible() {
             return this.sideBar;
         },
     },
+    created() {
+        this.getItemsFromLocalstorage()
+    }
 };
 </script>
 

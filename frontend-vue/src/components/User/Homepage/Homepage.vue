@@ -8,40 +8,20 @@
           <div class="flex-none p-3 text-center">
             <ul class="">
               <li>
-                <router-link to=""
-                  ><i
-                    class="fa fa-facebook-square hover:text-gray-600 my-2"
-                    style="font-size: 18px"
-                    aria-hidden="true"
-                  ></i
-                ></router-link>
+                <router-link to=""><i class="fa fa-facebook-square hover:text-gray-600 my-2" style="font-size: 18px"
+                    aria-hidden="true"></i></router-link>
               </li>
               <li>
-                <router-link to=""
-                  ><i
-                    class="fa fa-linkedin-square hover:text-gray-600 my-2"
-                    style="font-size: 18px"
-                    aria-hidden="true"
-                  ></i
-                ></router-link>
+                <router-link to=""><i class="fa fa-linkedin-square hover:text-gray-600 my-2" style="font-size: 18px"
+                    aria-hidden="true"></i></router-link>
               </li>
               <li>
-                <router-link to=""
-                  ><i
-                    class="fa fa-twitter-square hover:text-gray-600 my-2"
-                    style="font-size: 18px"
-                    aria-hidden="true"
-                  ></i
-                ></router-link>
+                <router-link to=""><i class="fa fa-twitter-square hover:text-gray-600 my-2" style="font-size: 18px"
+                    aria-hidden="true"></i></router-link>
               </li>
               <li>
-                <router-link to=""
-                  ><i
-                    class="fa fa-instagram hover:text-gray-600 my-2"
-                    style="font-size: 18px"
-                    aria-hidden="true"
-                  ></i
-                ></router-link>
+                <router-link to=""><i class="fa fa-instagram hover:text-gray-600 my-2" style="font-size: 18px"
+                    aria-hidden="true"></i></router-link>
               </li>
             </ul>
           </div>
@@ -52,29 +32,16 @@
         </div>
         <div class="flex items-center mt-6 pl-7">
           <!-- Open Video -->
-          <button
-            @click="modelToggle = true"
-            class="border border-gray-500 p-2 rounded-full relative"
-          >
-            <img
-              class="w-16 h-16 lg:w-24 lg:h-24 rounded-full"
+          <button @click="modelToggle = true" class="border border-gray-500 p-2 rounded-full relative">
+            <img class="w-16 h-16 lg:w-24 lg:h-24 rounded-full"
               src="https://webbalo2023.000webhostapp.com/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg"
-              alt=""
-            />
+              alt="" />
             <div class="absolute top-1/2 left-1/2 opacity-60">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
+              <svg xmlns="http://www.w3.org/2000/svg"
                 class="z-10 absolute text-white top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                />
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
               </svg>
             </div>
           </button>
@@ -86,43 +53,23 @@
               Balos
             </p>
           </div>
-          <div
-            @click="modelToggle = false"
-            v-bind:class="{ hidden: !modelToggle }"
-            class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60"
-          >
+          <div @click="modelToggle = false" v-bind:class="{ hidden: !modelToggle }"
+            class="fixed flex justify-center w-full h-full z-20 top-0 left-0 bg-black bg-opacity-60">
             <div class="my-auto relative w-full md:w-1/2">
-              <iframe
-                width="100%"
-                height="315"
-                src="https://www.youtube.com/embed/1VZXw8z1WZ0"
-                title="YouTube video player"
-                frameborder="0"
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/1VZXw8z1WZ0"
+                title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
+                allowfullscreen></iframe>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="mb-20"
-        data-aos="fade-down"
-        data-aos-duration="1500"
-        data-aos-delay="500"
-      >
-        <div
-          class="relative overflow-hidden h-auto w-full px-[10vw] lg:px-[16vw] cursor-grab"
-        >
+      <div class="mb-20" data-aos="fade-down" data-aos-duration="1500" data-aos-delay="500">
+        <div class="relative overflow-hidden h-auto w-full px-[10vw] lg:px-[16vw] cursor-grab">
           <div class="">
             <h1 class="text-5xl mb-8">Latest New</h1>
           </div>
-          <swiper
-            :slidesPerView="1"
-            :grabCursor="true"
-            :scrollbar="true"
-            :modules="modules"
-            :spaceBetween="30"
+          <swiper :slidesPerView="1" :grabCursor="true" :scrollbar="true" :modules="modules" :spaceBetween="30"
             :breakpoints="{
               '640': {
                 slidesPerView: 2,
@@ -144,30 +91,18 @@
           </swiper>
         </div>
       </div>
-      <div
-        class="relative w-11/12 md:w-8/12 mx-auto"
-        data-aos="fade-down"
-        data-aos-duration="1500"
-        data-aos-delay="500"
-      >
+      <div class="relative w-11/12 md:w-8/12 mx-auto" data-aos="fade-down" data-aos-duration="1500" data-aos-delay="500">
         <h1 class="text-center text-5xl font-bold mb-6">BEST SELLERS</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           <ProductItem :productData="product" v-for="product in products" :key="product.productID"
             @add-to-cart="addToCart" />
         </div>
-        <button
-          @click="$router.push('/shop')"
-          class="flex my-12 border rounded-full px-8 py-3 mx-auto bg-gradient-to-r from-blue-900 to-blue-500 text-white hover:from-blue-500 hover:to-blue-900 duration-1000"
-        >
+        <button @click="$router.push('/shop')"
+          class="flex my-12 border rounded-full px-8 py-3 mx-auto bg-gradient-to-r from-blue-900 to-blue-500 text-white hover:from-blue-500 hover:to-blue-900 duration-1000">
           Shop All Products
         </button>
       </div>
-      <div
-        class="relative my-32"
-        data-aos="flip-right"
-        data-aos-duration="2000"
-        data-aos-delay="2200"
-      >
+      <div class="relative my-32" data-aos="flip-right" data-aos-duration="2000" data-aos-delay="2200">
         <div class="text-center mb-10">
           <h1 class="font-bold text-4xl mb-4">News</h1>
           <p class="text-gray-600 italic text-sm">
@@ -234,6 +169,7 @@ export default {
       modelToggle: false,
       sortKKey: 'productName',
       cart: [],
+      quantity: 0,
       images: [],
     };
   },
@@ -256,26 +192,24 @@ export default {
     },
 
     getTotalQuantity() {
-      // if (localStorage.getItem('cart')) {
-      //   return localStorage.getItem('cart').length
-      // }
-      // return 0;
-      return this.cart.length;
+      if (localStorage.getItem('quantity') != null) {
+        return localStorage.getItem('quantity')
+      }
+      return 0;
     },
 
 
     addToCart(productId) {
-      if (this.products[parseInt(productId)].amount > 0) {
-        this.cart.push(productId);
-        this.products[parseInt(productId)].amount--;
+      const index = this.products.findIndex((element) => element.productID === productId);
+      if (this.products[index].amount > 0) {
+        this.cart.push(this.products[index].productID);
+        this.products[index].amount--;
+        this.quantity++;
       }
-      localStorage.setItem('cart', this.cart)
-
+      localStorage.setItem('quantity', this.quantity)
       this.$emit('cart-updated', this.cart);
-      // console.log("Quantity: ", this.products[parseInt(productId)].amount)
-      // console.log("quantity Product ", this.cart.length);
-      // console.log("Product ", this.cart);
     },
+
     toggleMenu() {
       this.toggle = !this.toggle;
     },

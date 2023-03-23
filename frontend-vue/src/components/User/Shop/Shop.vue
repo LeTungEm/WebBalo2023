@@ -82,9 +82,9 @@
                         <div class="w-1/2">
                             <button @click="onToggle"
                                 class="lg:hidden mx-3 mx-5 relative before:content-[''] before:absolute before:block before:w-full before:h-[2px] 
-                                                                                                                                                                                      before:bottom-0 before:left-0 before:bg-black
-                                                                                                                                                                                      before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
-                                                                                                                                                                                      before:transition before:ease-in-out before:duration-300">
+                                                                                                                                                                                          before:bottom-0 before:left-0 before:bg-black
+                                                                                                                                                                                          before:hover:scale-x-100 before:scale-x-0 before:origin-top-left
+                                                                                                                                                                                          before:transition before:ease-in-out before:duration-300">
                                 <i class="fa fa-filter" aria-hidden="true"></i>
                                 <span class="ml-2">Filters</span>
                             </button>
@@ -211,23 +211,26 @@ export default {
             search: '',
             catInput: '',
             cart: [],
+            quantity:0,
         };
     },
     methods: {
         getTotalQuantity() {
-            // if (localStorage.getItem('cart')) {
-            //     return localStorage.getItem('cart').length
-            // }
-            // return 0;
-            return this.cart.length;
+            if (localStorage.getItem('quantity') != null) {
+                console.log(localStorage.getItem('quantity'));
+                return localStorage.getItem('quantity')
+            }
+            return 0;
         },
 
         addToCart(productId) {
-            if (this.products[parseInt(productId)].amount > 0) {
-                this.cart.push(productId);
-                this.products[parseInt(productId)].amount--;
+            const index = this.products.findIndex((element) => element.productID === productId);
+            if (this.products[index].amount > 0) {
+                this.cart.push(this.products[index].productID);
+                this.products[index].amount--;
+                this.quantity++;
             }
-            localStorage.setItem('cart', this.cart)
+            localStorage.setItem('quantity', this.quantity)
             this.$emit('cart-updated', this.cart);
         },
 
