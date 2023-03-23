@@ -13,3 +13,7 @@
 ### Account api trên 000webhostapp
 - Account code php
 ![bc33c165aafd70a329ec](https://user-images.githubusercontent.com/112546329/221773141-3b48e998-0951-4aaa-ad58-062470ef7030.jpg)
+
+
+#how to push
+https://www.thanhlongdev.com/huong-dan-su-dung-git-va-cach-push-project-len-github/
