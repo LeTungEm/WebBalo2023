@@ -23,7 +23,7 @@
             <div class="flex justify-between font-bold">
                 <h1>Total:</h1>
                 <p>
-                    <!-- {{ totalPrice }} -->
+                    {{ formatNumber(total) }}
                 </p>
             </div>
         </div>
@@ -48,7 +48,8 @@ export default {
         return {
             listproducts: [],
             products: [],
-            showItems: true
+            showItems: true,
+            total: 0
 
         }
     },
@@ -60,6 +61,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
+                        this.total += res.data.price
                     })
                 });
             }
@@ -74,13 +76,19 @@ export default {
         removeItem(productId) {
             const index = this.products.findIndex((element) => element.productID === productId);
             if (index !== -1) {
-                this.products.splice(index, 1)
-                localStorage.setItem('cart', this.products);
+                this.products.splice(index, 1);
+                var arrProductID = [];
+                this.products.map(data => {
+                    arrProductID.push(data.productID);
+                })
+                console.log(arrProductID);
+                localStorage.setItem('cart', arrProductID);
                 if (this.products[index] == undefined) {
                     localStorage.removeItem('cart')
                     this.showItems = !this.showItems;
                 }
             }
+            this.$emit("deleteFromCart");
         },
 
     },
