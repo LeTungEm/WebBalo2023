@@ -250,8 +250,9 @@ export default {
     },
   },
   methods: {
-    getProduct() {
-      ProductsService.getByID(this.productId).then((res) => {
+    async getProduct() {
+      this.loading = true;
+      var status = await ProductsService.getByID(this.productId).then((res) => {
         this.productName = res.data.productName;
         this.description = res.data.description;
         this.createDate = res.data.createDate;
@@ -268,7 +269,13 @@ export default {
         this.amount = res.data.amount;
         this.dateChange = res.data.dateChange;
         this.catId = res.data.catId;
+        return true;
+      }).catch(function(){
+        return true;
       });
+      if(status){
+        this.loading = false;
+      }
     },
 
     toggleSidebar() {
