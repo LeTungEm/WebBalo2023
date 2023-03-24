@@ -3,7 +3,7 @@
     <div class="flex justify-between p-3 border-b shadow-lg">
       <div class="flex justify-between items-center w-full">
         <router-link to="/">
-          <img class="object-fill h-14" src="https://webbalo2023.000webhostapp.com/images/logo/logo.jpg" alt="" />
+          <img class="object-fill h-14" src="https://data.webbalo.online/images/logo/logo.jpg" alt="" />
         </router-link>
         <div class="hidden lg:flex justify-between items-center w-4/5">
           <LinkToPage />
@@ -58,7 +58,7 @@
           </div>
           <div class="my-5">
             <router-link to="/">
-              <img class="object-fill" src="https://webbalo2023.000webhostapp.com/images/logo/logo.jpg" alt="" />
+              <img class="object-fill" src="https://data.webbalo.online/images/logo/logo.jpg" alt="" />
             </router-link>
           </div>
           <div @click="isOpen = false">

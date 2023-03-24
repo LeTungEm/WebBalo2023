@@ -23,16 +23,16 @@ switch ($action) {
         break;
     case "insertRole": 
         $roleName = $_GET["roleName"];      
-        $message = ($role->insertRole($blogName) > 0)?'true':'false';
+        $message = ($role->insertRole($blogName) > 0)?true:false;
         break;
     case "deleteRole":
         $roleID = $_GET["roleID"];
-        $message = $role->deleteRole($roleID);
+        $message = ($role->deleteRole($roleID) > 0)?true:false;
         break;
     case "updateRole":
         $roleName = $_GET["roleName"];
         $roleID = $_GET["roleID"];
-        $message = $about->updateRole($roleID,$roleName);
+        $message = ($role->updateRole($roleID,$roleName) > 0)?true:false;
         break;
 
 }

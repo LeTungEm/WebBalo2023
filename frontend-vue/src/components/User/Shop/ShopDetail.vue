@@ -8,24 +8,24 @@
                     <div class="mx-8 lg:w-1/2">
                         <swiper :spaceBetween="10" :navigation="true" :thumbs="{ swiper: thumbsSwiper }" class="mb-12">
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_1" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_1" /></swiper-slide>
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_2" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_2" /></swiper-slide>
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_3" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_3" /></swiper-slide>
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_4" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_4" /></swiper-slide>
                         </swiper>
                         <swiper @swiper="setThumbsSwiper" :spaceBetween="10" :slidesPerView="4" :freeMode="true"
                             :watchSlidesVisibility="true" :watchSlidesProgress="true" class="mySwiper">
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_1" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_1" /></swiper-slide>
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_2" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_2" /></swiper-slide>
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_3" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_3" /></swiper-slide>
                             <swiper-slide><img
-                                    :src="'https://webbalo2023.000webhostapp.com/images/balo/' + product.image_4" /></swiper-slide>
+                                    :src="'https://data.webbalo.online/images/balo/' + product.image_4" /></swiper-slide>
                         </swiper>
                     </div>
                     <div class="mt-12 lg:mt-0 mx-8 leading-loose">

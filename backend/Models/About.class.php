@@ -19,7 +19,7 @@
 
         function deleteAbout($aboutId){
             $sql = 'DELETE FROM `about` WHERE aboutId = ?';
-            return $this->select($sql, array($aboutId));
+            return $this->delete($sql, array($aboutId));
         }
 
         function updateAbout($title, $image, $description, $aboutId){

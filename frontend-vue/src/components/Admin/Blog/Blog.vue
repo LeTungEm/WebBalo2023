@@ -100,7 +100,7 @@
                   <img
                     v-if="fileName"
                     :src="
-                      'https://webbalo2023.000webhostapp.com/images/blog/' +
+                      'https://data.webbalo.online/images/blog/' +
                       fileName
                     "
                     alt=""

@@ -1,13 +1,13 @@
 <?php
 $configDB = array();
 $configDB["host"] 		= "localhost";
-$configDB["database"]	= "webbalo";
-$configDB["username"] 	= "root";
-$configDB["password"] 	= "";
+$configDB["database"]	= "u529732344_webbalo2023";
+$configDB["username"] 	= "u529732344_root";
+$configDB["password"] 	= "b4U/6RvOnw5";
 define("HOST", "localhost");
-define("DB_NAME", "webbalo");
-define("DB_USER", "root");
-define("DB_PASS", "");
+define("DB_NAME", "u529732344_webbalo2023");
+define("DB_USER", "u529732344_root");
+define("DB_PASS", "b4U/6RvOnw5");
 define('ROOT', dirname(dirname(__FILE__) ) );
 //Thu muc tuyet doi truoc cua config; c:/wamp/www/lab/
 define("BASE_URL", "http://".$_SERVER['SERVER_NAME']."/lab/");//dia chi website

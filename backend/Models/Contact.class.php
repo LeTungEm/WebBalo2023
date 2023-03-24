@@ -19,7 +19,7 @@
 
         function deleteContact($contactId){
             $sql = 'DELETE FROM `contact` WHERE contactId = ?';
-            return $this->select($sql, array($contactId));
+            return $this->delete($sql, array($contactId));
         }
 
         
