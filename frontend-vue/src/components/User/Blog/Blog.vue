@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header :quant="getTotalQuantity()" />
+        <Header/>
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Blog'" />
         <div class="text-center">
             <h1 class="font-display font-bold text-5xl mb-6">The Blog</h1>
@@ -43,13 +43,6 @@ export default {
         };
     },
     methods: {
-        getTotalQuantity() {
-            if (localStorage.getItem('cart') != null) {
-                return localStorage.getItem('cart').split(',').length
-            }
-            return 0;
-        },
-
         getAllPages() {
             PagesService.getAll().then(res => { this.pages = res.data });
         }

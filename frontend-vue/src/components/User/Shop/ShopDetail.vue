@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header :quant="getTotalQuantity()" />
+        <Header />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Product'" />
         <div class="lg:w-8/12 mx-auto my-16">
             <div class="pb-24 border-b">
@@ -218,11 +218,6 @@ export default {
         };
     },
     methods: {
-        getTotalQuantity() {
-
-            return 0;
-        },
-
         setOption(option) {
             this.selectedOption = option;
             this.isOptionsExpanded = false;

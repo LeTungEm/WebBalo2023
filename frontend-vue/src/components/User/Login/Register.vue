@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header :quant="getTotalQuantity()" />
+        <Header />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Register'" />
         <div class="flex items-center justify-center my-12">
             <div class="lg:w-1/2">
@@ -100,12 +100,6 @@ export default {
         }
     },
     methods: {
-        getTotalQuantity() {
-            if (localStorage.getItem('cart') != null) {
-                return localStorage.getItem('cart').split(',').length
-            }
-            return 0;
-        },
         toggleShow() {
             this.showPassword = !this.showPassword;
         },

@@ -1,6 +1,5 @@
 <template>
-  
-  <header class="sticky w-full top-0 z-20 bg-white" >
+  <header class="sticky w-full top-0 z-20 bg-white">
     <div class="flex justify-between p-3 border-b shadow-lg">
       <div class="flex justify-between items-center w-full">
         <router-link to="/">
@@ -13,7 +12,7 @@
       <div class="flex items-center">
         <button class="mx-3 flex" @click="onOpenCart">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-          <sup>{{ quant }}</sup>
+          <sup>{{ getTotalQuantity() }}</sup>
 
         </button>
         <button class="lg:hidden border px-2 py-1" @click="onToggle">
@@ -70,8 +69,6 @@
 import LinkToPage from './LinkToPage.vue';
 import CartCPN from '@/components/User/Cart/Cart.vue';
 
-
-
 export default {
   name: "HeaderPage",
   data() {
@@ -83,8 +80,13 @@ export default {
       cart: [],
     };
   },
-  props: {
-    quant: Number
+  props:{
+      changeCartNumber: Number,
+  },
+  watch:{
+    changeCartNumber:function(){
+      this.getTotalQuantity();
+    }
   },
   computed: {
     isModalVisible() {
@@ -95,6 +97,12 @@ export default {
     },
   },
   methods: {
+    getTotalQuantity() {
+      if (localStorage.getItem('cart') != null) {
+        return localStorage.getItem('cart').split(',').length
+      }
+      return 0;
+    },
     updateCart(cart) {
       this.cart = cart;
     },
@@ -115,6 +123,9 @@ export default {
   components: {
     LinkToPage,
     CartCPN,
+  },
+  created() {
+    this.getTotalQuantity()
   }
 };
 </script>

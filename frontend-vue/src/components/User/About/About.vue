@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header :quant="getTotalQuantity()" />
+        <Header />
         <div>
             <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'About US'" />
             <AboutItem v-for="item in listAbout" :key="item.aboutTitle" :about="item" />
@@ -66,12 +66,6 @@ export default {
         AboutItem,
     },
     methods: {
-        getTotalQuantity() {
-            if (localStorage.getItem('cart') != null) {
-                return localStorage.getItem('cart').split(',').length
-            }
-            return 0;
-        },
         getAllAboutSS() {
             AboutService.getAll().then(res => { this.listAbout = res.data });
         }

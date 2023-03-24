@@ -1,6 +1,6 @@
 <template>
     <div class="" data-aos="fade-down" data-aos-duration="1000" data-aos-delay='300'>
-        <Header :quant="getTotalQuantity()" />
+        <Header />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Contact US'" />
         <div class="my-24 px-6 mx-auto">
             <!-- Section: Design Block -->
@@ -78,13 +78,6 @@ export default {
         ContactItem,
     },
     methods: {
-        getTotalQuantity() {
-            if (localStorage.getItem('cart') != null) {
-                return localStorage.getItem('cart').split(',').length
-            }
-            return 0;
-        },
-
         getAllContact() {
             ContactService.getAll().then(res => {
                 this.listContact = res.data;
