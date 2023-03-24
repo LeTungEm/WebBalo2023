@@ -7,8 +7,7 @@
         </div>
         <div class="col-span-5 md:col-span-3 px-8 text-md leading-8 my-6">
             <h1 class="text-2xl pb-6 font-bold">{{about.title}}</h1>
-            <p>
-                {{about.description}}
+            <p v-html="about.description">
             </p>
         </div>
     </div>

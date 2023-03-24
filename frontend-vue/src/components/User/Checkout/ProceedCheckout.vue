@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Header />
+        <Header :changeCartNumber="changeCartNumber" />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
         <div class="my-12 lg:my-24 p-5 lg:w-8/12 mx-auto overflow-scroll" v-if="showItems">
             <table class="w-full mb-12 ">
@@ -29,7 +29,7 @@
                             {{ index }}
                         </td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
-                            <img class="" :src="product.image_1" alt="">
+                            <img class="" :src="'https://data.webbalo.online/images/balo/'+product.image_1" alt="">
                         </td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"> {{ product.productName }}</td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ formatNumber(product.price) }}</td>
@@ -99,6 +99,7 @@ export default {
             cart: [],
             showItems: true,
             total: 0,
+            changeCartNumber: 0,
         };
     },
 
@@ -115,7 +116,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
-                        this.total += parseInt(res.data.price)
+                        this.total += parseInt(res.data.price);
                     })
                 });
             }
@@ -142,7 +143,7 @@ export default {
                     this.showItems = !this.showItems;
                 }
             }
-            this.$emit("deleteFromCart");
+            this.changeCartNumber++;
         },
 
         checkoutOrder() {

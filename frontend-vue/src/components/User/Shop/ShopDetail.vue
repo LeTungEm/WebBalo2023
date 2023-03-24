@@ -32,7 +32,7 @@
                         <h1 class="text-3xl font-bold">{{ product.productName }}</h1>
                         <p class="text-red-500 my-3">{{ formatNumber(product.price) }}</p>
                         <p class="mb-3">Availability: <span class="text-red-500">{{ product.amount }}</span></p>
-                        <p class="text-gray-600 mb-6 text-justify">{{ product.description }}</p>
+                        <p v-html="product.description" class="text-gray-600 mb-6 text-justify"></p>
                         <div class="flex justify-between mt-12">
                             <button @click="addToCart(product.productID)"
                                 class="fixed z-10 lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add
