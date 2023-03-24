@@ -41,9 +41,8 @@ switch ($action) {
         $image = $_GET["image"];
         $createDate = $_GET["createDate"];
         $author = $_GET["author"];
-        $image = $_GET["image"];
         $published = $_GET["published"];
-        $message = ($pages->updatePages($blogId,$blogName, $content, $image, $createDate, $author, $published) > 0)?true:false;
+        $message = ($pages->updatePages($blogName, $content, $image, $createDate, $author, $published, $blogId) > 0)?true:false;
         break;
 
 }

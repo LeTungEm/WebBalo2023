@@ -99,10 +99,7 @@
                 <div v-else>
                   <img
                     v-if="fileName"
-                    :src="
-                      'https://data.webbalo.online/images/blog/' +
-                      fileName
-                    "
+                    :src="'https://data.webbalo.online/images/blog/' + fileName"
                     alt=""
                   />
                 </div>
@@ -188,7 +185,8 @@ export default {
       publish: 1,
       createDate: "",
       message: "",
-      errMessage:"",
+      errMessage: "",
+      oldFile: '',
     };
   },
   methods: {
@@ -206,13 +204,14 @@ export default {
     },
     getBlog() {
       PagesService.getByID(this.blogId).then((res) => {
-        if(res.data){
+        if (res.data) {
           (this.blogName = res.data.blogName),
-          (this.content = res.data.content),
-          (this.fileName = res.data.image),
-          (this.createDate = res.data.createDate),
-          (this.author = res.data.author),
-          (this.publish = res.data.published);
+            (this.content = res.data.content),
+            (this.fileName = res.data.image),
+            (this.oldFile = res.data.image),
+            (this.createDate = res.data.createDate),
+            (this.author = res.data.author),
+            (this.publish = res.data.published);
         }
       });
     },
@@ -228,7 +227,7 @@ export default {
         UploadImageService.uploadImage(formData)
           .then(function (data) {
             console.log("upload image: " + data.data);
-            if(!data.data){
+            if (!data.data) {
               this.errMessage = "Up ảnh thất bại !!!\n";
             }
           })
@@ -249,13 +248,47 @@ export default {
         ).then((res) => {
           if (res.data) {
             this.message = "Đã thêm " + this.blogName;
-          }else{
+          } else {
             this.errMessage = "Thêm thất bại !!!\n";
           }
         });
       } else {
-        console.log("update");
+        PagesService.updatePages(
+          this.blogName,
+          this.content,
+          this.fileName,
+          this.createDate,
+          this.author,
+          this.publish,
+          this.blogId
+        ).then((res) => {
+          if (res.data) {
+            this.message =
+              "Sửa blog " +
+              this.blogName +
+              " thành công";
+            if (this.oldFile != this.fileName) {
+              this.deleteImage();
+              this.oldFile = this.fileName;
+            }
+          }
+        });
       }
+    },
+
+    deleteImage() {
+      let formData = new FormData();
+      formData.append("action", "delete");
+      formData.append("path", "../images/blog/" + this.oldFile);
+
+      UploadImageService.uploadImage(formData)
+        .then(function (data) {
+          console.log("delete image: " + data.data);
+        })
+
+        .catch(function () {
+          console.log("FAILURE!!");
+        });
     },
 
     onChangeFileUpload(e) {

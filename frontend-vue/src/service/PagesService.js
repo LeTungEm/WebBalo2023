@@ -42,7 +42,7 @@ const PRODUCT_API_URL =
         },
       });
     }
-    updatePages(blogName, content, image, blogId, createDate, author,published){
+    updatePages(blogName, content, image, createDate, author, published, blogId){
       return axios.get(`${PRODUCT_API_URL}`, {
         params: {
             action: "updatePages",

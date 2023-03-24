@@ -3,7 +3,7 @@
         <div class="" v-for="(product, index) in products" :key="index">
             <div class="flex justify-between items-center w-full mt-5">
                 <div class="flex items-center">
-                    <img :src="product.image_1" class="object-cover w-24 h-24 mr-4" alt="" />
+                    <img :src="'https://data.webbalo.online/images/balo/'+product.image_1" class="object-cover w-24 h-24 mr-4" alt="" />
                     <div class="">
                         <p> {{ product.productName }}</p>
                         <p>
@@ -74,13 +74,19 @@ export default {
         removeItem(productId) {
             const index = this.products.findIndex((element) => element.productID === productId);
             if (index !== -1) {
-                this.products.splice(index, 1)
-                localStorage.setItem('cart', this.products);
+                this.products.splice(index, 1);
+                var arrProductID = [];
+                this.products.map(data => {
+                    arrProductID.push(data.productID);
+                })
+                console.log(arrProductID);
+                localStorage.setItem('cart', arrProductID);
                 if (this.products[index] == undefined) {
                     localStorage.removeItem('cart')
                     this.showItems = !this.showItems;
                 }
             }
+            this.$emit("deleteFromCart");
         },
 
     },
