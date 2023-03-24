@@ -83,6 +83,7 @@ export default {
       showRePassword: false,
       modelToggle: false,
       notification: '',
+      cart: [],
     };
   },
   computed: {

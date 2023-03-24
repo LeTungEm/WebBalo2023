@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :quant="getTotalQuantity()" />
+    <Header :changeCartNumber="changeCartNumber" />
     <!-- End Header -->
     <div class="overflow-hidden">
       <div class="pt-12 bg-gray-200 pb-12">
@@ -169,8 +169,8 @@ export default {
       modelToggle: false,
       sortKKey: 'productName',
       cart: [],
-      quantity: 0,
       images: [],
+      changeCartNumber: 0,
     };
   },
   components: {
@@ -187,27 +187,21 @@ export default {
     };
   },
   methods: {
-    updateCart(cart) {
-      this.cart = cart;
-    },
-
-    getTotalQuantity() {
-      if (localStorage.getItem('quantity') != null) {
-        return localStorage.getItem('quantity')
-      }
-      return 0;
-    },
-
-
     addToCart(productId) {
+      const list = localStorage.getItem('cart')
       const index = this.products.findIndex((element) => element.productID === productId);
-      if (this.products[index].amount > 0) {
-        this.cart.push(this.products[index].productID);
-        this.products[index].amount--;
-        this.quantity++;
+
+      if (list !== null) {
+        const arr = list.split(',')
+        if (this.products[index].amount > 0) {
+          arr.push(this.products[index].productID)
+          this.products[index].amount--;
+          localStorage.setItem('cart', arr)
+        }
+      } else {
+        localStorage.setItem('cart', this.cart.push(this.products[index].productID))
       }
-      localStorage.setItem('quantity', this.quantity)
-      this.$emit('cart-updated', this.cart);
+      this.changeCartNumber++;
     },
 
     toggleMenu() {

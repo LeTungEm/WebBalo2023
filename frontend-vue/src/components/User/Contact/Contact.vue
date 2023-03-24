@@ -1,11 +1,8 @@
 <template>
-    <div class=""  data-aos="fade-down" data-aos-duration="1000" data-aos-delay='300'>
-        <Header/>
-        <Banner 
-            :bannerName="'categories'" 
-            :shopName="'PALDNE'" 
-            :menu="'Contact US'"/>
-        <div class="my-24 px-6 mx-auto" >
+    <div class="" data-aos="fade-down" data-aos-duration="1000" data-aos-delay='300'>
+        <Header />
+        <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Contact US'" />
+        <div class="my-24 px-6 mx-auto">
             <!-- Section: Design Block -->
             <div class="mb-32 text-gray-800">
                 <div class="flex justify-center">
@@ -17,7 +14,8 @@
                 <div class="flex flex-wrap">
                     <div class="grow-0 shrink-0 basis-auto w-full lg:w-7/12">
                         <div class="flex flex-wrap">
-                            <ContactItem v-for="contact in listContact" :key="contact" :title="contact.contactName" :email="contact.email"/>
+                            <ContactItem v-for="contact in listContact" :key="contact" :title="contact.contactName"
+                                :email="contact.email" />
                         </div>
                     </div>
                     <div class="grow-0 shrink-0 basis-auto mb-12 lg:mb-0 w-full lg:w-5/12 px-3 lg:px-6">
@@ -54,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <Footer/>
+        <Footer />
     </div>
 </template>
 
@@ -67,25 +65,26 @@ import ContactService from '@/service/ContactService';
 
 export default {
     name: "ContactUs",
-    data(){
+    data() {
         return {
             listContact: [],
+            cart: [],
         }
     },
-    components:{
+    components: {
         Header,
         Footer,
         Banner,
         ContactItem,
     },
-    methods:{
-        getAllContact(){
-            ContactService.getAll().then(res =>{
+    methods: {
+        getAllContact() {
+            ContactService.getAll().then(res => {
                 this.listContact = res.data;
             })
         }
     },
-    created(){
+    created() {
         this.getAllContact();
     }
 }

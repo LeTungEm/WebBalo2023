@@ -1,23 +1,16 @@
 <template>
     <div class="">
-        <Header/>
+        <Header />
         <div>
-            <Banner 
-            :bannerName="'categories'" 
-            :shopName="'PALDNE'" 
-            :menu="'About US'"/>
-            <AboutItem 
-                v-for="item in listAbout"
-                :key="item.aboutTitle"
-                :about="item"
-                />
+            <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'About US'" />
+            <AboutItem v-for="item in listAbout" :key="item.aboutTitle" :about="item" />
             <router-link class="link" to="/Shop">
                 <p
                     class="my-10 w-fit text-center text-xl border px-8 mx-auto cursor-pointer duration-300 bg-red-500 text-white py-3 hover:bg-red-600 uppercase rounded-full">
                     Shop now
                 </p>
             </router-link>
-            <div class="py-12 bg-slate-100" >
+            <div class="py-12 bg-slate-100">
                 <div class="w-10/12 mx-auto">
                     <h1 class="text-6xl text-red-500 font-bold leading-none mb-7 text-center border-b pb-6">
                         Why Shop With Us
@@ -47,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <Footer/>
+        <Footer />
     </div>
 </template>
 
@@ -60,9 +53,10 @@ import AboutService from '../../../service/AboutService';
 
 export default {
     name: "AboutUs",
-    data(){
+    data() {
         return {
             listAbout: [],
+            cart: [],
         }
     },
     components: {
@@ -71,15 +65,15 @@ export default {
         Banner,
         AboutItem,
     },
-    methods:{
-        getAllAboutSS(){
-            AboutService.getAll().then(res => {this.listAbout = res.data });
+    methods: {
+        getAllAboutSS() {
+            AboutService.getAll().then(res => { this.listAbout = res.data });
         }
     },
-    created(){
+    created() {
         this.getAllAboutSS();
     }
-    
+
 }
 </script>
 
