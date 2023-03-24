@@ -25,8 +25,8 @@
     
         function insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId){
             $sql = "INSERT INTO `account`(`first_name`, `last_name`, `email`,
-             `password`, `avatar`, `gender`, `phone`, `address`, `accountId`, `LastLogin`, `Birthday`, 
-             `roleID`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+             `password`, `avatar`, `gender`, `phone`, `address`, `Birthday`,
+             `roleID`) VALUES (?,?,?,?,?,?,?,?,?,?)";
             return $this->insert($sql, array($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId));
         }
 

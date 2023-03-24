@@ -21,20 +21,20 @@ switch ($action) {
         $blogId = $_GET["blogId"];
         $message = $pages->getByID($blogId);
         break;
-    case "insertPages": 
+    case "insertPage": 
         $blogName = $_GET["blogName"];
         $content = $_GET["content"];
         $image = $_GET["image"];
         $createDate = $_GET["createDate"];
         $author = $_GET["author"];
         $published = $_GET["published"];
-        $message = ($pages->insertPages($blogName, $content, $image, $createDate, $author, $published) > 0)?true:false;
+        $message = ($pages->insertPage($blogName, $content, $image, $createDate, $author, $published) > 0)?true:false;
         break;
-    case "deletePages":
+    case "deletePage":
         $blogId = $_GET["blogId"];
-        $message = ($pages->deletePages($aboutId) > 0)?true:false;
+        $message = ($pages->deletePage($blogId) > 0)?true:false;
         break;
-    case "updatePages":
+    case "updatePage":
         $blogId = $_GET["blogId"];
         $blogName = $_GET["blogName"];
         $content = $_GET["content"];
@@ -42,7 +42,7 @@ switch ($action) {
         $createDate = $_GET["createDate"];
         $author = $_GET["author"];
         $published = $_GET["published"];
-        $message = ($pages->updatePages($blogName, $content, $image, $createDate, $author, $published, $blogId) > 0)?true:false;
+        $message = ($pages->updatePage($blogName, $content, $image, $createDate, $author, $published, $blogId) > 0)?true:false;
         break;
 
 }

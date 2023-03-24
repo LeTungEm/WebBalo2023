@@ -155,6 +155,7 @@
         </div>
       </div>
     </div>
+    <LoadingVue :status="loading"/>
   </div>
 </template>
   
@@ -164,6 +165,7 @@ import Header from "@/components/Admin/Layout/Header.vue";
 import Editor from "@tinymce/tinymce-vue";
 import UploadImageService from "@/service/UploadImageService";
 import PagesService from "@/service/PagesService";
+import LoadingVue from '../Layout/Loading.vue';
 
 export default {
   name: "AboutPage",
@@ -187,6 +189,7 @@ export default {
       message: "",
       errMessage: "",
       oldFile: '',
+      loading: '',
     };
   },
   methods: {
@@ -202,8 +205,9 @@ export default {
       this.createDate =
         today.getFullYear() + "-" + month + "-" + today.getDate();
     },
-    getBlog() {
-      PagesService.getByID(this.blogId).then((res) => {
+    async getBlog() {
+      this.loading = true;
+      var status = await PagesService.getByID(this.blogId).then((res) => {
         if (res.data) {
           (this.blogName = res.data.blogName),
             (this.content = res.data.content),
@@ -213,7 +217,13 @@ export default {
             (this.author = res.data.author),
             (this.publish = res.data.published);
         }
+        return true;
+      }).catch(function(){
+        return true;
       });
+      if(status){
+        this.loading = false;
+      }
     },
     submitForm() {
       // upload file
@@ -253,7 +263,7 @@ export default {
           }
         });
       } else {
-        PagesService.updatePages(
+        PagesService.updatePage(
           this.blogName,
           this.content,
           this.fileName,
@@ -302,6 +312,7 @@ export default {
     Sidebar,
     Header,
     editor: Editor,
+    LoadingVue,
   },
   created() {
     this.getDate();

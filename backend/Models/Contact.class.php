@@ -12,9 +12,9 @@
             return ($data != null)?$data[0]:null;
         }
 
-        function insertContact($title, $image, $description){
-            $sql = "INSERT INTO `contact`(`contactId`, `contactName`, `email`, `author`) VALUES (?,?,?,?)";
-            return $this->insert($sql, array($title, $image, $description));
+        function insertContact($contactName, $email, $author){
+            $sql = "INSERT INTO `contact`(`contactName`, `email`, `author`) VALUES (?,?,?)";
+            return $this->insert($sql, array($contactName, $email, $author));
         }
 
         function deleteContact($contactId){

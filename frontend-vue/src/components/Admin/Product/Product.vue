@@ -232,12 +232,13 @@ export default {
       rate: "",
       cats: [],
       file: [],
-      fileName: [],
+      fileName: ['','','',''],
       blobURL: [],
       message: "",
       errMessage: "",
       countLoadedFile: 0,
       loading: false,
+      oldFile: [],
     };
   },
   watch: {
@@ -249,8 +250,9 @@ export default {
     },
   },
   methods: {
-    getProduct() {
-      ProductsService.getByID(this.productId).then((res) => {
+    async getProduct() {
+      this.loading = true;
+      var status = await ProductsService.getByID(this.productId).then((res) => {
         this.productName = res.data.productName;
         this.description = res.data.description;
         this.createDate = res.data.createDate;
@@ -260,10 +262,20 @@ export default {
         this.fileName[1] = res.data.image_2;
         this.fileName[2] = res.data.image_3;
         this.fileName[3] = res.data.image_4;
+        this.oldFile[0] = res.data.image_1;
+        this.oldFile[1] = res.data.image_2;
+        this.oldFile[2] = res.data.image_3;
+        this.oldFile[3] = res.data.image_4;
         this.amount = res.data.amount;
         this.dateChange = res.data.dateChange;
         this.catId = res.data.catId;
+        return true;
+      }).catch(function(){
+        return true;
       });
+      if(status){
+        this.loading = false;
+      }
     },
 
     toggleSidebar() {
@@ -289,50 +301,98 @@ export default {
 
     submitForm() {
       // upload file
+
       if (this.file.length == 4) {
         this.loading = true;
         for (let index = 0; index < 4; index++) {
           this.upLoadFile(this.file[index], this.fileName[index]);
         }
-
-        if (this.productId == 0) {
-          ProductsService.insertProduct(
-            this.productName,
-            this.description,
-            this.createDate,
-            this.price,
-            this.shortDescription,
-            this.fileName[0],
-            this.fileName[1],
-            this.fileName[2],
-            this.fileName[3],
-            this.amount,
-            this.dateChange,
-            this.catId
-          ).then((res) => {
-            if (res.data) {
-              this.message = "Đã thêm " + this.productName;
-              this.file = [];
-              this.fileName = [];
-              this.blobURL = [];
-            } else {
-              this.errMessage = "Thêm thất bại !!!";
-            }
-          });
-        } else {
-          console.log("update");
-        }
       } else {
-        this.errMessage = "Vui lòng chọn đủ 4 bức ảnh";
+        this.message = "Vui lòng chọn đủ 4 bức ảnh";
+      }
+
+      if (this.productId == 0) {
+        ProductsService.insertProduct(
+          this.productName,
+          this.description,
+          this.createDate,
+          this.price,
+          this.shortDescription,
+          this.fileName[0],
+          this.fileName[1],
+          this.fileName[2],
+          this.fileName[3],
+          this.amount,
+          this.dateChange,
+          this.catId
+        ).then((res) => {
+          if (res.data) {
+            this.message = "Đã thêm " + this.productName;
+            this.file = [];
+            this.fileName = ['','','',''],
+            this.blobURL = [];
+          } else {
+            this.errMessage = "Thêm thất bại !!!";
+          }
+        });
+      } else {
+        // update product
+        ProductsService.updateProduct(
+          this.productName,
+          this.description,
+          this.createDate,
+          this.price,
+          this.shortDescription,
+          this.fileName[0],
+          this.fileName[1],
+          this.fileName[2],
+          this.fileName[3],
+          this.amount,
+          this.dateChange,
+          this.catId,
+          this.productId
+        ).then((res) => {
+          if (res.data) {
+            if (this.file.length == 4) {
+              this.loading = true;
+              for (let index = 0; index < 4; index++) {
+                if (this.oldFile[index] != this.fileName[index]) {
+                  this.deleteImage(this.oldFile[index]);
+                  this.oldFile[index] = this.fileName[index];
+                }
+              }
+            }
+            this.message = "Sửa product " + this.productName + " thành công";
+          }
+        });
+      }
+    },
+
+    async deleteImage(oldFile) {
+      let formData = new FormData();
+      formData.append("action", "delete");
+      formData.append("path", "../images/balo/" + oldFile);
+
+      var status = await UploadImageService.uploadImage(formData)
+        .then(function (data) {
+          console.log("delete image: " + data.data);
+          return true;
+        })
+
+        .catch(function () {
+          console.log("FAILURE!!");
+          return true;
+        });
+
+      if (status) {
+        this.countLoadedFile++;
       }
     },
 
     onChangeFileUpload(e) {
       this.errMessage = "";
       this.file = e.target.files;
-      if (this.file.length < 4) {
-        this.errMessage = "Vui lòng chọn đủ 4 bức ảnh";
-      } else {
+      if (this.file.length == 4) {
         this.blobURL = [];
         this.fileName = [];
         for (let index = 0; index < 4; index++) {

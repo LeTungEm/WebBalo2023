@@ -158,6 +158,8 @@ export default {
           this.oldFile = res.data.image;
         }
         return true;
+      }).catch(function(){
+        return true;
       });
       if(status){
         this.loading = false;
