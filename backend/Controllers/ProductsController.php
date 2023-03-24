@@ -21,6 +21,10 @@ switch ($action) {
         $productID = $_GET["productID"];
         $message = $products->getByID($productID);
         break;
+    case "deleteProduct":
+        $productID = $_GET["productID"];
+        $message = ($products->deleteProduct($productID) > 0)?true:false;
+        break;
     case "getByCategoryID":
         $catId = $_GET["catId"];
         $message = $products->getByCategoryID($catId);
@@ -38,7 +42,7 @@ switch ($action) {
         $amount = $_GET["amount"];
         $dateChange = $_GET["dateChange"];
         $catId = $_GET["catId"];
-        $message = ($products->insertProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId) > 0)?'true':'false';
+        $message = ($products->insertProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId) > 0)?true:false;
         break;
     case "updateProduct":
         $productID = $_GET["productID"];
@@ -54,7 +58,7 @@ switch ($action) {
         $amount = $_GET["amount"];
         $dateChange = $_GET["dateChange"];
         $catId = $_GET["catId"];
-        $message = ($products->updateProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId, $productID) > 0)?'true':'false';
+        $message = ($products->updateProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId, $productID) > 0)?true:false;
         break;
 }
 

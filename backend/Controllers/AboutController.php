@@ -25,18 +25,18 @@ switch ($action) {
         $title = $_GET["title"];
         $image = $_GET["image"];
         $description = $_GET["description"];
-        $message = ($about->insertAbout($title, $image, $description) > 0)?'true':'false';
+        $message = ($about->insertAbout($title, $image, $description) > 0)?true:false;
         break;
     case "deleteAbout":
         $aboutId = $_GET["aboutId"];
-        $message = $about->deleteAbout($aboutId);
+        $message = ($about->deleteAbout($aboutId) > 0)?true:false;
         break;
     case "updateAbout":
         $aboutId = $_GET["aboutId"];
         $title = $_GET["title"];
         $image = $_GET["image"];
         $description = $_GET["description"];
-        $message = $about->updateAbout($title, $image, $description, $aboutId);
+        $message = ($about->updateAbout($title, $image, $description, $aboutId) > 0)?true:false;
         break;
 
 }

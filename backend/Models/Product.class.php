@@ -25,7 +25,7 @@
 
         function deleteProduct($productID){
             $sql = 'DELETE FROM `products` WHERE productID = ?';
-            return $this->select($sql, array($productID));
+            return $this->delete($sql, array($productID));
         }
 
         function updateProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId, $productID){

@@ -13,31 +13,32 @@
         }
 
         function checkLogin($email, $password){
-            $sql = "INSERT INTO `account`(`email`,`password`) VALUES(?,?)";
-            return $this->insert($sql, array($email, $password));
+            $sql = "select * from `account` where email = ? and password = ?";
+            $data = $this->select($sql, array($email, $password));
+            return ($data != null)?$data[0]:null;
         }
         function checkEmailExisted($email){
-            $sql = "INSERT INTO `account`(`email`) VALUES(?)";
-            return $this->insert($sql, array($email));
+            $sql = "select * from `account` where email = ?";
+            $data = $this->select($sql, array($email));
+            return ($data != null)?true:false;
         }
     
-        function insertAccount($firstName, $lastName, $email, $passWord){
+        function insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId){
             $sql = "INSERT INTO `account`(`first_name`, `last_name`, `email`,
              `password`, `avatar`, `gender`, `phone`, `address`, `accountId`, `LastLogin`, `Birthday`, 
-             `roleId`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-            return $this->insert($sql, array($firstName, $lastName, $email, $passWord));
+             `roleID`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            return $this->insert($sql, array($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId));
         }
 
         function deleteAccount($accountId){
             $sql = 'DELETE FROM `account` WHERE accountId = ?';
-            return $this->select($sql, array($accountId));
+            return $this->delete($sql, array($accountId));
         }
 
-        function updateAccount($firstName, $lastName, $email, $passWord){
+        function updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId){
             $sql = 'UPDATE `account` SET `first_name`= ?,`last_name`=?,`email`=?,
-            `password`=?,`avatar`=?,`gender`=?,`phone`=?,`address`=?,`accountId`=?,
-            `LastLogin`=?,`Birthday`=?,`roleId`=? WHERE accountId = ?';
-            return $this->update($sql, array($firstName, $lastName, $email, $passWord));
+            `password`=?,`avatar`=?,`gender`=?,`phone`=?,`address`=?,`Birthday`=?,`roleID`=? WHERE accountId = ?';
+            return $this->update($sql, array($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId));
         }
     }
 

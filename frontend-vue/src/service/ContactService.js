@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/ContactController.php";
+  "https://data.webbalo.online/Controllers/ContactController.php";
 
   class ContactService{
 

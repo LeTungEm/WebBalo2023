@@ -28,11 +28,11 @@ switch ($action) {
         $createDate = $_GET["createDate"];
         $author = $_GET["author"];
         $published = $_GET["published"];
-        $message = ($pages->insertPages($blogName, $content, $image, $createDate, $author, $published) > 0)?'true':'false';
+        $message = ($pages->insertPages($blogName, $content, $image, $createDate, $author, $published) > 0)?true:false;
         break;
     case "deletePages":
         $blogId = $_GET["blogId"];
-        $message = $pages->deletePages($aboutId);
+        $message = ($pages->deletePages($aboutId) > 0)?true:false;
         break;
     case "updatePages":
         $blogId = $_GET["blogId"];
@@ -41,9 +41,8 @@ switch ($action) {
         $image = $_GET["image"];
         $createDate = $_GET["createDate"];
         $author = $_GET["author"];
-        $image = $_GET["image"];
         $published = $_GET["published"];
-        $message = $about->updatePages($blogId,$blogName, $content, $image, $createDate, $author, $published);
+        $message = ($pages->updatePages($blogName, $content, $image, $createDate, $author, $published, $blogId) > 0)?true:false;
         break;
 
 }

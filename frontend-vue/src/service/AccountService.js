@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const PRODUCT_API_URL =
-  "https://webbalo2023.000webhostapp.com/Controllers/AccountController.php";
+  "https://data.webbalo.online/Controllers/AccountController.php";
 
 class AccountService {
   getAll() {
@@ -74,14 +74,33 @@ class AccountService {
     });
   }
 
-  deleteAccount(accountId){
+  deleteAccount(accountId) {
     return axios.get(`${PRODUCT_API_URL}`, {
       params: {
-          action: "deleteAccount",
-          accountId: accountId,
+        action: "deleteAccount",
+        accountId: accountId,
+      },
+    });
+  }
+
+  updateAccount(firstName, lastName, email, passWord, image, gender, phone, address, Birthday, roleId, accountId) {
+    return axios.get(`${PRODUCT_API_URL}`, {
+      params: {
+        action: "updateAccount",
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: passWord,
+        image: image,
+        gender: gender,
+        phone: phone,
+        address: address,
+        Birthday: Birthday,
+        roleID: roleId,
+        accountId: accountId,
       },
     });
   }
 }
-// https://webbalo2023.000webhostapp.com/Controllers/AccountController.php?action=insertAccount&first_name=test&last_name=testLast&email=&password=&image=&gender=2&phone=&address=
+// https://data.webbalo.online/Controllers/AccountController.php?action=insertAccount&first_name=test&last_name=testLast&email=&password=&image=&gender=2&phone=&address=
 export default new AccountService();

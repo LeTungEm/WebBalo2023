@@ -50,7 +50,7 @@ export default {
                             id: data.aboutId,
                             header: data.title, 
                             title: '', 
-                            description: data.description,
+                            description: data.description.substr(0,60)+"...",
                             image: (data.image)?"about/"+data.image:'default.jpg'
                         }
                     )
