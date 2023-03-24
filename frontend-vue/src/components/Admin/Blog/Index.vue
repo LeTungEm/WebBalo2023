@@ -64,7 +64,6 @@ export default {
         },
         deleteBlog(){
             PagesService.deletePage(this.removeID).then(res =>{
-                alert(this.removeID);
                 if(res.data){
                     // Tìm item đã xóa
                     this.message = "Đã xóa "+this.listBlog.find(blog => {
