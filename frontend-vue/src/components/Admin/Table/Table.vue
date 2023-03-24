@@ -62,7 +62,7 @@ export default {
     },
     data() {
         return {
-            columnNames: ["name", "id"],
+            columnNames: ["", ""],
             removeID: '',
             notiStatus: false,
         }

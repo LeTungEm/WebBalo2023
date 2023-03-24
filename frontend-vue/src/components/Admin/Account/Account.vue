@@ -30,24 +30,32 @@
             </svg>
           </span>
           <span class="mx-2">/</span>
-          {{ (accountId == 0)?"Create":"Update" }}
+          {{ accountId == 0 ? "Create" : "Update" }}
         </div>
         <!-- Thông báo -->
-        <h1 v-if="message" class="text-center bg-blue-300 text-white text-lg py-3">{{message}}</h1>
-        <div class="">
+        <h1
+          v-if="message"
+          class="text-center bg-blue-300 text-white text-lg py-3"
+        >
+          {{ message }}
+        </h1>
+        <form class="">
           <div class="flex justify-between items-center">
-            <h1 class="text-3xl font-bold">{{ (accountId == 0)?"Create":"Update" }}</h1>
+            <h1 class="text-3xl font-bold">
+              {{ accountId == 0 ? "Create" : "Update" }}
+            </h1>
             <div class="flex">
               <div
                 class="cursor-pointer block border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-red-500 text-white hover:bg-red-600 mx-4"
               >
                 Discard
               </div>
-              <button
+              <div
                 v-on:click="submitForm"
-                class="cursor-pointer border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-blue-500 text-white hover:bg-blue-600 mx-4">
+                class="cursor-pointer border px-8 py-3 shadown-lg rounded-md my-5 uppercase bg-blue-500 text-white hover:bg-blue-600 mx-4"
+              >
                 Create
-              </button>
+              </div>
             </div>
           </div>
           <div class="lg:mr-4 bg-white p-4 shadow-lg rounded-md border-2 my-4">
@@ -76,7 +84,8 @@
                 <h4 class="font-bold mb-2 text-md">email</h4>
                 <input
                   required
-                  type="text"
+                  autocomplete="username"
+                  type="email"
                   class="w-full rounded-md px-3 py-2 border-2"
                   v-model="email"
                   placeholder="*email"
@@ -86,6 +95,7 @@
                 <h4 class="font-bold mb-2 text-md">password</h4>
                 <input
                   required
+                  autocomplete="current-password"
                   type="password"
                   class="w-full rounded-md px-3 py-2 border-2"
                   v-model="password"
@@ -94,10 +104,17 @@
               </div>
             </div>
             <div class="flex justify-center py-2">
-                <img v-if="blobURL" :src="blobURL" alt="">
-                <div v-else>
-                    <img v-if="fileName" :src="'https://webbalo2023.000webhostapp.com/images/user/'+fileName" alt="">
-                </div>
+              <img v-if="blobURL" :src="blobURL" alt="" />
+              <div v-else>
+                <img
+                  v-if="fileName"
+                  :src="
+                    'https://data.webbalo.online/images/user/' +
+                    fileName
+                  "
+                  alt=""
+                />
+              </div>
             </div>
             <div class="flex">
               <div class="relative z-0 w-full mb-6 group">
@@ -142,7 +159,13 @@
                   class="inline-block px-5 py-2 text-white bg-blue-500 rounded font-bold border"
                   >Upload Image</label
                 >
-                <input id="file" hidden v-on:change="onChangeFileUpload" type="file" class="mb-5" />
+                <input
+                  id="file"
+                  hidden
+                  v-on:change="onChangeFileUpload"
+                  type="file"
+                  class="mb-5"
+                />
               </div>
             </div>
             <div class="flex">
@@ -162,14 +185,18 @@
                   class="w-full rounded-md px-3 py-2 border-2"
                   v-model="role"
                 >
-                  <option v-for="role in roles" :key="role.roleID" :value="role.roleID">
+                  <option
+                    v-for="role in roles"
+                    :key="role.roleID"
+                    :value="role.roleID"
+                  >
                     {{ role.roleName }}
                   </option>
                 </select>
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -202,13 +229,14 @@ export default {
       password: "",
       phone: "",
       fileName: "",
+      oldFile: "",
       Birthday: "2000-02-02",
       gender: 1,
       address: "",
       role: 3,
-      file:[],
+      file: [],
       accountId: this.$route.params.accountId,
-      message:"",
+      message: "",
     };
   },
   methods: {
@@ -216,28 +244,29 @@ export default {
       this.isSidebarVisible = !this.isSidebarVisible;
     },
 
-    getRole(){
-        RoleService.getAll().then(res =>{
-            this.roles = res.data;
-        })
+    getRole() {
+      RoleService.getAll().then((res) => {
+        this.roles = res.data;
+      });
     },
 
-    getAccount(){
-        AccountService.getByID(this.accountId).then(res =>{
-            if(res.data != null){
-                this.first_name = res.data.first_name,
-                this.last_name = res.data.last_name,
-                this.email = res.data.email,
-                this.password = res.data.password,
-                this.fileName = res.data.fileName,
-                this.gender = res.data.gender,
-                this.phone = res.data.phone,
-                this.address = res.data.address,
-                this.Birthday = res.data.Birthday,
-                this.role = res.data.roleID,
-                this.fileName = res.data.avatar
-            }
-        })
+    getAccount() {
+      AccountService.getByID(this.accountId).then((res) => {
+        if (res.data != null) {
+          (this.first_name = res.data.first_name),
+            (this.last_name = res.data.last_name),
+            (this.email = res.data.email),
+            (this.password = res.data.password),
+            (this.fileName = res.data.fileName),
+            (this.gender = res.data.gender),
+            (this.phone = res.data.phone),
+            (this.address = res.data.address),
+            (this.Birthday = res.data.Birthday),
+            (this.role = res.data.roleID),
+            (this.oldFile = res.data.avatar),
+            (this.fileName = res.data.avatar);
+        }
+      });
     },
 
     submitForm() {
@@ -261,42 +290,79 @@ export default {
 
       if (this.accountId == 0) {
         AccountService.registerAccountFullInfo(
-            this.first_name,
-            this.last_name,
-            this.email,
-            this.password,
-            this.fileName,
-            this.gender,
-            this.phone,
-            this.address,
-            this.Birthday,
-            this.role
+          this.first_name,
+          this.last_name,
+          this.email,
+          this.password,
+          this.fileName,
+          this.gender,
+          this.phone,
+          this.address,
+          this.Birthday,
+          this.role
         ).then((res) => {
           if (res.data) {
-            this.message = "Đã thêm account" + this.first_name+" "+this.last_name;
+            this.message =
+              "Đã thêm account" + this.first_name + " " + this.last_name;
           }
           console.log(res.data);
         });
       } else {
-        console.log("update");
+        AccountService.updateAccount(
+          this.first_name,
+          this.last_name,
+          this.email,
+          this.password,
+          this.fileName,
+          this.gender,
+          this.phone,
+          this.address,
+          this.Birthday,
+          this.role,
+          this.accountId
+        ).then((res) => {
+          if (res.data) {
+            this.message =
+              "Sửa account" + this.first_name + " " + this.last_name + " thành công";
+              if(this.oldFile != this.fileName){
+                this.deleteImage();
+                this.oldFile = this.fileName;
+              }
+          }
+        });
       }
     },
 
+    deleteImage() {
+      let formData = new FormData();
+      formData.append("action", "delete");
+      formData.append("path", "../images/user/" + this.oldFile);
+
+      UploadImageService.uploadImage(formData)
+        .then(function (data) {
+          console.log("delete image: " + data.data);
+        })
+
+        .catch(function () {
+          console.log("FAILURE!!");
+        });
+    },
+
     onChangeFileUpload(e) {
-        this.file = e.target.files[0];
-        this.blobURL = URL.createObjectURL(this.file);
-        var number = Math.floor(Math.random() * 10000000000);
-        this.fileName = number + this.file.name;
+      this.file = e.target.files[0];
+      this.blobURL = URL.createObjectURL(this.file);
+      var number = Math.floor(Math.random() * 10000000000);
+      this.fileName = number + this.file.name;
     },
   },
   components: {
     Sidebar,
     Header,
   },
-  created(){
+  created() {
     this.getAccount();
     this.getRole();
-  }
+  },
 };
 </script>
   

@@ -117,7 +117,24 @@
                   type="file"
                   class="mb-5"
                 />
-                <img :src="''" alt="" />
+                <div class="h-50 w-full flex" v-if="blobURL[0]">
+                  <img
+                    class="object-cover w-1/4 p-1"
+                    v-for="url in blobURL"
+                    :key="url"
+                    :src="url"
+                    alt=""
+                  />
+                </div>
+                <div v-else class="h-50 w-full flex">
+                  <img
+                    v-for="name in fileName"
+                    :src="'https://data.webbalo.online/images/balo/' + name"
+                    class="object-cover w-1/4 p-1"
+                    :key="name"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
             <div
@@ -316,6 +333,8 @@ export default {
       if (this.file.length < 4) {
         this.errMessage = "Vui lòng chọn đủ 4 bức ảnh";
       } else {
+        this.blobURL = [];
+        this.fileName = [];
         for (let index = 0; index < 4; index++) {
           this.blobURL.push(URL.createObjectURL(this.file[index]));
           var number = Math.floor(Math.random() * 10000000000);
@@ -355,6 +374,7 @@ export default {
   created() {
     this.getCategories();
     this.getDate();
+    this.getProduct();
   },
 };
 </script>

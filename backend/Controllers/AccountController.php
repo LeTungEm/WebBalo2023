@@ -34,14 +34,14 @@ switch ($action) {
         $first_name = $_GET["firstName"];
         $last_name = $_GET["lastName"];
         $email = $_GET["email"];
-        $password = $_GET["passWord"];
+        $password = $_GET["password"];
         $image = $_GET["image"];
         $gender = $_GET["gender"];
         $phone = $_GET["phone"];
         $address = $_GET["address"];
         $Birthday = $_GET["Birthday"];
         $roleID = $_GET["roleID"];
-        $message = ($account->insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID) > 0)?true:false;
+        $message = ($account->insertAccount($firstName, $lastName, $email, $password, $image, $gender, $phone, $address, $Birthday, $roleID) > 0)?true:false;
         break;
     case "deleteAccount":
         $accountId = $_GET["accountId"];
@@ -49,17 +49,17 @@ switch ($action) {
         break;
     case "updateAccount":
         $accountId = $_GET["accountId"];
-        $first_name = $_GET["firstName"];
-        $last_name = $_GET["lastName"];
+        $first_name = $_GET["first_name"];
+        $last_name = $_GET["last_name"];
         $email = $_GET["email"];
-        $password = $_GET["passWord"];
+        $password = $_GET["password"];
         $image = $_GET["image"];
         $gender = $_GET["gender"];
         $phone = $_GET["phone"];
         $address = $_GET["address"];
         $Birthday = $_GET["Birthday"];
         $roleID = $_GET["roleID"];
-        $message = ($account->updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID, $accountId) > 0)?true:false;
+        $message = ($account->updateAccount($first_name, $last_name, $email, $password, $image, $gender, $phone, $address, $Birthday, $roleID, $accountId) > 0)?true:false;
         break;
 
 }

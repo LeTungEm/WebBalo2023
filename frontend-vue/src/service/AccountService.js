@@ -74,11 +74,30 @@ class AccountService {
     });
   }
 
-  deleteAccount(accountId){
+  deleteAccount(accountId) {
     return axios.get(`${PRODUCT_API_URL}`, {
       params: {
-          action: "deleteAccount",
-          accountId: accountId,
+        action: "deleteAccount",
+        accountId: accountId,
+      },
+    });
+  }
+
+  updateAccount(firstName, lastName, email, passWord, image, gender, phone, address, Birthday, roleId, accountId) {
+    return axios.get(`${PRODUCT_API_URL}`, {
+      params: {
+        action: "updateAccount",
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        password: passWord,
+        image: image,
+        gender: gender,
+        phone: phone,
+        address: address,
+        Birthday: Birthday,
+        roleID: roleId,
+        accountId: accountId,
       },
     });
   }

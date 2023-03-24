@@ -25,7 +25,7 @@
         }
 
         function updatePages($blogName, $content, $image, $createDate, $author, $published, $blogId){
-            $sql = 'UPDATE `pages` SET `blogName`= ?,`content`= ?,`createDate`= ?,`image`= ?,`author`= ?,`published`= ? WHERE blogId = ?';
+            $sql = 'UPDATE `pages` SET `blogName`= ?,`content`= ?,`image`= ?,`createDate`= ?,`author`= ?,`published`= ? WHERE blogId = ?';
             return $this->update($sql, array($blogName, $content, $image, $createDate, $author, $published, $blogId));
         }
     }
