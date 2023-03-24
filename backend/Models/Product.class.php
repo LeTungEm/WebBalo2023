@@ -14,8 +14,7 @@
 
         function getByCategoryID($catId){
             $sql = 'select * from products where catId = ?';
-            $data = $this->select($sql, array($catId));
-            return ($data != null)?$data[0]:null;
+            return $this->select($sql, array($catId));
         }
 
         function insertProduct($productName, $description, $createDate, $price, $shortDescription, $image_1, $image_2, $image_3, $image_4, $amount, $dateChange, $catId){

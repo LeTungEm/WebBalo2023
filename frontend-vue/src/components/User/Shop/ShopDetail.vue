@@ -32,7 +32,7 @@
                         <h1 class="text-3xl font-bold">{{ product.productName }}</h1>
                         <p class="text-red-500 my-3">{{ formatNumber(product.price) }}</p>
                         <p class="mb-3">Availability: <span class="text-red-500">{{ product.amount }}</span></p>
-                        <p class="text-gray-600 mb-6 text-justify">{{ product.description }}</p>
+                        <p v-html="product.description" class="text-gray-600 mb-6 text-justify"></p>
                         <div class="flex justify-between mt-12">
                             <div class="flex w-full">
                                 <button class="border-b border-t border-l px-3 py-1 border-gray-500 hover:bg-gray-200"
