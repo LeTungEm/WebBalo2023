@@ -25,11 +25,11 @@ switch ($action) {
         $title = $_GET["title"];
         $image = $_GET["image"];
         $description = $_GET["description"];
-        $message = ($products->insertContact($title, $image, $description) > 0)?'true':'false';
+        $message = ($contact->insertContact($title, $image, $description) > 0)?true:false;
         break;
     case "deleteContact":
         $contactId = $_GET["contactId"];
-        $message = $contact->deleteContact($contactId);
+        $message = ($contact->deleteContact($contactId) > 0)?true:false;
         break;
 
 }

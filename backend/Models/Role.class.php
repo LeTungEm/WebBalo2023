@@ -21,7 +21,7 @@
 
         function deleteRole($roleID){
             $sql = 'DELETE FROM `roles` WHERE roleID = ?';
-            return $this->select($sql, array($roleID));
+            return $this->delete($sql, array($roleID));
         }
 
         function updateRole($roleName, $roleID){

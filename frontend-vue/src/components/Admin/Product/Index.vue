@@ -89,6 +89,7 @@ export default {
     deleteProduct() {
       ProductsService.deleteProduct(this.removeID).then((res) => {
         if (res.data) {
+          console.log(res.data + this.removeID);
           // Tìm item đã xóa
           this.message =
             "Đã xóa " +

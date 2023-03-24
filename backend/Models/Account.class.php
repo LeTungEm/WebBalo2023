@@ -32,7 +32,7 @@
 
         function deleteAccount($accountId){
             $sql = 'DELETE FROM `account` WHERE accountId = ?';
-            return $this->select($sql, array($accountId));
+            return $this->delete($sql, array($accountId));
         }
 
         function updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleId, $accountId){

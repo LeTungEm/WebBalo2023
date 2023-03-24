@@ -232,6 +232,23 @@ export default {
     },
   },
   methods: {
+    getProduct() {
+      ProductsService.getByID(this.productId).then((res) => {
+        this.productName = res.data.productName;
+        this.description = res.data.description;
+        this.createDate = res.data.createDate;
+        this.price = res.data.price;
+        this.shortDescription = res.data.shortDescription;
+        this.fileName[0] = res.data.image_1;
+        this.fileName[1] = res.data.image_2;
+        this.fileName[2] = res.data.image_3;
+        this.fileName[3] = res.data.image_4;
+        this.amount = res.data.amount;
+        this.dateChange = res.data.dateChange;
+        this.catId = res.data.catId;
+      });
+    },
+
     toggleSidebar() {
       this.isSidebarVisible = !this.isSidebarVisible;
     },

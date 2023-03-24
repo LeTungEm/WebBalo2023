@@ -41,11 +41,11 @@ switch ($action) {
         $address = $_GET["address"];
         $Birthday = $_GET["Birthday"];
         $roleID = $_GET["roleID"];
-        $message = $account->insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID);
+        $message = ($account->insertAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID) > 0)?true:false;
         break;
     case "deleteAccount":
         $accountId = $_GET["accountId"];
-        $message = $account->deleteAccount($accountId);
+        $message = ($account->deleteAccount($accountId) > 0)?true:false;
         break;
     case "updateAccount":
         $accountId = $_GET["accountId"];
@@ -59,7 +59,7 @@ switch ($action) {
         $address = $_GET["address"];
         $Birthday = $_GET["Birthday"];
         $roleID = $_GET["roleID"];
-        $message = $account->updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID, $accountId);
+        $message = ($account->updateAccount($firstName, $lastName, $email, $passWord, $image, $gender, $phone, $address, $Birthday, $roleID, $accountId) > 0)?true:false;
         break;
 
 }
