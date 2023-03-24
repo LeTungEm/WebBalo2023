@@ -199,7 +199,7 @@
             :key="page.blogId"
             class="shadow-lg border rounded-t-2xl"
           >
-            <div class="h-full" v-if="page.blogId <= pages[2].blogId">
+            <div class="h-full" v-if="page.blogId <= (pages.blogId+2)">
               <BlogItem :blogData="page" />
             </div>
           </div>

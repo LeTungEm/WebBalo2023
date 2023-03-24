@@ -38,7 +38,7 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
               </button>
             </div>
-            <CartCPN @deleteFromCart="getTotalQuantity"/>
+            <CartCPN />
           </div>
         </div>
       </div>

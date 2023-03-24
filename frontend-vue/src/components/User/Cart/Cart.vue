@@ -23,7 +23,7 @@
             <div class="flex justify-between font-bold">
                 <h1>Total:</h1>
                 <p>
-                    <!-- {{ totalPrice }} -->
+                    {{ formatNumber(total) }}
                 </p>
             </div>
         </div>
@@ -48,7 +48,8 @@ export default {
         return {
             listproducts: [],
             products: [],
-            showItems: true
+            showItems: true,
+            total: 0
 
         }
     },
@@ -60,6 +61,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
+                        this.total += parseInt(res.data.price);
                     })
                 });
             }

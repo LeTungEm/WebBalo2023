@@ -199,6 +199,7 @@
         </form>
       </div>
     </div>
+    <LoadingVue :status="loading"/>
   </div>
 </template>
   
@@ -208,6 +209,7 @@ import Header from "@/components/Admin/Layout/Header.vue";
 import AccountService from "@/service/AccountService";
 import UploadImageService from "@/service/UploadImageService";
 import RoleService from "@/service/RoleService";
+import LoadingVue from '../Layout/Loading.vue';
 
 export default {
   name: "AboutPage",
@@ -237,6 +239,7 @@ export default {
       file: [],
       accountId: this.$route.params.accountId,
       message: "",
+      loading: false,
     };
   },
   methods: {
@@ -250,8 +253,9 @@ export default {
       });
     },
 
-    getAccount() {
-      AccountService.getByID(this.accountId).then((res) => {
+    async getAccount() {
+      this.loading = true;
+      var status = await AccountService.getByID(this.accountId).then((res) => {
         if (res.data != null) {
           (this.first_name = res.data.first_name),
             (this.last_name = res.data.last_name),
@@ -266,7 +270,13 @@ export default {
             (this.oldFile = res.data.avatar),
             (this.fileName = res.data.avatar);
         }
+        return true;
+      }).catch(function(){
+        return true;
       });
+      if(status){
+        this.loading = false;
+      }
     },
 
     submitForm() {
@@ -358,6 +368,7 @@ export default {
   components: {
     Sidebar,
     Header,
+    LoadingVue,
   },
   created() {
     this.getAccount();
