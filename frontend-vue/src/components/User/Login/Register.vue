@@ -1,46 +1,27 @@
 <template>
     <div class="">
-        <Banner 
-            :bannerName="'categories'" 
-            :shopName="'PALDNE'" 
-            :menu="'Register'"/>
+        <Header :quant="getTotalQuantity()" />
+        <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Register'" />
         <div class="flex items-center justify-center my-12">
             <div class="lg:w-1/2">
-                <h1 
-                    class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
+                <h1 class="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-6">
                     <span><router-link to="/login">Login | </router-link></span><u>Register</u>
                 </h1>
                 <form @submit.prevent="validate()" action="" method="post" class="realtive border p-4 bg-gray-50 py-5">
                     <div class="">
                         <div class="flex">
-                            <input 
-                                required
-                                type="text" 
-                                v-model="account.firstName"
-                                class="border px-4 py-2 my-2 w-full mr-2 bg-white" 
-                                placeholder="First name*">
-                            <input 
-                                required
-                                type="text" 
-                                v-model="account.lastName"
-                                class="border px-4 py-2 my-2 w-full ml-2 bg-white" 
-                                placeholder="Last name*">
+                            <input required type="text" v-model="account.firstName"
+                                class="border px-4 py-2 my-2 w-full mr-2 bg-white" placeholder="First name*">
+                            <input required type="text" v-model="account.lastName"
+                                class="border px-4 py-2 my-2 w-full ml-2 bg-white" placeholder="Last name*">
                         </div>
-                        <input 
-                            required
-                            type="email" 
-                            v-model="account.email"
-                            class="border px-4 py-2 my-2 w-full" 
+                        <input required type="email" v-model="account.email" class="border px-4 py-2 my-2 w-full"
                             placeholder="Email*">
                         <div class="flex items-center w-full">
                             <div class="w-full">
-                                <input
-                                    required
-                                    v-bind:type="showPassword ? 'text' : 'password'"
-                                    class="border px-4 py-2 my-2 w-full bg-white"
-                                    v-model="account.password"
-                                    placeholder="Password*"
-                                    />
+                                <input required v-bind:type="showPassword ? 'text' : 'password'"
+                                    class="border px-4 py-2 my-2 w-full bg-white" v-model="account.password"
+                                    placeholder="Password*" />
                             </div>
                             <div class="border py-2 px-3">
                                 <div class="button" @click="toggleShow">
@@ -55,13 +36,9 @@
                         </div>
                         <div class="flex items-center w-full">
                             <div class="w-full">
-                                <input
-                                    required
-                                    v-bind:type="showRePassword ? 'text' : 'password'"
-                                    class="border px-4 py-2 my-2 w-full bg-white"
-                                    v-model="account.Repeat_password"
-                                    placeholder="Password*"
-                                    />
+                                <input required v-bind:type="showRePassword ? 'text' : 'password'"
+                                    class="border px-4 py-2 my-2 w-full bg-white" v-model="account.Repeat_password"
+                                    placeholder="Password*" />
                             </div>
                             <div class="border py-2 px-3">
                                 <div class="button" @click="toggleShowRepwd">
@@ -75,24 +52,31 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="w-full py-3  bg-black hover:bg-gray-800 duration-500 text-white  border my-2 uppercase">create an account</button>
+                    <button type="submit"
+                        class="w-full py-3  bg-black hover:bg-gray-800 duration-500 text-white  border my-2 uppercase">create
+                        an account</button>
                 </form>
             </div>
         </div>
         <Notification :content="notification" :status="modelToggle" @modelToggle="modelToggle = false" />
+        <Footer />
     </div>
 </template>
 
 <script>
+import Header from "../Layout/Header.vue";
+import Footer from "../Layout/Footer.vue";
 import Banner from '../Layout/Banner.vue';
 import Notification from "./Notification.vue";
 import AccountService from "../../../service/AccountService.js";
 
 export default {
     name: "LoginForm",
-    components:{
+    components: {
         Banner,
         Notification,
+        Header,
+        Footer
     },
     data() {
         return {
@@ -107,6 +91,7 @@ export default {
             },
             modelToggle: false,
             notification: '',
+            cart: [],
         };
     },
     computed: {
@@ -115,6 +100,12 @@ export default {
         }
     },
     methods: {
+        getTotalQuantity() {
+            if (localStorage.getItem('cart') != null) {
+                return localStorage.getItem('cart').split(',').length
+            }
+            return 0;
+        },
         toggleShow() {
             this.showPassword = !this.showPassword;
         },
@@ -122,11 +113,11 @@ export default {
             this.showRePassword = !this.showRePassword;
         },
         validate() {
-            if(this.account.password !== this.account.Repeat_password){
+            if (this.account.password !== this.account.Repeat_password) {
                 this.notification = "check your repeate password !!!"
                 this.modelToggle = true;
                 return false;
-            }else if(this.account.password.length < 8){
+            } else if (this.account.password.length < 8) {
                 this.notification = "Your password is too short !!!"
                 this.modelToggle = true;
                 return false;
@@ -141,14 +132,14 @@ export default {
             );
         },
         saveData(data) {
-            if(data){
+            if (data) {
                 this.notification = "your email is existed !!!"
                 this.modelToggle = true;
-            }else{
+            } else {
                 AccountService.registerAccount(this.account.firstName, this.account.lastName, this.account.email, this.account.password).then(
                     res => {
                         console.log(res.data);
-                        if(res.data){
+                        if (res.data) {
                             this.$router.push("/login");
                         }
                     });

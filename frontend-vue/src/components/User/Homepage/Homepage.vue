@@ -169,7 +169,6 @@ export default {
       modelToggle: false,
       sortKKey: 'productName',
       cart: [],
-      quantity: 0,
       images: [],
     };
   },
@@ -192,21 +191,19 @@ export default {
     },
 
     getTotalQuantity() {
-      if (localStorage.getItem('quantity') != null) {
-        return localStorage.getItem('quantity')
+      if (localStorage.getItem('cart') != null) {
+        return localStorage.getItem('cart').split(',').length
       }
       return 0;
     },
-
 
     addToCart(productId) {
       const index = this.products.findIndex((element) => element.productID === productId);
       if (this.products[index].amount > 0) {
         this.cart.push(this.products[index].productID);
         this.products[index].amount--;
-        this.quantity++;
       }
-      localStorage.setItem('quantity', this.quantity)
+      localStorage.setItem('cart', this.cart)
       this.$emit('cart-updated', this.cart);
     },
 

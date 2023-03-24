@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header />
+        <Header :quant="getTotalQuantity()" />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Product'" />
         <div class="lg:w-8/12 mx-auto my-16">
             <div class="pb-24 border-b">
@@ -152,24 +152,26 @@
                 <swiper class="relative grid overflow-hidden w-full cursor-grab px-2" :navigation="true" :pagination="{
                     clickable: true,
                 }" :autoplay="{
-                    delay: 1500,
-                    disableOnInteraction: false,
-                }" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
-                    '640': {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    '768': {
-                        slidesPerView: 3,
-                        spaceBetween: 40,
-                    },
-                    '1024': {
-                        slidesPerView: 4,
-                        spaceBetween: 30,
-                    },
-                }">
-                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full" v-for="productItem in relatedProduct" :key="productItem.productId">
-                        <ProductItem :productData="productItem"/>
+    delay: 1500,
+    disableOnInteraction: false,
+}" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30"
+                    :breakpoints="{
+                        '640': {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
+                        '768': {
+                            slidesPerView: 3,
+                            spaceBetween: 40,
+                        },
+                        '1024': {
+                            slidesPerView: 4,
+                            spaceBetween: 30,
+                        },
+                    }">
+                    <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full"
+                        v-for="productItem in relatedProduct" :key="productItem.productId">
+                        <ProductItem :productData="productItem" />
                     </swiper-slide>
                 </swiper>
             </div>
@@ -212,9 +214,15 @@ export default {
             counter: 1,
             product: {},
             relatedProduct: [],
+            cart: [],
         };
     },
     methods: {
+        getTotalQuantity() {
+
+            return 0;
+        },
+
         setOption(option) {
             this.selectedOption = option;
             this.isOptionsExpanded = false;
@@ -258,7 +266,7 @@ export default {
     created() {
         this.getProduct(this.productId);
     },
-    
+
 }
 </script>
 

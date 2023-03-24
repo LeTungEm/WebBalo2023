@@ -2,10 +2,13 @@
     <div>
         <Header :quant="getTotalQuantity()" />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
-        <div class="my-24 w-8/12 mx-auto">
+        <div class="my-24 w-8/12 mx-auto" v-if="showItems">
             <table class="w-full mb-12">
                 <thead>
                     <tr>
+                        <th
+                            class="px-6 align-middle border border-solid py-5 uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
+                            ID</th>
                         <th
                             class="px-6 align-middle border border-solid py-5 uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
                             Images</th>
@@ -17,28 +20,24 @@
                             Price</th>
                         <th
                             class="px-6 align-middle border border-solid py-5 uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
-                            Quantity</th>
-                        <th
-                            class="px-6 align-middle border border-solid py-5 uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
-                            Total</th>
-                        <th
-                            class="px-6 align-middle border border-solid py-5 uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-pink-800 text-pink-300 border-pink-700">
                             Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="product in products" :key="product.productID">
+                    <tr v-for="(product, index) in products" :key="product.productID">
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
-                            <img class="" :src=product.image_1 alt="">
+                            {{ index }}
+                        </td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
+                            <img class="" :src="product.image_1" alt="">
                         </td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"> {{ product.productName }}</td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ product.price }}</td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"><input type="number" min="1"
-                                v-model="quantity"></td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ total() }}</td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"><button
-                                class="border p-4 hover:bg-gray-100 rouded-sm"><i class="fa fa-times"
-                                    aria-hidden="true"></i></button></td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
+                            <button @click="removeItem(product.productID)" class="border p-4 hover:bg-gray-100 rouded-sm">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -68,6 +67,9 @@
                 </div>
             </div>
         </div>
+        <img v-if="!showItems"
+            src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
+            class="mx-auto" alt="">
         <Footer />
     </div>
 </template>
@@ -85,8 +87,8 @@ export default {
             sideBar: false,
             products: [],
             listproducts: [],
-            quantity: 1,
             cart: [],
+            showItems: true
         };
     },
 
@@ -97,14 +99,13 @@ export default {
     },
     methods: {
         getTotalQuantity() {
-            if (localStorage.getItem('quantity') != null) {
-                return localStorage.getItem('quantity')
-            }
+
             return 0;
         },
 
         getItemsFromLocalstorage() {
             if (localStorage.getItem('cart') != null) {
+                this.showItems = true;
                 this.listproducts = localStorage.getItem('cart').split(',');
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
@@ -112,11 +113,24 @@ export default {
                     })
                 });
             }
+            else {
+                this.showItems = !this.showItems;
+            }
+        },
+        formatNumber(value) {
+            return (new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value));
         },
 
-        total() {
-      
-        }
+        removeItem(productId) {
+            const index = this.products.findIndex((element) => element.productID === productId);
+            if (index !== -1) {
+                this.products.splice(index, 1)
+                localStorage.setItem('cart', this.products);
+                if (this.products[index] == undefined) {
+                    localStorage.removeItem('cart')
+                }
+            }
+        },
     },
 
     computed: {
