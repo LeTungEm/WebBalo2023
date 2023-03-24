@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Header :quant="getTotalQuantity()" />
+        <Header />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
-        <div class="my-24 w-8/12 mx-auto" v-if="showItems">
-            <table class="w-full mb-12">
+        <div class="my-12 lg:my-24 p-5 lg:w-8/12 mx-auto overflow-scroll" v-if="showItems">
+            <table class="w-full mb-12 ">
                 <thead>
                     <tr>
                         <th
@@ -108,11 +108,6 @@ export default {
         Banner,
     },
     methods: {
-        getTotalQuantity() {
-
-            return 0;
-        },
-
         getItemsFromLocalstorage() {
             if (localStorage.getItem('cart') != null) {
                 this.showItems = true;
@@ -120,7 +115,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
-                        this.total += res.data.price
+                        this.total += parseInt(res.data.price)
                     })
                 });
             }
@@ -150,8 +145,13 @@ export default {
             this.$emit("deleteFromCart");
         },
 
-        checkoutOrder(){
-            
+        checkoutOrder() {
+            const account = sessionStorage.getItem('accountId')
+            if (account != null) {
+                this.$router.push('/orderSuccess');
+            } else {
+                this.$router.push('/login');
+            }
         }
     },
 

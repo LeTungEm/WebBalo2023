@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <Header />
+    <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
+      <div class="my-24">
+        <img class="mx-auto" src="data:image/png;base64,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" alt="">
+        <h1 class="text-3xl font-bold my-5 text-center">Order success</h1>
+      </div>
+    <Footer />
+  </div>
+</template>
+
+<script>
+import Header from '../Layout/Header.vue';
+import Footer from '../Layout/Footer.vue';
+import Banner from '../Layout/Banner.vue';
+
+export default {
+  name: "ProoceedCheckout",
+  data() {
+    return {
+      sideBar: false,
+    };
+  },
+
+  components: {
+    Header,
+    Footer,
+    Banner,
+  },
+  methods: {
+
+  },
+
+  computed: {
+  
+  },
+  created() {
+  }
+};
+</script>
+
+<style></style>

@@ -33,9 +33,6 @@
                 class="block text-center w-full border my-2 py-3 bg-green-500 hover:bg-green-600 text-white">
                 proceed to checkout
             </router-link>
-            <button class="w-full border my-2 py-3 bg-gray-300 hover:bg-gray-400">
-                view cart
-            </button>
         </div>
     </div>
 </template>
@@ -61,7 +58,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
-                        this.total += res.data.price
+                        this.total += parseInt(res.data.price)
                     })
                 });
             }
