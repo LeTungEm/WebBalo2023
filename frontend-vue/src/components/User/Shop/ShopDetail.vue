@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <Header />
+        <Header :changeCartNumber="changeCartNumber" />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Product'" />
         <div class="lg:w-8/12 mx-auto my-16">
             <div class="pb-24 border-b">
@@ -32,26 +32,13 @@
                         <h1 class="text-3xl font-bold">{{ product.productName }}</h1>
                         <p class="text-red-500 my-3">{{ formatNumber(product.price) }}</p>
                         <p class="mb-3">Availability: <span class="text-red-500">{{ product.amount }}</span></p>
-                        <p class="text-gray-600 mb-6 text-justify">{{ product.description }}</p>
+                        <p v-html="product.description" class="text-gray-600 mb-6 text-justify"></p>
                         <div class="flex justify-between mt-12">
-                            <div class="flex w-full">
-                                <button class="border-b border-t border-l px-3 py-1 border-gray-500 hover:bg-gray-200"
-                                    @click="changeCounter('-1')" type="button" name="button">
-                                    -
-                                </button>
-                                <input class="text-center border border-gray-500 w-full" type="text" name="name"
-                                    :value="counter">
-                                <button class="border-r border-b border-t px-3 py-1 border-gray-500 hover:bg-gray-200"
-                                    @click="changeCounter('1')" type="button" name="button">
-                                    +
-                                </button>
-                            </div>
-                            <button
+                            <button @click="addToCart(product.productID)"
                                 class="fixed z-10 lg:relative bottom-0 left-0 py-2 z-0 uppercase text-white bg-gray-500 w-full border lg:mx-2 hover:bg-gray-600">Add
                                 to
                                 cart</button>
                         </div>
-                        <button class="w-full py-2 bg-gray-200 hover:bg-gray-300 mt-12">buy it now</button>
                         <p class="text-lg my-6">Guaranteed safe checkout</p>
                         <div class="border-b pb-4 mb-4">
                             <ul class="flex">
@@ -154,21 +141,20 @@
                 }" :autoplay="{
     delay: 1500,
     disableOnInteraction: false,
-}" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30"
-                    :breakpoints="{
-                        '640': {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        '768': {
-                            slidesPerView: 3,
-                            spaceBetween: 40,
-                        },
-                        '1024': {
-                            slidesPerView: 4,
-                            spaceBetween: 30,
-                        },
-                    }">
+}" :loop="true" :scrollbar="false" :modules="modules" :slidesPerView="1" :spaceBetween="30" :breakpoints="{
+    '640': {
+        slidesPerView: 2,
+        spaceBetween: 20,
+    },
+    '768': {
+        slidesPerView: 3,
+        spaceBetween: 40,
+    },
+    '1024': {
+        slidesPerView: 4,
+        spaceBetween: 30,
+    },
+}">
                     <swiper-slide @click="getProduct(changeProductID())" class="pb-5 h-full"
                         v-for="productItem in relatedProduct" :key="productItem.productId">
                         <ProductItem :productData="productItem" />
@@ -215,9 +201,35 @@ export default {
             product: {},
             relatedProduct: [],
             cart: [],
+            changeCartNumber: 0,
+            products: [],
+            listProducts: []
         };
     },
     methods: {
+        addToCart(productId) {
+            const list = localStorage.getItem("cart");
+            const index = this.listProducts.findIndex(
+                (element) => element.productID == productId
+            );
+            if (list !== null) {
+                const arr = list.split(",");
+                if (this.listProducts[index].amount > 0) {
+                    arr.push(this.listProducts[index].productID);
+                    this.listProducts[index].amount--;
+                    localStorage.setItem("cart", arr);
+                }
+            } else {
+                if (this.listProducts[index].amount > 0) {
+                    this.cart.push(this.listProducts[index].productID);
+                    localStorage.setItem("cart", this.cart);
+                }
+            }
+            this.changeCartNumber++;
+        },
+        getAll() {
+            ProductsService.getAll().then((res) => (this.listProducts = res.data));
+        },
         setOption(option) {
             this.selectedOption = option;
             this.isOptionsExpanded = false;
@@ -260,6 +272,7 @@ export default {
     },
     created() {
         this.getProduct(this.productId);
+        this.getAll();
     },
 
 }

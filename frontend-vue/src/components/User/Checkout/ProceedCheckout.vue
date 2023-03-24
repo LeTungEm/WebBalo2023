@@ -2,8 +2,8 @@
     <div>
         <Header :changeCartNumber="changeCartNumber" />
         <Banner :bannerName="'categories'" :shopName="'PALDNE'" :menu="'Shop'" />
-        <div class="my-24 w-8/12 mx-auto" v-if="showItems">
-            <table class="w-full mb-12">
+        <div class="my-12 lg:my-24 p-5 lg:w-8/12 mx-auto overflow-scroll" v-if="showItems">
+            <table class="w-full mb-12 ">
                 <thead>
                     <tr>
                         <th
@@ -146,8 +146,13 @@ export default {
             this.changeCartNumber++;
         },
 
-        checkoutOrder(){
-            
+        checkoutOrder() {
+            const account = sessionStorage.getItem('accountId')
+            if (account != null) {
+                this.$router.push('/orderSuccess');
+            } else {
+                this.$router.push('/login');
+            }
         }
     },
 
