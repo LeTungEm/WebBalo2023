@@ -61,7 +61,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
-                        this.total += res.data.price
+                        this.total += parseInt(res.data.price);
                     })
                 });
             }
