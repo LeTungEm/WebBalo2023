@@ -14,17 +14,17 @@
 
      
 
-        function insertPages($blogName, $content, $image, $createDate, $author, $published){
+        function insertPage($blogName, $content, $image, $createDate, $author, $published){
             $sql = "INSERT INTO `pages`( `blogName`, `content`, `image`, `createDate`, `author`, `published`) VALUES (?,?,?,?,?,?)";
             return $this->insert($sql, array($blogName, $content, $image, $createDate, $author, $published));
         }
 
-        function deletePages($blogId){
+        function deletePage($blogId){
             $sql = 'DELETE FROM `pages` WHERE blogId = ?';
             return $this->delete($sql, array($blogId));
         }
 
-        function updatePages($blogName, $content, $image, $createDate, $author, $published, $blogId){
+        function updatePage($blogName, $content, $image, $createDate, $author, $published, $blogId){
             $sql = 'UPDATE `pages` SET `blogName`= ?,`content`= ?,`image`= ?,`createDate`= ?,`author`= ?,`published`= ? WHERE blogId = ?';
             return $this->update($sql, array($blogName, $content, $image, $createDate, $author, $published, $blogId));
         }

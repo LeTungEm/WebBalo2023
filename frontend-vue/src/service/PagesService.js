@@ -20,7 +20,7 @@ const PRODUCT_API_URL =
           });
     }
 
-    insertPages(blogName, content, image, createDate, author, published){
+    insertPage(blogName, content, image, createDate, author, published){
       return axios.get(`${PRODUCT_API_URL}`, {
         params: {
             action: "insertPage",
@@ -34,7 +34,7 @@ const PRODUCT_API_URL =
       });
     }
 
-    deletePages(blogId){
+    deletePage(blogId){
       return axios.get(`${PRODUCT_API_URL}`, {
         params: {
             action: "deletePage",
@@ -42,10 +42,10 @@ const PRODUCT_API_URL =
         },
       });
     }
-    updatePages(blogName, content, image, createDate, author, published, blogId){
+    updatePage(blogName, content, image, createDate, author, published, blogId){
       return axios.get(`${PRODUCT_API_URL}`, {
         params: {
-            action: "updatePages",
+            action: "updatePage",
             blogId: blogId,
             content: content,
             image: image,

@@ -253,7 +253,7 @@ export default {
           }
         });
       } else {
-        PagesService.updatePages(
+        PagesService.updatePage(
           this.blogName,
           this.content,
           this.fileName,
