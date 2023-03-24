@@ -32,7 +32,7 @@
                             <img class="" :src="product.image_1" alt="">
                         </td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"> {{ product.productName }}</td>
-                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ product.price }}</td>
+                        <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ formatNumber(product.price) }}</td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
                             <button @click="removeItem(product.productID)" class="border p-4 hover:bg-gray-100 rouded-sm">
                                 <i class="fa fa-times" aria-hidden="true"></i>
@@ -54,12 +54,15 @@
                         <tbody>
                             <tr class="border-b text-gray-800 pb-5">
                                 <td class=" py-5">Grand Total</td>
-                                <td class="font-bold text-2xl">$ 388</td>
+                                <td class="font-bold text-2xl">{{ formatNumber(total) }}</td>
                             </tr>
                             <tr class="border-b text-gray-800 pb-5">
                                 <td class=""></td>
-                                <td class="py-5 text-right"><button
-                                        class="text-white px-5 py-3 bg-green-600 hover:bg-green-500 rounded-md">Checkout</button>
+                                <td class="py-5 text-right">
+                                    <button @click="checkoutOrder()"
+                                        class="text-white px-5 py-3 bg-green-600 hover:bg-green-500 rounded-md">
+                                        Checkout
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -72,7 +75,8 @@
                 class="mx-auto" alt="">
             <div class="flex justify-center">
                 <router-link to="/"
-                    class="bg-purple-900 mt-12 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center">Go back to shop</router-link>
+                    class="bg-purple-900 mt-12 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center">Go
+                    back to shop</router-link>
             </div>
         </div>
         <Footer />
@@ -93,7 +97,8 @@ export default {
             products: [],
             listproducts: [],
             cart: [],
-            showItems: true
+            showItems: true,
+            total: 0,
         };
     },
 
@@ -115,6 +120,7 @@ export default {
                 this.listproducts.forEach(element => {
                     ProductsService.getByID(element).then(res => {
                         this.products.push(res.data)
+                        this.total += res.data.price
                     })
                 });
             }
@@ -129,14 +135,24 @@ export default {
         removeItem(productId) {
             const index = this.products.findIndex((element) => element.productID === productId);
             if (index !== -1) {
-                this.products.splice(index, 1)
-                localStorage.setItem('cart', this.products);
+                this.products.splice(index, 1);
+                var arrProductID = [];
+                this.products.map(data => {
+                    arrProductID.push(data.productID);
+                })
+                console.log(arrProductID);
+                localStorage.setItem('cart', arrProductID);
                 if (this.products[index] == undefined) {
                     localStorage.removeItem('cart')
                     this.showItems = !this.showItems;
                 }
             }
+            this.$emit("deleteFromCart");
         },
+
+        checkoutOrder(){
+            
+        }
     },
 
     computed: {
