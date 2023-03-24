@@ -22,14 +22,14 @@ switch ($action) {
         $message = $contact->getByID($contactId);
         break;
     case "insertContact":
-        $title = $_GET["title"];
-        $image = $_GET["image"];
-        $description = $_GET["description"];
-        $message = ($contact->insertContact($title, $image, $description) > 0)?true:false;
+        $contactName = $_GET["contactName"];
+        $email = $_GET["email"];
+        $author = $_GET["author"];
+        $message = ($contact->insertContact($contactName, $email, $author) > 0) ? true : false;
         break;
     case "deleteContact":
         $contactId = $_GET["contactId"];
-        $message = ($contact->deleteContact($contactId) > 0)?true:false;
+        $message = ($contact->deleteContact($contactId) > 0) ? true : false;
         break;
 
 }
