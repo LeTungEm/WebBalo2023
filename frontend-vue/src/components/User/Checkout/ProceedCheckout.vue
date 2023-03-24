@@ -67,9 +67,14 @@
                 </div>
             </div>
         </div>
-        <img v-if="!showItems"
-            src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
-            class="mx-auto" alt="">
+        <div class="w-full my-24" v-if="!showItems">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/404/95974e121862329.Y3JvcCw5MjIsNzIxLDAsMTM5.png"
+                class="mx-auto" alt="">
+            <div class="flex justify-center">
+                <router-link to="/"
+                    class="bg-purple-900 mt-12 text-white hover:bg-blue-400 font-bold py-2 px-4 mt-3 rounded items-center">Go back to shop</router-link>
+            </div>
+        </div>
         <Footer />
     </div>
 </template>
@@ -128,6 +133,7 @@ export default {
                 localStorage.setItem('cart', this.products);
                 if (this.products[index] == undefined) {
                     localStorage.removeItem('cart')
+                    this.showItems = !this.showItems;
                 }
             }
         },
