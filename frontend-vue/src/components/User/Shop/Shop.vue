@@ -151,11 +151,29 @@
                 type="search"
                 v-model="search"
                 id="default-search"
-                class="block w-full p-4 pl-10 w-full text-sm border"
+                class="block p-4 pl-10 w-full text-sm border"
                 placeholder="Search Mockups, Logos..."
                 required
               />
             </div>
+          </div>
+          <div class="flex">
+            <input
+              type="number"
+              v-model="minPrice"
+              id="default-search"
+              class="block p-4 pl-10 w-full text-sm border"
+              placeholder="Min price"
+              required
+            />
+            <input
+              type="number"
+              v-model="maxPrice"
+              id="default-search"
+              class="block p-4 pl-10 w-full text-sm border"
+              placeholder="Max price"
+              required
+            />
           </div>
           <h1 class="uppercase text-5xl mb-12">Classical Balos</h1>
           <div
@@ -317,6 +335,8 @@ export default {
       catInput: "",
       cart: [],
       changeCartNumber: 0,
+      minPrice: "",
+      maxPrice: "",
     };
   },
   methods: {
@@ -367,6 +387,13 @@ export default {
       if (this.catInput) {
         data = data.filter((product) => {
           if (product.catId == this.catInput) {
+            return this.products;
+          }
+        });
+      }
+      if (this.minPrice && this.maxPrice) {
+        data = data.filter((product) => {
+          if (product.price >= this.minPrice && product.price <= this.maxPrice) {
             return this.products;
           }
         });
