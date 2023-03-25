@@ -94,7 +94,7 @@
                   <img
                     v-if="fileName"
                     :src="
-                      'https://data.webbalo.online/images/about/' + fileName
+                      'https://webbalo.online/data/images/about/' + fileName
                     "
                     alt=""
                   />
