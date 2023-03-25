@@ -129,7 +129,7 @@
                 <div v-else class="h-50 w-full flex">
                   <img
                     v-for="name in fileName"
-                    :src="'https://data.webbalo.online/images/balo/' + name"
+                    :src="'https://webbalo.online/data/images/balo/' + name"
                     class="object-cover w-1/4 p-1"
                     :key="name"
                     alt=""

@@ -4,7 +4,7 @@
             <div class="lg:w-10/12 mx-auto">
                 <div class="lg:flex w-full justify-between pt-5">
                     <div class="pt-6 mr-5">
-                        <img src="https://data.webbalo.online/images/logo/logo.jpg"
+                        <img src="https://webbalo.online/data/images/logo/logo.jpg"
                             class="w-2/3 mx-auto" alt="">
                         <p class="pt-4 pb-3 text-left">SIGN UP FOR NEWSLETTER</p>
                         <div class="w-full relative">
@@ -100,17 +100,17 @@
                     </nav>
                     <div class="flex lg:justify-between items-center relative">
                         <a href="" class="px-1"><img
-                                src="https://data.webbalo.online/images/payments/visaIcon.png" alt=""></a>
-                        <a href="" class="px-1"><img src="https://data.webbalo.online/images/payments/atmIcon.png"
+                                src="https://webbalo.online/data/images/payments/visaIcon.png" alt=""></a>
+                        <a href="" class="px-1"><img src="https://webbalo.online/data/images/payments/atmIcon.png"
                                 alt=""></a>
                         <a href="" class="px-1"><img
-                                src="https://data.webbalo.online/images/payments/paypalIcon.png" alt=""></a>
+                                src="https://webbalo.online/data/images/payments/paypalIcon.png" alt=""></a>
                         <a href="" class="px-1"><img
-                                src="https://data.webbalo.online/images/payments/visaIcon.png" alt=""></a>
+                                src="https://webbalo.online/data/images/payments/visaIcon.png" alt=""></a>
                     </div>
                 </div>
                 <div class="flex pt-5">
-                    <img src="https://data.webbalo.online/images/vietnamIcon.png" alt="">
+                    <img src="https://webbalo.online/data/images/vietnamIcon.png" alt="">
                     <p class="pl-2">Vietnam</p>
                 </div>
             </div>

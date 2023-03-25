@@ -3,7 +3,7 @@
         <div class="" v-for="(product, index) in products" :key="index">
             <div class="flex justify-between items-center w-full mt-5">
                 <div class="flex items-center">
-                    <img :src="'https://data.webbalo.online/images/balo/'+product.image_1" class="object-cover w-24 h-24 mr-4" alt="" />
+                    <img :src="'https://webbalo.online/data/images/balo/'+product.image_1" class="object-cover w-24 h-24 mr-4" alt="" />
                     <div class="">
                         <p> {{ product.productName }}</p>
                         <p>

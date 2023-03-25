@@ -5,8 +5,8 @@
                 <div class="relative h-10 w-10">
                     <img class="h-full w-full rounded-full object-cover object-center"
                         :src="(image != 'default.jpg')?
-                        'https://data.webbalo.online/images/'+image
-                        :'https://data.webbalo.online/images/Ddefault.jpg'"
+                        'https://webbalo.online/data/images/'+image
+                        :'https://webbalo.online/data/images/Ddefault.jpg'"
                         alt="" />
                     <span
                         class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>

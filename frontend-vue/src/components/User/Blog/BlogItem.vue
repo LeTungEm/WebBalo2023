@@ -1,7 +1,7 @@
 <template>
     <div class="h-full shadow-md pb-12 bg-gray-50 relative">
         <router-link to="/blog">
-            <img :src="'https://data.webbalo.online/images/blog/' + blogData.image"
+            <img :src="'https://webbalo.online/data/images/blog/' + blogData.image"
                 class="w-full h-52 md:h-64 lg:h-96 xl:h-64 object-cover" />
         </router-link>
         <div class="p-8 relative">

@@ -109,7 +109,7 @@
                 <img
                   v-if="fileName"
                   :src="
-                    'https://data.webbalo.online/images/user/' +
+                    'https://webbalo.online/data/images/user/' +
                     fileName
                   "
                   alt=""

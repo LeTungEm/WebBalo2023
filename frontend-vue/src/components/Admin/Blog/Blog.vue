@@ -99,7 +99,7 @@
                 <div v-else>
                   <img
                     v-if="fileName"
-                    :src="'https://data.webbalo.online/images/blog/' + fileName"
+                    :src="'https://webbalo.online/data/images/blog/' + fileName"
                     alt=""
                   />
                 </div>

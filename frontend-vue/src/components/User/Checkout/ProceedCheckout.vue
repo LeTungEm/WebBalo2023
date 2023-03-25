@@ -29,7 +29,7 @@
                             {{ index }}
                         </td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">
-                            <img class="" :src="'https://data.webbalo.online/images/balo/'+product.image_1" alt="">
+                            <img class="" :src="'https://webbalo.online/data/images/balo/'+product.image_1" alt="">
                         </td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b"> {{ product.productName }}</td>
                         <td class="w-1/5 p-6 align-middle whitespace-nowrap border-b">{{ formatNumber(product.price) }}</td>

@@ -3,7 +3,7 @@
     <div class="flex flex-col h-full">
       <nav  class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
         <router-link to="/admin">
-          <img class="object-fill h-16 mx-auto" src="https://data.webbalo.online/images/logo/logo.jpg" alt="" />
+          <img class="object-fill h-16 mx-auto" src="https://webbalo.online/data/images/logo/logo.jpg" alt="" />
         </router-link>
         <RouterLinkCPN v-for="link in router_links" :key="link" :data="link"/>
       </nav>

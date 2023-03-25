@@ -47,7 +47,7 @@
           </div>
           <div class="flex-auto">
             <img
-              src="https://data.webbalo.online/images/banner/banner.jpg"
+              src="https://webbalo.online/data/images/banner/banner.jpg"
               class="w-full h-1/2 lg:h-screen"
               alt=""
             />
@@ -61,7 +61,7 @@
           >
             <img
               class="w-16 h-16 lg:w-24 lg:h-24 rounded-full"
-              src="https://data.webbalo.online/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg"
+              src="https://webbalo.online/data/images/balo/balo-herschel-little-america-mid-volume-13-backpack-s-harbour-blue-gridblackamber-yellow-13866-21675221000.jpg"
               alt=""
             />
             <div class="absolute top-1/2 left-1/2 opacity-60">
